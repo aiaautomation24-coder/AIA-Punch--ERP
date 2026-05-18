@@ -315,7 +315,7 @@ tr.ip-row{background:#FFF7ED;}
   <div class="card">
     <div class="card-hd"><h2>✅ STEP 2 — Cleaned Data Preview</h2><span class="chip" id="cnt2">0 JOBS</span></div>
     <div class="card-bd">
-      <div class="info">ℹ️ Yeh woh jobs hain jo punching ke liye pending hain (printing done, punching nahi hua). Clean CSV download karo ya seedha Schedule Generate karo.</div>
+      <div class="info">ℹ️ These jobs are pending for punching (printing done, punching not yet done). Download Clean CSV or directly Generate Schedule.</div>
       <div class="btn-row" style="margin-top:0;margin-bottom:14px;">
         <button class="btn btn-green" onclick="dlClean()">⬇️ Download Clean CSV</button>
         <button class="btn btn-blue" onclick="buildSchedule()">📅 Generate Schedule →</button>
@@ -325,20 +325,20 @@ tr.ip-row{background:#FFF7ED;}
         <label>📅 Schedule Start Date:</label>
         <input type="date" id="schedStartDt" onchange="changeSchedDate(this.value)" style="font-size:13px;">
         <span id="schedDateNote" style="color:#22c55e;font-size:11px;font-weight:600;"></span>
-        <span style="color:#94a3b8;font-size:11px;">( Printing file upload hone par auto-set hota hai )</span>
+        <span style="color:#94a3b8;font-size:11px;">( Auto-set when Printing file is uploaded )</span>
       </div>
       <!-- HOLIDAY PANEL -->
       <div class="holiday-panel">
-        <h4>🚫 Holidays / Band Divas <span style="font-size:10px;font-weight:400;color:#94a3b8;">(machine is din band rahel — jobs next working day la jump hotat)</span>
-          <button onclick="openCalendarModal()" style="margin-left:auto;background:#f97316;border:none;color:#fff;padding:5px 14px;border-radius:8px;cursor:pointer;font-size:11px;font-weight:700;letter-spacing:.5px;">📅 Calendar Madhun Add Karo</button>
+        <h4>🚫 Holidays / Off Days <span style="font-size:10px;font-weight:400;color:#94a3b8;">(machine will be off — jobs will jump to next working day)</span>
+          <button onclick="openCalendarModal()" style="margin-left:auto;background:#f97316;border:none;color:#fff;padding:5px 14px;border-radius:8px;cursor:pointer;font-size:11px;font-weight:700;letter-spacing:.5px;">📅 Add from Calendar</button>
         </h4>
         <div class="holiday-add-row">
           <input type="date" id="holidayDateIn">
-          <input type="text" id="holidayLabelIn" placeholder="Holiday naam (e.g. Holi, Diwali)">
+          <input type="text" id="holidayLabelIn" placeholder="Holiday name (e.g. Diwali, Christmas)">
           <button class="btn btn-orange btn-sm" onclick="addHoliday()">➕ Add</button>
         </div>
         <div class="holiday-list" id="holidayList">
-          <span style="font-size:11px;color:#475569;font-style:italic;">Koi holiday add nahi kiya abhi...</span>
+          <span style="font-size:11px;color:#475569;font-style:italic;">No holidays added yet...</span>
         </div>
       </div>
 
@@ -365,12 +365,12 @@ tr.ip-row{background:#FFF7ED;}
     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
       <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:#f97316;">🔧 Machine Breakdown / Delay</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button class="btn btn-sm" style="background:#7c2d12;color:#fff;border:1.5px solid #f97316;" onclick="openFullDayBreakdown()">📅 Full Day Shift — Sagle Jobs Next Day</button>
-        <button class="btn btn-sm" style="background:#1e3a5f;color:#fff;border:1.5px solid #3b82f6;" onclick="openJobBreakdown()">✏️ Specific Jobs Select Karo</button>
+        <button class="btn btn-sm" style="background:#7c2d12;color:#fff;border:1.5px solid #f97316;" onclick="openFullDayBreakdown()">📅 Full Day Shift — All Jobs Next Day</button>
+        <button class="btn btn-sm" style="background:#1e3a5f;color:#fff;border:1.5px solid #3b82f6;" onclick="openJobBreakdown()">✏️ Select Specific Jobs</button>
         <button class="btn btn-sm" style="background:#1a2736;color:#94a3b8;border:1px solid #2a3f55;" onclick="resetBreakdown()">↺ Reset All</button>
       </div>
     </div>
-    <div id="breakdownStatus" style="font-size:11px;color:#94a3b8;font-style:italic;">Koi breakdown set nahi. Schedule normal aahe.</div>
+    <div id="breakdownStatus" style="font-size:11px;color:#94a3b8;font-style:italic;">No breakdown set. Schedule is normal.</div>
   </div>
 
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px;">
@@ -384,6 +384,7 @@ tr.ip-row{background:#FFF7ED;}
       <button class="btn btn-green btn-sm" onclick="dlCombinedExcel()">⬇️ Full Plan Excel</button>
       <button class="btn btn-blue btn-sm" onclick="dlB1DayWise()">⬇️ Unit 12 (B1) Day-wise</button>
       <button class="btn btn-sm" style="background:#16a34a;color:#fff;" onclick="dlB2DayWise()">⬇️ Unit 19 (B2) Day-wise</button>
+      <button class="btn btn-sm" style="background:#1e293b;color:#fff;border:2px solid #475569;" onclick="dl7DayPrint()">🖨️ 7-Day Print</button>
       <button class="btn btn-ghost btn-sm" onclick="goPg(2)">← Back</button>
     </div>
   </div>
@@ -419,11 +420,11 @@ tr.ip-row{background:#FFF7ED;}
         <span class="chip">Drag to reorder priority</span>
       </div>
       <div class="card-bd">
-        <div class="info">ℹ️ Ye jobs abhi printing/processing mein hain. Print date नंतर punch ला जातात. Drag & drop se priority set karo.</div>
+        <div class="info">ℹ️ These jobs are currently in printing/processing. They will be punched after print date. Drag & drop to set priority.</div>
 
         <!-- MANUAL ADD JOB -->
         <div style="background:#1a2736;border:1.5px solid #f97316;border-radius:10px;padding:14px 16px;margin-bottom:14px;">
-          <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#f97316;margin-bottom:12px;">➕ Manually Job Punch ला Add करा</div>
+          <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#f97316;margin-bottom:12px;">➕ Manually Add Job to Punching</div>
           <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;">
             <div style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:160px;">
               <label style="font-size:9px;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">JCNO</label>
@@ -453,7 +454,7 @@ tr.ip-row{background:#FFF7ED;}
         <div id="soonList" style="display:flex;flex-direction:column;gap:8px;margin-top:12px;"></div>
         <div id="soonEmpty" class="hidden" style="text-align:center;padding:32px;color:#64748b;">
           <div style="font-size:32px;margin-bottom:8px;">🖨️</div>
-          <div>Printing schedule file upload nahi hui ya koi job pending nahi hai.</div>
+          <div>Printing schedule file not uploaded or no jobs pending.</div>
         </div>
       </div>
     </div>
@@ -510,9 +511,9 @@ tr.ip-row{background:#FFF7ED;}
 <div class="modal-ov" id="fullDayBdModal">
   <div class="modal" style="width:460px;background:#0d1b2a;border:2px solid #f97316;">
     <h3 style="color:#f97316;">📅 Full Day Machine Breakdown</h3>
-    <div style="font-size:12px;color:#94a3b8;margin-bottom:16px;">Tya diwshi schedule holelya sagle jobs next working day la shift hotil.</div>
+    <div style="font-size:12px;color:#94a3b8;margin-bottom:16px;">All jobs scheduled on that day will shift to the next working day.</div>
     <div class="fg">
-      <label style="color:#94a3b8;">Breakdown Date Select Kara</label>
+      <label style="color:#94a3b8;">Select Breakdown Date</label>
       <input type="date" id="bdFullDate" style="background:#1a2736;color:#fff;border:1.5px solid #2a3f55;border-radius:6px;padding:8px 12px;font-size:14px;outline:none;">
     </div>
     <div class="fg" style="margin-top:10px;">
@@ -531,10 +532,10 @@ tr.ip-row{background:#FFF7ED;}
 <div class="modal-ov" id="jobBdModal">
   <div class="modal" style="width:560px;background:#0d1b2a;border:2px solid #3b82f6;max-height:90vh;overflow-y:auto;">
     <h3 style="color:#60a5fa;">✏️ Specific Jobs — Next Day la Shift Kara</h3>
-    <div style="font-size:12px;color:#94a3b8;margin-bottom:14px;">Jobs select kara jevde next working day la shift karayche aahet.</div>
+    <div style="font-size:12px;color:#94a3b8;margin-bottom:14px;">Select jobs to shift to the next working day.</div>
     <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
       <input type="date" id="bdJobDate" style="background:#1a2736;color:#fff;border:1.5px solid #2a3f55;border-radius:6px;padding:7px 10px;font-size:13px;outline:none;" onchange="renderJobBdList()">
-      <span style="font-size:11px;color:#64748b;align-self:center;">Jobs ya date la filter karo</span>
+      <span style="font-size:11px;color:#64748b;align-self:center;">Filter jobs by this date</span>
     </div>
     <div id="jobBdList" style="max-height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;"></div>
     <div style="margin-top:14px;background:#1a2736;border-radius:8px;padding:8px 12px;">
@@ -583,7 +584,7 @@ tr.ip-row{background:#FFF7ED;}
         <div class="fg" style="margin-bottom:0;"><label>🖨️ Printing Days</label><input type="number" id="pm_printDays" value="1" min="0" max="30" oninput="updatePunchDate()"></div>
         <div class="fg" style="margin-bottom:0;"><label>🧴 Coating Days</label><input type="number" id="pm_coatDays" value="1" min="0" max="30" oninput="updatePunchDate()"></div>
       </div>
-      <div style="margin-top:10px;font-size:11px;color:#64748b;">Coating nahi hai toh 0 rakho</div>
+      <div style="margin-top:10px;font-size:11px;color:#64748b;">Set to 0 if no coating</div>
     </div>
     <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px 14px;margin-bottom:16px;">
       <div style="font-size:11px;color:#166534;font-weight:600;">📅 Calculated Punch Start Date:</div>
@@ -623,7 +624,7 @@ tr.ip-row{background:#FFF7ED;}
 
     <!-- Holiday label input -->
     <div style="margin-top:14px;background:#1a2736;border-radius:8px;padding:12px;">
-      <div id="calSelectedInfo" style="font-size:12px;color:#94a3b8;margin-bottom:8px;">👆 Upar date click karo holiday mark karnyasathi</div>
+      <div id="calSelectedInfo" style="font-size:12px;color:#94a3b8;margin-bottom:8px;">👆 Click a date above to mark as holiday</div>
       <div style="display:flex;gap:8px;align-items:center;">
         <input type="text" id="calHolidayLabel" placeholder="Holiday naam (optional)" style="flex:1;padding:7px 10px;border:1.5px solid #2a3f55;border-radius:6px;font-size:12px;background:#0d1b2a;color:#fff;outline:none;">
         <button onclick="calAddHoliday()" id="calAddBtn" style="background:#f97316;border:none;color:#fff;padding:7px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700;opacity:0.4;pointer-events:none;">Add</button>
@@ -936,7 +937,7 @@ function onFile2(inp){
         }
 
         let currentPrintKey = ''; // tracks the date header row above current job rows
-        let skipSection = false;  // OUTSORCE/SCHEDULE REQ section skip करायचा
+        let skipSection = false;  // skip OUTSORCE/SCHEDULE REQ section
 
         dataRows.forEach(row => {
           const jcno = String(row[0]||'').trim();
@@ -948,7 +949,7 @@ function onFile2(inp){
             const isOutsource = col4text.includes('OUTSORC') || col4text.includes('OUTSOURC');
             const isSchedReq  = col4text.includes('SCHEDULEREQ') || col4text.includes('SCHEDREQ');
 
-            // सगळ्या cells मध्ये पण check करतो
+            // also check in all cells
             const rowText = row.map(c => typeof c === 'string' ? c.toUpperCase().replace(/\s+/g,'') : '').join(' ');
             const isOutsource2 = rowText.includes('OUTSORC') || rowText.includes('OUTSOURC');
             const isSchedReq2  = rowText.includes('SCHEDULEREQ') || rowText.includes('SCHEDREQ');
@@ -959,7 +960,7 @@ function onFile2(inp){
               return;
             }
 
-            // Date value शोधतो — फक्त पहिले 6 columns (SUM formula columns नाहीत)
+            // Find date value — only first 6 columns (not SUM formula columns)
             for(let ci = 0; ci < Math.min(6, row.length); ci++){
               const v = row[ci];
               if(!v || v === '') continue;
@@ -1413,16 +1414,16 @@ function manualJcnoSearch(val){
   const infoEl = document.getElementById('manualJobInfo');
   if(!val || val.length < 3){ infoEl.textContent = ''; return; }
   const nj = v => String(v||'').trim().toUpperCase().replace(/[\s\/\-]/g,'');
-  // Track record मध्ये शोधतो
+  // Search in track record
   const found = clean.find(j => nj(j.jcno) === nj(val));
-  // comingSoon मध्ये पण शोधतो
+  // Also search in comingSoon
   const inCS = comingSoon.find(j => nj(j.jcno) === nj(val));
   if(found){
     infoEl.innerHTML = `<span style="color:#22c55e;">✅ ${found.name} | ${found.cut.toLocaleString()} sheets | ${found.dim}</span>`;
   } else if(inCS){
     infoEl.innerHTML = `<span style="color:#f97316;">⚠️ Already in printing pipeline</span>`;
   } else {
-    infoEl.innerHTML = `<span style="color:#ef4444;">❌ Track record मध्ये नाही</span>`;
+    infoEl.innerHTML = `<span style="color:#ef4444;">❌ Not found in track record</span>`;
   }
 }
 
@@ -1438,9 +1439,9 @@ function manualAddJob(){
 
   // Track record मधून job शोधतो
   const found = clean.find(j => nj(j.jcno) === nj(jcnoVal));
-  if(!found){ toast('❌ JCNO track record मध्ये नाही!'); return; }
+  if(!found){ toast('❌ JCNO not found in track record!'); return; }
 
-  // आधीच comingSoon मध्ये आहे का?
+  // Already in comingSoon?
   const existing = comingSoon.findIndex(j => nj(j.jcno) === nj(jcnoVal));
   if(existing > -1){
     // Override date update कर
@@ -1448,7 +1449,7 @@ function manualAddJob(){
     comingSoon[existing].overrideMach = machVal === 'auto' ? '' : machVal;
     toast('✅ ' + found.jcno + ' — punch date updated!');
   } else {
-    // नवीन entry comingSoon मध्ये add कर
+    // Add new entry to comingSoon
     comingSoon.push({
       jcno:         found.jcno,
       name:         found.name,
@@ -1468,7 +1469,7 @@ function manualAddJob(){
       coatType:     '',
       priority:     comingSoon.length + 1
     });
-    toast('✅ ' + found.jcno + ' — punch ला add केला!');
+    toast('✅ ' + found.jcno + ' — added to punch schedule!');
   }
 
   // Input clear
@@ -1500,13 +1501,13 @@ function switchTab(t){
 // PROCESS FILE
 // ══════════════════════════════════════════════════════
 function processFile(){
-  if(!window._file){ toast('⚠️ Pehle file upload karo!'); return; }
+  if(!window._file){ toast('⚠️ Please upload a file first!'); return; }
 
   BASE = new Date(); BASE.setHours(0,0,0,0);
 
   if(window._isExcel){
     if(typeof XLSX === 'undefined'){
-      toast('❌ Excel library load nahi hui! Internet check karo ya CSV use karo.');
+      toast('❌ Excel library not loaded! Check internet or use CSV.');
       return;
     }
     readExcel(window._file);
@@ -1528,7 +1529,7 @@ function readCSV(f){
 }
 
 function readExcel(f){
-  toast('⏳ File load hoat aahe... thoda wait karo');
+  toast('⏳ Loading file... please wait');
   let reader = new FileReader();
   reader.onerror = ()=> toast('❌ File read failed!');
   reader.onload = e=>{
@@ -1548,7 +1549,7 @@ function readExcel(f){
       setTimeout(()=>{
         try{
           const ws = wb.Sheets[best];
-          if(!ws || !ws['!ref']){ toast('❌ Sheet empty aahe!'); return; }
+          if(!ws || !ws['!ref']){ toast('❌ Sheet is empty!'); return; }
 
           // ── KEY FIX: sirf pehle 120 columns gheto — baaki None/blank aahet ──
           const range = XLSX.utils.decode_range(ws['!ref']);
@@ -1977,13 +1978,13 @@ function calSelectDay(key){
 }
 
 function calAddHoliday(){
-  if(!_calSelectedKey){ toast('⚠️ Pehle date select karo!'); return; }
+  if(!_calSelectedKey){ toast('⚠️ Please select a date first!'); return; }
   const label = (document.getElementById('calHolidayLabel').value||'').trim() || 'Holiday';
   HOLIDAYS.set(_calSelectedKey, label);
   renderHolidayList();
   toast('🚫 Holiday add kela: '+label+' ('+_calSelectedKey+')');
   _calSelectedKey = '';
-  document.getElementById('calSelectedInfo').textContent = '👆 Upar date click karo holiday mark karnyasathi';
+  document.getElementById('calSelectedInfo').textContent = '👆 Click a date above to mark as holiday';
   const btn = document.getElementById('calAddBtn');
   btn.style.opacity = '0.4'; btn.style.pointerEvents = 'none';
   renderCalendar();
@@ -2010,8 +2011,8 @@ function isNonWorking(d){
 function addHoliday(){
   const dateVal  = document.getElementById('holidayDateIn').value;
   const labelVal = (document.getElementById('holidayLabelIn').value || '').trim();
-  if(!dateVal){ toast('⚠️ Pehle date select karo!'); return; }
-  if(HOLIDAYS.has(dateVal)){ toast('⚠️ Yeh date pehle se add hai!'); return; }
+  if(!dateVal){ toast('⚠️ Please select a date first!'); return; }
+  if(HOLIDAYS.has(dateVal)){ toast('⚠️ This date is already added!'); return; }
   HOLIDAYS.set(dateVal, labelVal || dateVal);
   document.getElementById('holidayDateIn').value = '';
   document.getElementById('holidayLabelIn').value = '';
@@ -2032,7 +2033,7 @@ function renderHolidayList(){
   const el = document.getElementById('holidayList');
   if(!el) return;
   if(!HOLIDAYS.size){
-    el.innerHTML = '<span style="font-size:11px;color:#475569;font-style:italic;">Koi holiday add nahi kiya abhi...</span>';
+    el.innerHTML = '<span style="font-size:11px;color:#475569;font-style:italic;">No holidays added yet...</span>';
     return;
   }
   const sorted = [...HOLIDAYS.entries()].sort((a,b)=>a[0].localeCompare(b[0]));
@@ -2088,8 +2089,8 @@ function dayKeyToWM(dateKey){
 }
 
 // ── snapToWorkingWM ──
-// Job cha WM holiday var land hala tar next working day la push karo.
-// wmToInfo sarkhach Sunday-only dayIdx use karo — consistent rahil.
+// If job WM lands on a holiday, push to next working day.
+// Use Sunday-only dayIdx like wmToInfo — keep consistent.
 function snapToWorkingWM(wm){
   if(!HOLIDAYS.size) return wm;
 
@@ -2122,7 +2123,7 @@ function snapToWorkingWM(wm){
 }
 
 function buildSchedule(){
-  if(!clean.length && !comingSoon.length){ toast('⚠️ Data nahi hai!'); return; }
+  if(!clean.length && !comingSoon.length){ toast('⚠️ No data available!'); return; }
   sched = [];
 
   // Machine state
@@ -2137,14 +2138,14 @@ function buildSchedule(){
     const cut = (job.cut && job.cut > 0) ? job.cut : 0;
     if(!cut) return;
 
-    // Printing job — print+1 day आधी punch होणार नाही
+    // Printing job — punch cannot happen before print+1 day
     if(job.printDateKey){
       const punchReadyKey = job.overrideDate || addWorkDaysStatic(job.printDateKey, 1+(job.extraDays||0)) || baseKey;
       if(punchReadyKey > baseKey) minWM = Math.max(minWM, dayKeyToWM(punchReadyKey));
     }
 
-    // ── PRINTING(R) rule: जर job चा status PRINTING(R) असेल (printing अजून running आहे),
-    //    तर तो job TODAY (baseKey) ला schedule करायचा नाही — next working day ला push करायचा. ──
+    // ── PRINTING(R) rule: if job status is PRINTING(R) (printing still running),
+    //    do not schedule today (baseKey) — push to next working day. ──
     const _st = String(job.status||'').trim().toUpperCase();
     if(_st === 'PRINTING(R)'){
       const _nextWorkDay = addWorkDaysStatic(baseKey, 1);
@@ -2221,7 +2222,7 @@ function buildSchedule(){
     actualStatus: trackStatusMap.get(nj(j.jcno)) || j.status || ''
   }));
 
-  // Print file madhe jo JCNOs aahet — tyacha minWM = next working day after print
+  // For JCNOs in print file — minWM = next working day after print
   const printFileDateMap = new Map();
   uniqueCS.forEach(j => {
     const k = nj(j.jcno);
@@ -2398,7 +2399,7 @@ function renderDayCards(){
     // dayJobs: jobs that START on this day
     let dayJobs = sched.filter(j=>j.sKey===key);
     // ipJobs: jobs that started BEFORE this day and end ON OR AFTER this day
-    // Holiday la ipJobs show kart nahi — machine band ahe
+    // On holidays, don't show ipJobs — machine is off
     let ipJobs  = isHolidayDay ? [] : sched.filter(j=>j.sKey<key && j.eKey>=key);
     // Coming soon jobs expected on this day
     let csJobs  = comingSoon.filter(j=>{
@@ -2416,7 +2417,7 @@ function renderDayCards(){
           <h3>🚫 HOLIDAY — ${dLabel}</h3>
           <span style="font-size:12px;color:#fff;font-weight:700;">${HOLIDAYS.get(key)}</span>
         </div>
-        <div class="h-day-body">⏸️ Machine band ahe — koi job start/show hochi nahi. Jobs next working day la automatically continue hotat.</div>
+        <div class="h-day-body">⏸️ Machine is off — no jobs start/show on this day. Jobs automatically continue from next working day.</div>
       </div>`;
       return;
     }
@@ -2654,16 +2655,16 @@ function addUrgent(){
 // EXCEL DOWNLOAD
 // ══════════════════════════════════════════════════════
 function dlDay(key){
-  if(!sched.length){ toast('⚠️ Schedule nahi hai!'); return; }
+  if(!sched.length){ toast('⚠️ No schedule available!'); return; }
 
   let dateLabel = new Date(key+'T12:00:00').toLocaleDateString('en-IN',
     {weekday:'long',day:'2-digit',month:'short',year:'numeric'});
 
-  // Sunday la bhi allow karo (manually added jobs asel tar)
+  // Allow Sundays too (for manually added jobs)
   let startJobs = sched.filter(j=>(j.sKey||j.mrKey)===key);
   let ipJobs    = sched.filter(j=>(j.sKey||j.mrKey)<key && (j.eKey||j.sKey)>=key);
   let allDay    = [...startJobs,...ipJobs];
-  if(!allDay.length){ toast('⚠️ Is din koi job nahi!'); return; }
+  if(!allDay.length){ toast('⚠️ No jobs on this date!'); return; }
 
   let b1Start = startJobs.filter(j=>j.mach==='B1');
   let b2Start = startJobs.filter(j=>j.mach==='B2');
@@ -2671,7 +2672,7 @@ function dlDay(key){
   let b2IP    = ipJobs.filter(j=>j.mach==='B2');
 
   let sheets = [];
-  // Combined sheet (sagla ek jaghi)
+  // Combined sheet (all combined)
   sheets.push({ sheetName:'Full Day', dateLabel, b1Start, b2Start, b1IP, b2IP });
   // B1 separate sheet (only if B1 jobs ahet)
   if(b1Start.length || b1IP.length)
@@ -2688,8 +2689,8 @@ function dlDay(key){
 // COMBINED EXCEL — Printing + Punching ek sheet mein
 // ══════════════════════════════════════════════════════
 async function dlCombinedExcel(){
-  if(!sched.length){ toast('⚠️ Koi schedule nahi hai!'); return; }
-  toast('⏳ Full plan ban raha hai...');
+  if(!sched.length){ toast('⚠️ No schedule available!'); return; }
+  toast('⏳ Building full plan...');
 
   // Collect all unique working days
   let daySet = new Set();
@@ -2704,7 +2705,7 @@ async function dlCombinedExcel(){
   });
 
   let days = [...daySet].sort();
-  if(!days.length){ toast('⚠️ Koi valid day nahi!'); return; }
+  if(!days.length){ toast('⚠️ No valid days found!'); return; }
 
   const NCols = 26;
   const CW = [4,14,22,36,8,10,18,12,16,12,10,9,8,12,22,10,12,9,10,12,9,10,12,9,12,16];
@@ -2863,7 +2864,7 @@ async function dlCombinedExcel(){
 }
 
 async function dlAllDays(){
-  if(!sched.length){ toast('⚠️ Schedule nahi hai!'); return; }
+  if(!sched.length){ toast('⚠️ No schedule available!'); return; }
 
   // Collect all unique working days
   let daySet = new Set();
@@ -2879,7 +2880,7 @@ async function dlAllDays(){
 
   let days = [...daySet].sort();
   console.log('dlAllDays — total days:', days.length, days.join(','));
-  toast('⏳ Single sheet plan ban raha hai...');
+  toast('⏳ Building single sheet plan...');
 
   const NCols = 26;
   const CW = [4, 14, 22, 36, 8, 10, 18, 12,
@@ -3054,7 +3055,7 @@ async function dlAllDays(){
 }
 
 function dlClean(){
-  if(!clean.length){ toast('⚠️ Koi data nahi!'); return; }
+  if(!clean.length){ toast('⚠️ No data available!'); return; }
   let h = ['Sr No','Doc ID','Doc Date','SAP Code','PONO','Client Code','Customer Name','Job Name','Job Qty',
     'Total Cut Sheet','Carton Dimension','Item Type','Item Class','Job Status','Ups','Next Process'];
   let rows = clean.map(r=>[r.sr,r.docId||r.jcno,r.docDate,r.sapCode||'',r.pono||'',
@@ -3101,7 +3102,7 @@ function buildPrintSchedule(){
     let dim = job.dim || 'Unknown';
     let cut = Math.max(job.cut || job.qty || 1, 1);
 
-    let mr = PRINT_MR_NEW;  // Printing — always new MR (same dim nahi hota)
+    let mr = PRINT_MR_NEW;  // Printing — always new MR (same dim not applicable)
     let mrLabel = `MR (${PRINT_MR_NEW}m)`;
     let proc = cut / PRINT_SPEED;
 
@@ -3164,7 +3165,7 @@ function renderPrintDays(mode){
   let containerId = mode==='4col' ? 'print4cards' : mode==='6col' ? 'print6cards' : 'printDayCards';
 
   if(!jobs.length){
-    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:40px;color:#64748b;"><div style="font-size:36px;margin-bottom:12px;">🖨️</div><div>Printing schedule file upload nahi hua. Step 1 mein Printing Pipeline file upload karo.</div></div>`;
+    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:40px;color:#64748b;"><div style="font-size:36px;margin-bottom:12px;">🖨️</div><div>Printing schedule file not uploaded. Upload Printing Pipeline file in Step 1.</div></div>`;
     return;
   }
 
@@ -3313,7 +3314,7 @@ function dlPrintDay(key){
 }
 
 function dlPrintingExcel(){
-  if(!printSched.length){ toast('⚠️ Printing schedule nahi hai!'); return; }
+  if(!printSched.length){ toast('⚠️ No printing schedule available!'); return; }
   let daySet = new Set();
   printSched.forEach(j=>{
     let d = new Date(j.sKey+'T12:00:00'), end = new Date(j.eKey+'T12:00:00');
@@ -3921,8 +3922,8 @@ function previewFullDayBreakdown(){
   if(!dt){ document.getElementById('bdFullPreview').innerHTML = 'Date select kara'; return; }
   const jobs = sched.filter(j => j.sKey === dt || j.mrKey === dt);
   document.getElementById('bdFullPreview').innerHTML = jobs.length
-    ? `<b style="color:#f97316;">${jobs.length} jobs</b> ya date la scheduled aahet — te sagle next day la shift hotil.<br><span style="color:#64748b;">${jobs.slice(0,3).map(j=>j.docId||j.jcno).join(', ')}${jobs.length>3?' + '+(jobs.length-3)+' more':''}</span>`
-    : `<span style="color:#64748b;">Ya date la koi job nahi.</span>`;
+    ? `<b style="color:#f97316;">${jobs.length} jobs</b> scheduled on this date — all will shift to next day.<br><span style="color:#64748b;">${jobs.slice(0,3).map(j=>j.docId||j.jcno).join(', ')}${jobs.length>3?' + '+(jobs.length-3)+' more':''}</span>`
+    : `<span style="color:#64748b;">Ya date la no jobs.</span>`;
 }
 document.addEventListener('change', function(e){ if(e.target.id==='bdFullDate') previewFullDayBreakdown(); });
 
@@ -3973,7 +3974,7 @@ function renderJobBdList(){
   const all = sched.filter(j => !dt || j.sKey === dt || j.mrKey === dt);
   const el  = document.getElementById('jobBdList');
   if(!all.length){
-    el.innerHTML = `<div style="color:#64748b;font-size:12px;padding:12px;">Ya date la koi job schedule nahi.</div>`;
+    el.innerHTML = `<div style="color:#64748b;font-size:12px;padding:12px;">No jobs scheduled on this date.</div>`;
     document.getElementById('jobBdSelectedCount').textContent = '0 jobs selected';
     return;
   }
@@ -4002,7 +4003,7 @@ function updateJobBdCount(){
 
 function applyJobBreakdown(){
   const checks = [...document.querySelectorAll('#jobBdList input[type=checkbox]:checked')];
-  if(!checks.length){ toast('⚠️ Koi job select nahi!'); return; }
+  if(!checks.length){ toast('⚠️ No jobs selected!'); return; }
 
   checks.forEach(cb => {
     const jid = cb.dataset.jid;
@@ -4032,7 +4033,7 @@ function applyJobBreakdown(){
 }
 
 function resetBreakdown(){
-  if(!Object.keys(bdFullDays).length && !bdJobSet.size){ toast('Koi breakdown set nahi.'); return; }
+  if(!Object.keys(bdFullDays).length && !bdJobSet.size){ toast('No breakdown set.'); return; }
   bdFullDays = {}; bdJobSet.clear();
   updateBreakdownStatus();
   buildSchedule(); // full rebuild
@@ -4044,7 +4045,7 @@ function updateBreakdownStatus(){
   const jobs = bdJobSet.size;
   const el   = document.getElementById('breakdownStatus');
   if(!days.length && !jobs){
-    el.innerHTML = 'Koi breakdown set nahi. Schedule normal aahe.';
+    el.innerHTML = 'No breakdown set. Schedule is normal.';
     el.style.color = '#94a3b8';
   } else {
     let parts = [];
@@ -4067,8 +4068,8 @@ async function dlB2DayWise(){
 
 async function dlMachineDayWise(mach, unitLabel){
   const machJobs = sched.filter(j => j.mach === mach);
-  if(!machJobs.length){ toast(`⚠️ ${unitLabel} (${mach}) la koi job nahi!`); return; }
-  toast(`⏳ ${unitLabel} day-wise plan ban raha hai...`);
+  if(!machJobs.length){ toast(`⚠️ ${unitLabel} (${mach}) la no jobs!`); return; }
+  toast(`⏳ Building ${unitLabel} day-wise plan...`);
 
   // Collect all days for this machine
   let daySet = new Set();
@@ -4195,6 +4196,312 @@ async function dlMachineDayWise(mach, unitLabel){
     xlsxDl(wbXL, `AIA_${unitLabel.replace(' ','_')}_${mach}_Plan_${new Date().toLocaleDateString('en-IN').replace(/\//g,'_')}.xlsx`);
     toast(`⬇️ ${unitLabel} Day-wise Plan ready!`);
   }catch(e){ toast('❌ '+e.message); console.error(e); }
+}
+
+// ══════════════════════════════════════════════════════
+// 7-DAY PRINT — Black & White, Landscape, Fit-to-page
+// ══════════════════════════════════════════════════════
+function dl7DayPrint(){
+  if(!sched.length){ toast('⚠️ No schedule available!'); return; }
+
+  // Collect next 7 working days from BASE
+  const baseKey = toLocalKey(BASE);
+  let workDays = [];
+  let d = new Date(BASE); d.setHours(12,0,0,0);
+  while(workDays.length < 7){
+    const k = toLocalKey(d);
+    if(!isNonWorking(d)) workDays.push(k);
+    d.setDate(d.getDate()+1);
+  }
+
+  // Filter only days that have jobs
+  let days = workDays.filter(key => {
+    const start = sched.filter(j=>(j.sKey||j.mrKey)===key);
+    const ip    = sched.filter(j=>(j.sKey||j.mrKey)<key && (j.eKey||j.sKey)>=key);
+    return start.length || ip.length;
+  });
+
+  if(!days.length){ toast('⚠️ No jobs in next 7 days!'); return; }
+
+  // Build HTML for print — B&W, landscape, structured table
+  const dateRange = (() => {
+    const d0 = new Date(days[0]+'T12:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
+    const dN = new Date(days[days.length-1]+'T12:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
+    return d0 + ' — ' + dN;
+  })();
+
+  const totalJobs = sched.filter(j => days.includes(j.sKey||j.mrKey) || days.some(k=>(j.sKey||j.mrKey)<k&&(j.eKey||j.sKey)>=k));
+  const totalQty  = [...new Set(totalJobs.map(j=>j.jcno||j.docId))].reduce((a,jcno)=>{
+    const j = totalJobs.find(x=>(x.jcno||x.docId)===jcno); return a+(j?+j.qty||0:0);
+  },0);
+  const totalCut  = [...new Set(totalJobs.map(j=>j.jcno||j.docId))].reduce((a,jcno)=>{
+    const j = totalJobs.find(x=>(x.jcno||x.docId)===jcno); return a+(j?+j.cut||0:0);
+  },0);
+
+  // Sort helper — same as existing
+  const _NP = {'PUNCHING':1,'PUNCHING(R)':1,'COATING':2,'COATING(F)':2,'COATING(R)':2,'LAMINATION':3,'LAMINATION(F)':3,'LAMINATION(R)':3,'VDP':4,'VDP(F)':4,'VDP(R)':4,'PRINTING':5,'PRINTING(F)':5,'PRINTING(R)':5,'JOB NOT STARTED':6,'JOBNOTSTARTED':6};
+  function _pri(j){ const k=String(j.nextProcess||'').trim().toUpperCase().replace(/\s+/g,''); return _NP[k]!==undefined?_NP[k]:50; }
+  function sortJ(arr){
+    return [...arr].sort((a,b)=>{
+      const pA=String(a.status||'').trim().toUpperCase()==='PUNCHING(R)';
+      const pB=String(b.status||'').trim().toUpperCase()==='PUNCHING(R)';
+      if(pA&&!pB) return -1; if(!pA&&pB) return 1;
+      const npa=_pri(a),npb=_pri(b);
+      if(npa!==npb) return npa-npb;
+      if((a.dim||'')!==(b.dim||'')) return (a.dim||'').localeCompare(b.dim||'');
+      return (a.sr||0)-(b.sr||0);
+    });
+  }
+
+  // Fix MR label based on actual print sequence
+  function fixMR(arr){
+    let lastDim=null;
+    arr.forEach(j=>{ j._pMrLabel = j.dim===lastDim?'Same Dim ('+MR_SAME+' min)':'New Dim ('+MR_NEW+' min)'; lastDim=j.dim; });
+  }
+
+  // Build table rows HTML for one machine section
+  function machRows(jobs, inProgress){
+    return jobs.map((j,i) => {
+      const ip = inProgress;
+      const isPH = String(j.status||'').trim().toUpperCase()==='PUNCHING(R)';
+      const rowCls = ip ? 'row-ip' : isPH ? 'row-ph' : (i%2===0?'row-even':'row-odd');
+      const mrLabel = j._pMrLabel || j.mrLabel || '';
+      const note = ip ? 'In Progress' : (j._breakdown?'⚠️ Shifted':'');
+      return `<tr class="${rowCls}">
+        <td>${j.sr||''}</td>
+        <td class="bold">${j.docId||j.jcno||''}</td>
+        <td>${j.cust||''}</td>
+        <td class="jobname">${j.name||''}</td>
+        <td class="num">${(+j.qty||0).toLocaleString()}</td>
+        <td class="num">${(+j.cut||0).toLocaleString()}</td>
+        <td class="mono">${j.dim||''}</td>
+        <td class="mono">${getDie(j.dim)||'—'}</td>
+        <td>${j.itemType||''}</td>
+        <td>${j.status||''}</td>
+        <td class="mono">${mrLabel}</td>
+        <td class="time bold">${j.mrTime||''}</td>
+        <td>${j.mrDate||''}</td>
+        <td class="shift">${j.mrShift||''}</td>
+        <td class="time bold">${j.psTime||''}</td>
+        <td>${j.psDate||''}</td>
+        <td class="shift">${j.psShift||''}</td>
+        <td class="time bold">${j.eTime||''}</td>
+        <td>${j.eDate||''}</td>
+        <td class="shift">${j.eShift||''}</td>
+        <td class="note">${note}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  // Build day sections
+  let dayHtml = '';
+  days.forEach((key, di) => {
+    const dateObj   = new Date(key+'T12:00:00');
+    const dateLabel = dateObj.toLocaleDateString('en-IN',{weekday:'long',day:'2-digit',month:'long',year:'numeric'}).toUpperCase();
+    const startJobs = sched.filter(j=>(j.sKey||j.mrKey)===key);
+    const ipJobs    = sched.filter(j=>(j.sKey||j.mrKey)<key && (j.eKey||j.sKey)>=key);
+    if(!startJobs.length && !ipJobs.length) return;
+
+    const allDay = [...startJobs,...ipJobs];
+    const dayQty = allDay.reduce((a,j)=>a+(+j.qty||0),0);
+    const dayCut = allDay.reduce((a,j)=>a+(+j.cut||0),0);
+
+    const b1ip  = sortJ(ipJobs.filter(j=>j.mach==='B1'));
+    const b1st  = sortJ(startJobs.filter(j=>j.mach==='B1'));
+    const b2ip  = sortJ(ipJobs.filter(j=>j.mach==='B2'));
+    const b2st  = sortJ(startJobs.filter(j=>j.mach==='B2'));
+    fixMR([...b1ip,...b1st]);
+    fixMR([...b2ip,...b2st]);
+
+    const hasB1 = b1ip.length||b1st.length;
+    const hasB2 = b2ip.length||b2st.length;
+
+    const HDR = `<thead><tr>
+      <th>Sr</th><th>Doc ID</th><th>Customer</th><th>Job Name</th>
+      <th>Qty</th><th>Cut Sh</th><th>Dimension</th><th>Die No.</th>
+      <th>Item Type</th><th>Status</th><th>MR Type</th>
+      <th>MR Time</th><th>MR Date</th><th>Shift</th>
+      <th>Prod Start</th><th>Prod Date</th><th>Shift</th>
+      <th>Complete</th><th>End Date</th><th>Shift</th>
+      <th>Note</th>
+    </tr></thead>`;
+
+    dayHtml += `
+    <div class="day-section${di>0?' page-break':''}">
+      <div class="day-header">
+        <span class="day-title">DAY ${di+1} — ${dateLabel}</span>
+        <span class="day-meta">Jobs: ${allDay.length} &nbsp;|&nbsp; Qty: ${dayQty.toLocaleString()} &nbsp;|&nbsp; Cut: ${dayCut.toLocaleString()}</span>
+      </div>`;
+
+    if(hasB1){
+      const b1all = [...b1ip,...b1st];
+      const b1qty = b1all.reduce((a,j)=>a+(+j.qty||0),0);
+      const b1cut = b1all.reduce((a,j)=>a+(+j.cut||0),0);
+      dayHtml += `
+      <div class="mach-header mach-b1">UNIT 12 (B1) &nbsp;—&nbsp; ${b1all.length} Jobs &nbsp;|&nbsp; Qty: ${b1qty.toLocaleString()} &nbsp;|&nbsp; Cut: ${b1cut.toLocaleString()}</div>
+      <table><colgroup>
+        <col style="width:3%"><col style="width:9%"><col style="width:10%"><col style="width:14%">
+        <col style="width:5%"><col style="width:5%"><col style="width:9%"><col style="width:7%">
+        <col style="width:7%"><col style="width:7%"><col style="width:8%">
+        <col style="width:5%"><col style="width:6%"><col style="width:4%">
+        <col style="width:5%"><col style="width:6%"><col style="width:4%">
+        <col style="width:5%"><col style="width:6%"><col style="width:4%">
+        <col style="width:5%">
+      </colgroup>${HDR}<tbody>
+        ${b1ip.length?'<tr class="section-ip"><td colspan="21">▶ IN PROGRESS</td></tr>'+machRows(b1ip,true):''}
+        ${b1st.length?'<tr class="section-start"><td colspan="21">▶ STARTING TODAY</td></tr>'+machRows(b1st,false):''}
+        <tr class="total-row"><td colspan="4" class="bold">UNIT 12 TOTAL</td>
+          <td class="num bold">${b1qty.toLocaleString()}</td>
+          <td class="num bold">${b1cut.toLocaleString()}</td>
+          <td colspan="15" class="bold">${b1all.length} jobs</td>
+        </tr>
+      </tbody></table>`;
+    }
+
+    if(hasB2){
+      const b2all = [...b2ip,...b2st];
+      const b2qty = b2all.reduce((a,j)=>a+(+j.qty||0),0);
+      const b2cut = b2all.reduce((a,j)=>a+(+j.cut||0),0);
+      dayHtml += `
+      <div class="mach-header mach-b2">UNIT 19 (B2) &nbsp;—&nbsp; ${b2all.length} Jobs &nbsp;|&nbsp; Qty: ${b2qty.toLocaleString()} &nbsp;|&nbsp; Cut: ${b2cut.toLocaleString()}</div>
+      <table><colgroup>
+        <col style="width:3%"><col style="width:9%"><col style="width:10%"><col style="width:14%">
+        <col style="width:5%"><col style="width:5%"><col style="width:9%"><col style="width:7%">
+        <col style="width:7%"><col style="width:7%"><col style="width:8%">
+        <col style="width:5%"><col style="width:6%"><col style="width:4%">
+        <col style="width:5%"><col style="width:6%"><col style="width:4%">
+        <col style="width:5%"><col style="width:6%"><col style="width:4%">
+        <col style="width:5%">
+      </colgroup>${HDR}<tbody>
+        ${b2ip.length?'<tr class="section-ip"><td colspan="21">▶ IN PROGRESS</td></tr>'+machRows(b2ip,true):''}
+        ${b2st.length?'<tr class="section-start"><td colspan="21">▶ STARTING TODAY</td></tr>'+machRows(b2st,false):''}
+        <tr class="total-row"><td colspan="4" class="bold">UNIT 19 TOTAL</td>
+          <td class="num bold">${b2qty.toLocaleString()}</td>
+          <td class="num bold">${b2cut.toLocaleString()}</td>
+          <td colspan="15" class="bold">${b2all.length} jobs</td>
+        </tr>
+      </tbody></table>`;
+    }
+
+    dayHtml += `</div>`; // day-section
+  });
+
+  // Full print HTML
+  const printHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AIA Punching Plan — 7 Day Print — ${dateRange}</title>
+<style>
+  @page { size: A3 landscape; margin: 8mm 6mm 8mm 6mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; font-size: 7.5pt; color: #000; background: #fff; }
+
+  /* COVER HEADER */
+  .cover-header { border: 2px solid #000; padding: 6px 10px; margin-bottom: 6px; display:flex; justify-content:space-between; align-items:center; }
+  .cover-title { font-size: 13pt; font-weight: bold; letter-spacing: 1px; }
+  .cover-meta { font-size: 8pt; text-align: right; line-height: 1.6; }
+  .cover-range { font-size: 9pt; font-weight: bold; }
+
+  /* DAY SECTION */
+  .day-section { margin-bottom: 10px; }
+  .page-break { page-break-before: always; }
+  .day-header { background: #000; color: #fff; padding: 4px 8px; display:flex; justify-content:space-between; align-items:center; margin-bottom: 3px; }
+  .day-title { font-size: 9pt; font-weight: bold; letter-spacing: 0.5px; }
+  .day-meta { font-size: 7.5pt; }
+
+  /* MACHINE HEADER */
+  .mach-header { font-size: 8pt; font-weight: bold; padding: 3px 8px; margin-bottom: 2px; border-left: 4px solid #000; background: #eee; letter-spacing: 0.5px; }
+  .mach-b1 { border-left-color: #333; }
+  .mach-b2 { border-left-color: #666; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; margin-bottom: 4px; }
+  th { background: #222; color: #fff; font-size: 6.5pt; font-weight: bold; padding: 3px 2px; text-align: center; border: 0.5px solid #555; white-space: nowrap; }
+  td { font-size: 6.5pt; padding: 2px 2px; border: 0.5px solid #ccc; vertical-align: middle; }
+
+  /* ROW STYLES */
+  .row-even { background: #fff; }
+  .row-odd  { background: #f5f5f5; }
+  .row-ip   { background: #e8e8e8; font-style: italic; }
+  .row-ph   { background: #ddd; font-weight: bold; border-left: 3px solid #000; }
+
+  /* SECTION LABELS */
+  .section-ip    td, .section-start td { background: #bbb; font-size: 6pt; font-weight: bold; padding: 2px 4px; letter-spacing: 0.5px; color: #000; }
+  .section-start td { background: #d5d5d5; }
+
+  /* TOTAL ROW */
+  .total-row td { background: #333; color: #fff; font-size: 7pt; font-weight: bold; padding: 3px 2px; border: 0.5px solid #555; }
+
+  /* CELL TYPES */
+  .bold { font-weight: bold; }
+  .mono { font-family: 'Courier New', monospace; font-size: 6pt; }
+  .num  { text-align: right; font-family: 'Courier New', monospace; }
+  .time { text-align: center; font-family: 'Courier New', monospace; font-weight: bold; }
+  .shift { text-align: center; font-size: 6pt; }
+  .jobname { max-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .note { font-size: 6pt; color: #555; text-align: center; }
+
+  /* FOOTER */
+  .print-footer { margin-top: 6px; border-top: 1px solid #000; padding-top: 4px; font-size: 6.5pt; display:flex; justify-content:space-between; }
+
+  @media print {
+    .no-print { display: none; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* PRINT BUTTON — only visible on screen */
+  .print-btn-bar { background: #1e293b; padding: 10px 16px; display:flex; gap:10px; align-items:center; position:sticky; top:0; z-index:99; }
+  .print-btn { background: #f97316; color: #fff; border: none; padding: 8px 20px; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer; }
+  .close-btn { background: transparent; color: #94a3b8; border: 1px solid #475569; padding: 8px 16px; border-radius: 6px; font-size: 13px; cursor: pointer; }
+  .print-info { color: #94a3b8; font-size: 11px; }
+</style>
+</head>
+<body>
+
+<div class="print-btn-bar no-print">
+  <button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+  <button class="close-btn" onclick="window.close()">✕ Close</button>
+  <span class="print-info">Landscape | A3 | All columns fit on one page — Press Ctrl+P to print</span>
+</div>
+
+<div class="cover-header">
+  <div>
+    <div class="cover-title">AIA INDUSTRIES — PUNCHING SCHEDULE</div>
+    <div class="cover-range">${dateRange}</div>
+  </div>
+  <div class="cover-meta">
+    <div>Generated: ${new Date().toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})}</div>
+    <div>7 Working Days Plan &nbsp;|&nbsp; B1 + B2 Combined</div>
+    <div>Shift 1: 07:00–19:00 &nbsp;|&nbsp; Shift 2: 19:30–07:00</div>
+  </div>
+</div>
+
+${dayHtml}
+
+<div class="print-footer no-print">
+  <span>AIA Industries — Punching Schedule — ${dateRange}</span>
+  <span>Generated: ${new Date().toLocaleDateString('en-IN')}</span>
+</div>
+
+</body>
+</html>`;
+
+  // Download as HTML file — open in browser and Ctrl+P to print
+  const blob = new Blob([printHtml], {type: 'text/html;charset=utf-8'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = 'AIA_7Day_Print_' + days[0].replace(/-/g,'_') + '.html';
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 5000);
+
+  // Also show green bar like Excel downloads
+  _showDlLink(url, 'AIA_7Day_Print_' + days[0].replace(/-/g,'_') + '.html');
+  toast('🖨️ 7-Day Print file downloaded! Open it and press Ctrl+P to print.');
 }
 
 // ── xlsxDl: open in new tab (claudeusercontent download bypass) ──
