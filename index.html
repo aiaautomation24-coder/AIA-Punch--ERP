@@ -21,18 +21,18 @@ if(typeof XLSXStyle !== 'undefined') window.XLSX = XLSXStyle; // always prefer s
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
 
 :root {
-  --dark:   #0D1B2A;
-  --navy:   #1A2B40;
+  --dark:   #1E293B;
+  --navy:   #334155;
   --blue:   #1D6FE8;
   --lblue:  #3B82F6;
   --accent: #F97316;
   --green:  #16A34A;
   --red:    #DC2626;
   --amber:  #D97706;
-  --bg:     #F0F4F9;
+  --bg:     #F1F5F9;
   --card:   #FFFFFF;
-  --border: #DDE3ED;
-  --text:   #1A2B40;
+  --border: #CBD5E1;
+  --text:   #1E293B;
   --muted:  #64748B;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -74,8 +74,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .drop h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--navy);}
 .drop p{font-size:11px;color:var(--muted);margin-top:4px;}
 .drop-fname{margin-top:10px;font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--blue);}
-.soon-card{background:#1a2736;border:1px solid #2a3f55;border-radius:12px;padding:12px 14px;cursor:grab;transition:background 0.15s;}
-.soon-card:hover{background:#1e3a5f;}
+.soon-card{background:#F8FAFC;border:1px solid #CBD5E1;border-radius:12px;padding:12px 14px;cursor:grab;transition:background 0.15s;}
+.soon-card:hover{background:#EFF6FF;}
 .soon-drag{font-size:18px;color:#64748b;cursor:grab;flex-shrink:0;}
 .soon-num{width:26px;height:26px;background:#f97316;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
 .is-cs{border-left:3px solid #f97316!important;background:rgba(249,115,22,0.06)!important;opacity:0.85;}
@@ -224,15 +224,15 @@ tr.ip-row{background:#FFF7ED;}
 .print-mach-col:last-child{border-right:none;}
 
 /* HOLIDAY PANEL */
-.holiday-panel{background:#1a2736;border:1.5px solid #f97316;border-radius:10px;padding:14px 16px;margin-top:12px;}
-.holiday-panel h4{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#f97316;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.holiday-panel{background:#FFF7ED;border:1.5px solid #F97316;border-radius:10px;padding:14px 16px;margin-top:12px;}
+.holiday-panel h4{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#C2410C;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
 .holiday-add-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
-.holiday-add-row input[type=date]{padding:6px 10px;border:1.5px solid #2a3f55;border-radius:6px;font-size:13px;font-family:inherit;outline:none;color:#fff;font-weight:600;background:#0d1b2a;}
-.holiday-add-row input[type=text]{padding:6px 10px;border:1.5px solid #2a3f55;border-radius:6px;font-size:12px;font-family:inherit;outline:none;color:#fff;background:#0d1b2a;flex:1;min-width:160px;}
+.holiday-add-row input[type=date]{padding:6px 10px;border:1.5px solid #FED7AA;border-radius:6px;font-size:13px;font-family:inherit;outline:none;color:#92400E;font-weight:600;background:#fff;}
+.holiday-add-row input[type=text]{padding:6px 10px;border:1.5px solid #FED7AA;border-radius:6px;font-size:12px;font-family:inherit;outline:none;color:#92400E;background:#fff;flex:1;min-width:160px;}
 .holiday-list{display:flex;flex-wrap:wrap;gap:6px;}
-.holiday-chip{display:inline-flex;align-items:center;gap:6px;background:#2d1b00;border:1px solid #f97316;color:#fb923c;font-size:11px;font-weight:600;padding:3px 10px 3px 10px;border-radius:20px;}
-.holiday-chip button{background:none;border:none;color:#ef4444;cursor:pointer;font-size:13px;line-height:1;padding:0 2px;font-weight:800;}
-.holiday-chip button:hover{color:#fff;}
+.holiday-chip{display:inline-flex;align-items:center;gap:6px;background:#FEF3C7;border:1px solid #F97316;color:#92400E;font-size:11px;font-weight:600;padding:3px 10px 3px 10px;border-radius:20px;}
+.holiday-chip button{background:none;border:none;color:#DC2626;cursor:pointer;font-size:13px;line-height:1;padding:0 2px;font-weight:800;}
+.holiday-chip button:hover{color:#7F1D1D;}
 .h-day-block{background:#fff3cd;border:2px dashed #f97316;border-radius:8px;margin-bottom:14px;overflow:hidden;}
 .h-day-hd{background:#f97316;padding:8px 16px;display:flex;align-items:center;gap:10px;}
 .h-day-hd h3{font-family:'Syne',sans-serif;color:#fff;font-size:13px;font-weight:700;}
@@ -247,7 +247,13 @@ tr.ip-row{background:#FFF7ED;}
 <!-- TOPBAR -->
 <div class="topbar">
   <div class="brand">AIA <span>INDUSTRIES</span> <span style="font-size:11px;font-weight:400;color:#7A8FA6;letter-spacing:1px;">PUNCHING SCHEDULE v5.0</span></div>
-  <div class="topdate" id="topDate"></div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button id="sundayToggleBtn" onclick="toggleSunday()"
+      style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;background:#FEE2E2;border:1.5px solid #DC2626;color:#991B1B;transition:all .15s;">
+      🔴 Sunday: OFF
+    </button>
+    <div class="topdate" id="topDate"></div>
+  </div>
 </div>
 
 <!-- STEPPER -->
@@ -279,10 +285,26 @@ tr.ip-row{background:#FFF7ED;}
           </div>
         </div>
       </div>
+      <!-- Printing Schedule File -->
+      <div style="margin-top:10px;">
+        <div class="sec-lbl" style="margin-bottom:6px;">🖨️ Printing Schedule File <span style="color:#64748B;font-size:10px;">(XLSX — End Date nusaar punch date set hoto)</span></div>
+        <div class="drop" id="dropZone2" style="padding:14px 12px;border-color:#BFDBFE;background:#EFF6FF;" onclick="document.getElementById('fileIn2').click()">
+          <input type="file" id="fileIn2" accept=".xlsx,.xls,.xlsm" onchange="onFile2(this)" style="display:none">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-size:22px;">🖨️</span>
+            <div>
+              <div style="font-size:12px;font-weight:700;color:#1E293B;">Printing Schedule</div>
+              <div style="font-size:10px;color:#64748b;">AIA_Printing_Schedule .xlsx</div>
+            </div>
+            <div class="drop-fname" id="dropFname2" style="margin-left:auto;margin-top:0;color:#F97316;">Not loaded</div>
+          </div>
+        </div>
+      </div>
+
       <!-- Die No. File -->
       <div style="margin-top:10px;">
-        <div class="sec-lbl" style="margin-bottom:6px;">🔢 Die No. File <span style="color:#94a3b8;font-size:10px;">(optional — JCNO + Die No.)</span></div>
-        <div class="drop" id="dropZone3" style="padding:14px 12px;border-color:#1e3a5f;" onclick="document.getElementById('fileIn3').click()">
+        <div class="sec-lbl" style="margin-bottom:6px;">🔢 Die No. File <span style="color:#64748B;font-size:10px;">(optional — JCNO + Die No.)</span></div>
+        <div class="drop" id="dropZone3" style="padding:14px 12px;border-color:#BFDBFE;" onclick="document.getElementById('fileIn3').click()">
           <input type="file" id="fileIn3" accept=".xlsx,.xls,.xlsm,.csv" onchange="onFile3(this)" style="display:none">
           <div style="display:flex;align-items:center;gap:10px;">
             <span style="font-size:22px;">🔢</span>
@@ -315,7 +337,7 @@ tr.ip-row{background:#FFF7ED;}
   <div class="card">
     <div class="card-hd"><h2>✅ STEP 2 — Cleaned Data Preview</h2><span class="chip" id="cnt2">0 JOBS</span></div>
     <div class="card-bd">
-      <div class="info">ℹ️ These jobs are pending for punching (printing done, punching not yet done). Download Clean CSV or directly Generate Schedule.</div>
+      <div class="info">ℹ️ Yeh woh jobs hain jo punching ke liye pending hain (printing done, punching nahi hua). Clean CSV download karo ya seedha Schedule Generate karo.</div>
       <div class="btn-row" style="margin-top:0;margin-bottom:14px;">
         <button class="btn btn-green" onclick="dlClean()">⬇️ Download Clean CSV</button>
         <button class="btn btn-blue" onclick="buildSchedule()">📅 Generate Schedule →</button>
@@ -324,21 +346,21 @@ tr.ip-row{background:#FFF7ED;}
       <div class="date-strip">
         <label>📅 Schedule Start Date:</label>
         <input type="date" id="schedStartDt" onchange="changeSchedDate(this.value)" style="font-size:13px;">
-        <span id="schedDateNote" style="color:#22c55e;font-size:11px;font-weight:600;"></span>
-        <span style="color:#94a3b8;font-size:11px;">( Auto-set when Printing file is uploaded )</span>
+        <span id="schedDateNote" style="color:#15803D;font-size:11px;font-weight:600;"></span>
+        <span style="color:#64748B;font-size:11px;">( Printing file upload hone par auto-set hota hai )</span>
       </div>
       <!-- HOLIDAY PANEL -->
       <div class="holiday-panel">
-        <h4>🚫 Holidays / Off Days <span style="font-size:10px;font-weight:400;color:#94a3b8;">(machine will be off — jobs will jump to next working day)</span>
-          <button onclick="openCalendarModal()" style="margin-left:auto;background:#f97316;border:none;color:#fff;padding:5px 14px;border-radius:8px;cursor:pointer;font-size:11px;font-weight:700;letter-spacing:.5px;">📅 Add from Calendar</button>
+        <h4>🚫 Holidays / Band Divas <span style="font-size:10px;font-weight:400;color:#64748B;">(machine is din band rahel — jobs next working day la jump hotat)</span>
+          <button onclick="openCalendarModal()" style="margin-left:auto;background:#f97316;border:none;color:#fff;padding:5px 14px;border-radius:8px;cursor:pointer;font-size:11px;font-weight:700;letter-spacing:.5px;">📅 Calendar Madhun Add Karo</button>
         </h4>
         <div class="holiday-add-row">
           <input type="date" id="holidayDateIn">
-          <input type="text" id="holidayLabelIn" placeholder="Holiday name (e.g. Diwali, Christmas)">
+          <input type="text" id="holidayLabelIn" placeholder="Holiday naam (e.g. Holi, Diwali)">
           <button class="btn btn-orange btn-sm" onclick="addHoliday()">➕ Add</button>
         </div>
         <div class="holiday-list" id="holidayList">
-          <span style="font-size:11px;color:#475569;font-style:italic;">No holidays added yet...</span>
+          <span style="font-size:11px;color:#475569;font-style:italic;">Koi holiday add nahi kiya abhi...</span>
         </div>
       </div>
 
@@ -361,16 +383,16 @@ tr.ip-row{background:#FFF7ED;}
 <div id="pg3" class="hidden">
   <div class="kpi-grid" id="kpi3"></div>
   <!-- MACHINE BREAKDOWN PANEL -->
-  <div id="breakdownPanel" style="background:#1a0a00;border:2px solid #f97316;border-radius:11px;padding:14px 18px;margin-bottom:14px;">
+  <div id="breakdownPanel" style="background:#FFF7ED;border:2px solid #F97316;border-radius:11px;padding:14px 18px;margin-bottom:14px;">
     <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
       <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:#f97316;">🔧 Machine Breakdown / Delay</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button class="btn btn-sm" style="background:#7c2d12;color:#fff;border:1.5px solid #f97316;" onclick="openFullDayBreakdown()">📅 Full Day Shift — All Jobs Next Day</button>
-        <button class="btn btn-sm" style="background:#1e3a5f;color:#fff;border:1.5px solid #3b82f6;" onclick="openJobBreakdown()">✏️ Select Specific Jobs</button>
-        <button class="btn btn-sm" style="background:#1a2736;color:#94a3b8;border:1px solid #2a3f55;" onclick="resetBreakdown()">↺ Reset All</button>
+        <button class="btn btn-sm" style="background:#EA580C;color:#fff;border:1.5px solid #F97316;" onclick="openFullDayBreakdown()">📅 Full Day Shift — Sagle Jobs Next Day</button>
+        <button class="btn btn-sm" style="background:#2563EB;color:#fff;border:1.5px solid #3B82F6;" onclick="openJobBreakdown()">✏️ Specific Jobs Select Karo</button>
+        <button class="btn btn-sm" style="background:#F1F5F9;color:#64748B;border:1px solid #CBD5E1;" onclick="resetBreakdown()">↺ Reset All</button>
       </div>
     </div>
-    <div id="breakdownStatus" style="font-size:11px;color:#94a3b8;font-style:italic;">No breakdown set. Schedule is normal.</div>
+    <div id="breakdownStatus" style="font-size:11px;color:#64748B;font-style:italic;">Koi breakdown set nahi. Schedule normal aahe.</div>
   </div>
 
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px;">
@@ -378,13 +400,14 @@ tr.ip-row{background:#FFF7ED;}
       <div class="tab on" onclick="switchTab('day')">📅 Day-wise</div>
       <div class="tab" onclick="switchTab('tbl')">📋 Table</div>
       <div class="tab" onclick="switchTab('soon')" id="soonTab">🔜 Coming Soon <span id="soonBadge" style="background:#f97316;color:#fff;border-radius:10px;padding:1px 7px;font-size:10px;margin-left:4px;">0</span></div>
+      <div class="tab" onclick="switchTab('miss')">⚠️ Miss Report</div>
     </div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;">
       <button class="btn btn-orange btn-sm" onclick="openModal()">⚡ Add Urgent Job</button>
+      <button class="btn btn-sm" style="background:#991B1B;color:#fff;" onclick="openUrgencyModal()">🔴 Urgency List</button>
       <button class="btn btn-green btn-sm" onclick="dlCombinedExcel()">⬇️ Full Plan Excel</button>
       <button class="btn btn-blue btn-sm" onclick="dlB1DayWise()">⬇️ Unit 12 (B1) Day-wise</button>
       <button class="btn btn-sm" style="background:#16a34a;color:#fff;" onclick="dlB2DayWise()">⬇️ Unit 19 (B2) Day-wise</button>
-      <button class="btn btn-sm" style="background:#1e293b;color:#fff;border:2px solid #475569;" onclick="dl7DayPrint()">🖨️ 7-Day Print</button>
       <button class="btn btn-ghost btn-sm" onclick="goPg(2)">← Back</button>
     </div>
   </div>
@@ -420,28 +443,28 @@ tr.ip-row{background:#FFF7ED;}
         <span class="chip">Drag to reorder priority</span>
       </div>
       <div class="card-bd">
-        <div class="info">ℹ️ These jobs are currently in printing/processing. They will be punched after print date. Drag & drop to set priority.</div>
+        <div class="info">ℹ️ Ye jobs abhi printing/processing mein hain. Print date नंतर punch ला जातात. Drag & drop se priority set karo.</div>
 
         <!-- MANUAL ADD JOB -->
-        <div style="background:#1a2736;border:1.5px solid #f97316;border-radius:10px;padding:14px 16px;margin-bottom:14px;">
-          <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#f97316;margin-bottom:12px;">➕ Manually Add Job to Punching</div>
+        <div style="background:#FFF7ED;border:1.5px solid #F97316;border-radius:10px;padding:14px 16px;margin-bottom:14px;">
+          <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#f97316;margin-bottom:12px;">➕ Manually Job Punch ला Add करा</div>
           <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;">
             <div style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:160px;">
               <label style="font-size:9px;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">JCNO</label>
               <input type="text" id="manualJcno" placeholder="e.g. 25JA/4020"
-                style="padding:7px 10px;border:1.5px solid #2a3f55;border-radius:6px;font-size:13px;font-weight:700;background:#0d1b2a;color:#f97316;outline:none;"
+                style="padding:7px 10px;border:1.5px solid #FED7AA;border-radius:6px;font-size:13px;font-weight:700;background:#fff;color:#C2410C;outline:none;"
                 oninput="manualJcnoSearch(this.value)">
-              <div id="manualJobInfo" style="font-size:10px;color:#94a3b8;margin-top:2px;"></div>
+              <div id="manualJobInfo" style="font-size:10px;color:#64748B;margin-top:2px;"></div>
             </div>
             <div style="display:flex;flex-direction:column;gap:4px;">
               <label style="font-size:9px;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">✂️ Punch Date</label>
               <input type="date" id="manualPunchDate"
-                style="padding:7px 10px;border:1.5px solid #2a3f55;border-radius:6px;font-size:13px;font-weight:600;background:#0d1b2a;color:#fff;outline:none;">
+                style="padding:7px 10px;border:1.5px solid #CBD5E1;border-radius:6px;font-size:13px;font-weight:600;background:#fff;color:#1E293B;outline:none;">
             </div>
             <div style="display:flex;flex-direction:column;gap:4px;">
               <label style="font-size:9px;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">🔧 Machine</label>
               <select id="manualMach"
-                style="padding:7px 10px;border:1.5px solid #2a3f55;border-radius:6px;font-size:13px;font-weight:600;background:#0d1b2a;color:#fff;outline:none;">
+                style="padding:7px 10px;border:1.5px solid #CBD5E1;border-radius:6px;font-size:13px;font-weight:600;background:#fff;color:#1E293B;outline:none;">
                 <option value="auto">Auto</option>
                 <option value="B1">B1</option>
                 <option value="B2">B2</option>
@@ -454,8 +477,27 @@ tr.ip-row{background:#FFF7ED;}
         <div id="soonList" style="display:flex;flex-direction:column;gap:8px;margin-top:12px;"></div>
         <div id="soonEmpty" class="hidden" style="text-align:center;padding:32px;color:#64748b;">
           <div style="font-size:32px;margin-bottom:8px;">🖨️</div>
-          <div>Printing schedule file not uploaded or no jobs pending.</div>
+          <div>Printing schedule file upload nahi hui ya koi job pending nahi hai.</div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISS REPORT VIEW -->
+  <div id="missView" class="hidden">
+    <div class="card">
+      <div class="card-hd"><h2>⚠️ Daily Planning Miss Report</h2><span class="chip" id="missCnt">0</span></div>
+      <div class="card-bd">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap;">
+          <div style="font-size:12px;color:var(--muted);font-weight:600;">Select Date:</div>
+          <input type="date" id="missDateInput" style="padding:6px 10px;border:1.5px solid var(--border);border-radius:6px;font-size:13px;background:#fff;color:var(--text);outline:none;" onchange="renderMissReport()">
+          <button class="btn btn-sm" onclick="renderMissReport()" style="background:#334155;color:#fff;">🔍 Load Jobs</button>
+          <button class="btn btn-sm btn-green" onclick="exportMissExcel()">📥 Export Miss Excel</button>
+        </div>
+        <div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:7px;padding:9px 14px;font-size:11px;color:#92400E;margin-bottom:12px;">
+          📋 <b>How to use:</b> Date select kara → त्या दिवसाचे सगळे scheduled jobs load होतात → <b style="color:#DC2626;">❌ Missed?</b> tick kara jo jobs complete nahi jhale → Reason + note add kara → Export Excel.
+        </div>
+        <div id="missBody"></div>
       </div>
     </div>
   </div>
@@ -473,8 +515,8 @@ tr.ip-row{background:#FFF7ED;}
         <div class="tab" onclick="switchPrintTab('ptbl')">📋 Table</div>
       </div>
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-        <div style="background:#1A2B40;border-radius:7px;padding:6px 12px;font-size:11px;color:#94a3b8;">
-          ✂️ Punch MR New: <b style="color:#f97316;">60 min</b> &nbsp;|&nbsp; Same Dim: <b style="color:#22c55e;">10 min</b> &nbsp;|&nbsp; 🖨️ Print MR: <b style="color:#f97316;">90 min</b> (always new)
+        <div style="background:#F1F5F9;border:1px solid #E2E8F0;border-radius:7px;padding:6px 12px;font-size:11px;color:#475569;">
+          ✂️ Punch MR New: <b style="color:#f97316;">60 min</b> &nbsp;|&nbsp; Same Dim: <b style="color:#15803D;">10 min</b> &nbsp;|&nbsp; 🖨️ Print MR: <b style="color:#f97316;">90 min</b> (always new)
         </div>
       </div>
     </div>
@@ -509,18 +551,18 @@ tr.ip-row{background:#FFF7ED;}
 
 <!-- FULL DAY BREAKDOWN MODAL -->
 <div class="modal-ov" id="fullDayBdModal">
-  <div class="modal" style="width:460px;background:#0d1b2a;border:2px solid #f97316;">
-    <h3 style="color:#f97316;">📅 Full Day Machine Breakdown</h3>
-    <div style="font-size:12px;color:#94a3b8;margin-bottom:16px;">All jobs scheduled on that day will shift to the next working day.</div>
+  <div class="modal" style="width:460px;background:#fff;border:2px solid #F97316;">
+    <h3 style="color:#C2410C;">📅 Full Day Machine Breakdown</h3>
+    <div style="font-size:12px;color:#64748B;margin-bottom:16px;">Tya diwshi schedule holelya sagle jobs next working day la shift hotil.</div>
     <div class="fg">
-      <label style="color:#94a3b8;">Select Breakdown Date</label>
-      <input type="date" id="bdFullDate" style="background:#1a2736;color:#fff;border:1.5px solid #2a3f55;border-radius:6px;padding:8px 12px;font-size:14px;outline:none;">
+      <label style="color:#64748B;">Breakdown Date Select Kara</label>
+      <input type="date" id="bdFullDate" style="background:#fff;color:#1E293B;border:1.5px solid #CBD5E1;border-radius:6px;padding:8px 12px;font-size:14px;outline:none;">
     </div>
     <div class="fg" style="margin-top:10px;">
-      <label style="color:#94a3b8;">Reason (optional)</label>
-      <input type="text" id="bdFullReason" placeholder="e.g. Machine breakdown, power cut..." style="background:#1a2736;color:#fff;border:1.5px solid #2a3f55;border-radius:6px;padding:8px 12px;font-size:13px;outline:none;">
+      <label style="color:#64748B;">Reason (optional)</label>
+      <input type="text" id="bdFullReason" placeholder="e.g. Machine breakdown, power cut..." style="background:#fff;color:#1E293B;border:1.5px solid #CBD5E1;border-radius:6px;padding:8px 12px;font-size:13px;outline:none;">
     </div>
-    <div id="bdFullPreview" style="margin-top:12px;background:#1a2736;border-radius:8px;padding:10px 14px;font-size:11px;color:#94a3b8;min-height:40px;"></div>
+    <div id="bdFullPreview" style="margin-top:12px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:10px 14px;font-size:11px;color:#475569;min-height:40px;"></div>
     <div class="mbtns">
       <button class="btn btn-ghost btn-sm" onclick="document.getElementById('fullDayBdModal').classList.remove('on')">Cancel</button>
       <button class="btn btn-sm" style="background:#f97316;color:#fff;" onclick="applyFullDayBreakdown()">🔧 Apply Breakdown</button>
@@ -530,15 +572,15 @@ tr.ip-row{background:#FFF7ED;}
 
 <!-- SPECIFIC JOB BREAKDOWN MODAL -->
 <div class="modal-ov" id="jobBdModal">
-  <div class="modal" style="width:560px;background:#0d1b2a;border:2px solid #3b82f6;max-height:90vh;overflow-y:auto;">
-    <h3 style="color:#60a5fa;">✏️ Specific Jobs — Next Day la Shift Kara</h3>
-    <div style="font-size:12px;color:#94a3b8;margin-bottom:14px;">Select jobs to shift to the next working day.</div>
+  <div class="modal" style="width:560px;background:#fff;border:2px solid #3B82F6;max-height:90vh;overflow-y:auto;">
+    <h3 style="color:#1D4ED8;">✏️ Specific Jobs — Next Day la Shift Kara</h3>
+    <div style="font-size:12px;color:#64748B;margin-bottom:14px;">Jobs select kara jevde next working day la shift karayche aahet.</div>
     <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
-      <input type="date" id="bdJobDate" style="background:#1a2736;color:#fff;border:1.5px solid #2a3f55;border-radius:6px;padding:7px 10px;font-size:13px;outline:none;" onchange="renderJobBdList()">
-      <span style="font-size:11px;color:#64748b;align-self:center;">Filter jobs by this date</span>
+      <input type="date" id="bdJobDate" style="background:#fff;color:#1E293B;border:1.5px solid #CBD5E1;border-radius:6px;padding:7px 10px;font-size:13px;outline:none;" onchange="renderJobBdList()">
+      <span style="font-size:11px;color:#64748b;align-self:center;">Jobs ya date la filter karo</span>
     </div>
     <div id="jobBdList" style="max-height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;"></div>
-    <div style="margin-top:14px;background:#1a2736;border-radius:8px;padding:8px 12px;">
+    <div style="margin-top:14px;background:#F0F9FF;border:1px solid #BAE6FD;border-radius:8px;padding:8px 12px;">
       <span id="jobBdSelectedCount" style="font-size:12px;color:#60a5fa;font-weight:700;">0 jobs selected</span>
     </div>
     <div class="mbtns">
@@ -548,10 +590,13 @@ tr.ip-row{background:#FFF7ED;}
   </div>
 </div>
 
-<!-- MODAL -->
+<!-- MODAL — standalone urgent add (pg3 button) -->
 <div class="modal-ov" id="modal">
   <div class="modal">
     <h3>⚡ Add Urgent Job</h3>
+    <div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:6px;padding:7px 12px;font-size:11px;color:#92400E;margin-bottom:12px;">
+      ⚡ Urgent job आजच्या schedule मध्ये <b>queue च्या top ला</b> place होतो.
+    </div>
     <div class="fgrid">
       <div class="fg fg-full"><label>Job Name</label><input id="uj_name" placeholder="Enter job name"></div>
       <div class="fg"><label>JCNO</label><input id="uj_jcno" placeholder="e.g. 25JA/9999"></div>
@@ -584,7 +629,7 @@ tr.ip-row{background:#FFF7ED;}
         <div class="fg" style="margin-bottom:0;"><label>🖨️ Printing Days</label><input type="number" id="pm_printDays" value="1" min="0" max="30" oninput="updatePunchDate()"></div>
         <div class="fg" style="margin-bottom:0;"><label>🧴 Coating Days</label><input type="number" id="pm_coatDays" value="1" min="0" max="30" oninput="updatePunchDate()"></div>
       </div>
-      <div style="margin-top:10px;font-size:11px;color:#64748b;">Set to 0 if no coating</div>
+      <div style="margin-top:10px;font-size:11px;color:#64748b;">Coating nahi hai toh 0 rakho</div>
     </div>
     <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:12px 14px;margin-bottom:16px;">
       <div style="font-size:11px;color:#166534;font-weight:600;">📅 Calculated Punch Start Date:</div>
@@ -601,17 +646,17 @@ tr.ip-row{background:#FFF7ED;}
 
 <!-- CALENDAR MODAL -->
 <div class="modal-ov" id="calModal">
-  <div class="modal" style="width:420px;background:#0d1b2a;border:1.5px solid #f97316;">
+  <div class="modal" style="width:420px;background:#fff;border:1.5px solid #F97316;">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-      <h3 style="color:#f97316;margin-bottom:0;">📅 Holiday Calendar</h3>
+      <h3 style="color:#C2410C;margin-bottom:0;">📅 Holiday Calendar</h3>
       <button onclick="closeCalendarModal()" style="background:none;border:none;color:#64748b;font-size:20px;cursor:pointer;line-height:1;">✕</button>
     </div>
 
     <!-- Month navigation -->
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-      <button onclick="calNav(-1)" style="background:#1a2736;border:1px solid #2a3f55;color:#fff;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:16px;">‹</button>
-      <div id="calMonthLabel" style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#fff;"></div>
-      <button onclick="calNav(+1)" style="background:#1a2736;border:1px solid #2a3f55;color:#fff;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:16px;">›</button>
+      <button onclick="calNav(-1)" style="background:#F1F5F9;border:1px solid #CBD5E1;color:#1E293B;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:16px;">‹</button>
+      <div id="calMonthLabel" style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#1E293B;"></div>
+      <button onclick="calNav(+1)" style="background:#F1F5F9;border:1px solid #CBD5E1;color:#1E293B;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:16px;">›</button>
     </div>
 
     <!-- Weekday headers -->
@@ -623,10 +668,10 @@ tr.ip-row{background:#FFF7ED;}
     <div id="calGrid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;"></div>
 
     <!-- Holiday label input -->
-    <div style="margin-top:14px;background:#1a2736;border-radius:8px;padding:12px;">
-      <div id="calSelectedInfo" style="font-size:12px;color:#94a3b8;margin-bottom:8px;">👆 Click a date above to mark as holiday</div>
+    <div style="margin-top:14px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:12px;">
+      <div id="calSelectedInfo" style="font-size:12px;color:#64748B;margin-bottom:8px;">👆 Upar date click karo holiday mark karnyasathi</div>
       <div style="display:flex;gap:8px;align-items:center;">
-        <input type="text" id="calHolidayLabel" placeholder="Holiday naam (optional)" style="flex:1;padding:7px 10px;border:1.5px solid #2a3f55;border-radius:6px;font-size:12px;background:#0d1b2a;color:#fff;outline:none;">
+        <input type="text" id="calHolidayLabel" placeholder="Holiday naam (optional)" style="flex:1;padding:7px 10px;border:1.5px solid #CBD5E1;border-radius:6px;font-size:12px;background:#fff;color:#1E293B;outline:none;">
         <button onclick="calAddHoliday()" id="calAddBtn" style="background:#f97316;border:none;color:#fff;padding:7px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:700;opacity:0.4;pointer-events:none;">Add</button>
       </div>
     </div>
@@ -653,25 +698,25 @@ const EXCL = ['DD','CANCELLED','SHORT CLOSE','Plain Carton','RD','HOLD','FOLD',
 
 // New job status — priority order (1=highest)
 const STATUS_PRIORITY = [
-  'Punching(R)',
-  'Coating(F)',
-  'Coating(R)',
-  'Lamination(F)',
-  'Lamination(R)',
-  'VDP(F)',
-  'VDP(R)',
-  'Printing(F)',
-  'Printing(R)',
-  'Job Not Started',
-  'PH',
-  'VDP',
-  'LAMINATION',
-  'SCREEN',
-  'FOIL',
-  '2ND PASS',
-  'FRONT BAL',
-  'UV',
-  'BACK SIDE'
+  'Punching(R)',    // 0 — highest: punching running
+  'Punching',       // 1 — punching ready
+  'Coating(F)',     // 2
+  'Coating(R)',     // 3
+  'Lamination(F)', // 4
+  'Lamination(R)', // 5
+  'VDP(F)',         // 6
+  'VDP(R)',         // 7
+  'Printing(F)',    // 8 — printing done, next = punching
+  'PH',             // 9
+  'VDP',            // 10
+  'LAMINATION',    // 11
+  'SCREEN',        // 12
+  'FOIL',          // 13
+  '2ND PASS',      // 14
+  'FRONT BAL',     // 15
+  'UV',             // 16
+  'BACK SIDE'      // 17
+  // Printing(R) aani Job Not Started = punching schedule la NAKO
 ];
 
 function getStatusPriority(st){
@@ -680,8 +725,11 @@ function getStatusPriority(st){
   return idx >= 0 ? idx : 99;
 }
 
-const INCL = ['Punching(R)','Coating(F)','Coating(R)','Lamination(F)','Lamination(R)',
-  'VDP(F)','VDP(R)','Printing(F)','Printing(R)','Job Not Started',
+// Jobs jo punching sathi ready ahet ya process madhe ahet
+// Job Not Started = printing la janar — punching schedule madhe NAKO
+const INCL = ['Punching(R)','Punching',
+  'Coating(F)','Coating(R)','Lamination(F)','Lamination(R)',
+  'VDP(F)','VDP(R)','Printing(F)',
   'PH','VDP','LAMINATION','SCREEN','FOIL','2ND PASS',
   'FRONT BAL','UV','BACK SIDE'];
 
@@ -877,185 +925,186 @@ let printJobsRaw = [];
 function onFile2(inp){
   if(!inp.files[0]) return;
   const f = inp.files[0];
-  document.getElementById('dropFname2').textContent = '📄 ' + f.name;
-  document.getElementById('dropZone2').style.borderColor = '#22c55e';
+  const _df2 = document.getElementById('dropFname2');
+  if(_df2) _df2.textContent = '📄 ' + f.name;
+  const _dz2 = document.getElementById('dropZone2');
+  if(_dz2) _dz2.style.borderColor = '#22c55e';
+
   const reader = new FileReader();
   reader.onload = e => {
     try {
       const wb = XLSX.read(new Uint8Array(e.target.result), {type:'array', cellDates:false, raw:false});
+
+      // ── JCNO normalize ──
+      function nj(v){ return String(v||'').trim().toUpperCase().replace(/[\s\/\-]/g,''); }
+
+      // ── Parse "Thu, 21 May" / "Sat, 23 May" → 'YYYY-MM-DD' ──
+      const MON = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+      function parseEndDate(v){
+        if(!v || v==='' || v===0) return '';
+        // Excel Date object or serial
+        if(v instanceof Date){ const d=v; if(isNaN(d)) return ''; return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+        if(typeof v==='number' && v>40000){ const d=new Date(Math.round((v-25569)*86400*1000)); if(isNaN(d)) return ''; return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+        const s = String(v).trim();
+        // "Thu, 21 May" or "Mon, 25 May 2026"
+        const m = s.match(/^[A-Za-z]{2,4},?\s+(\d{1,2})\s+([A-Za-z]{3,9})(?:\s+(\d{4}))?$/i);
+        if(m){
+          const day = parseInt(m[1]);
+          const mon = MON[m[2].toLowerCase().slice(0,3)];
+          if(!mon) return '';
+          let yr = m[3] ? parseInt(m[3]) : new Date().getFullYear();
+          // If date is more than 3 months in past, bump to next year
+          const guessed = new Date(yr, mon-1, day);
+          if(guessed < new Date(new Date().getFullYear(), new Date().getMonth()-3, 1)) yr++;
+          return yr+'-'+String(mon).padStart(2,'0')+'-'+String(day).padStart(2,'0');
+        }
+        // DD/MM/YYYY fallback
+        const m2 = s.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
+        if(m2) return `${m2[3]}-${m2[2].padStart(2,'0')}-${m2[1].padStart(2,'0')}`;
+        return '';
+      }
+
       comingSoon = [];
       printJobsRaw = [];
 
-      // ── JCNO normalize helper — used everywhere for consistent matching ──
-      function nj(v){ return String(v||'').trim().toUpperCase().replace(/[\s\/\-]/g,''); }
+      // ── Try "Print Schedule" sheet first (single combined sheet) ──
+      // Falls back to "4 col" / "6 col" sheets if not found
+      const printSchedSheet = wb.Sheets['Print Schedule'] || wb.Sheets['print schedule'] || wb.Sheets['PRINT SCHEDULE'];
 
-      // ── Date convert: Excel Date obj / serial number / DD/MM/YYYY string → 'YYYY-MM-DD' ──
-      function toKey(v){
-        if(!v || v==='' || v===0) return '';
-        let d = null;
-        if(v instanceof Date){
-          d = v;
-        } else if(typeof v === 'number' && v > 40000){
-          d = new Date(Math.round((v - 25569) * 86400 * 1000));
-        } else {
-          const s = String(v).trim();
-          // DD/MM/YYYY or DD-MM-YYYY (Indian format used in Excel bold headers)
-          const m = s.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
-          if(m) d = new Date(+m[3], +m[2]-1, +m[1]);
-          else d = new Date(s);
-        }
-        if(!d || isNaN(d)) return '';
-        const s = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-        return s.startsWith('1900') ? '' : s;
-      }
+      if(printSchedSheet){
+        // Parse the combined "Print Schedule" sheet
+        // Structure: day headers, machine label rows, header rows (Sr# Doc ID ...), data rows
+        const allRows = XLSX.utils.sheet_to_json(printSchedSheet, {defval:'', header:1});
 
-      // ── One Map keyed by normalized JCNO — across BOTH sheets ──
-      // Rule: same JCNO → keep latest printDateKey, merge machine labels
-      const jcnoMap = new Map();
+        const jcnoMap = new Map();
+        let currentMach = '';
+        let hdrIdx = {};   // column index map from last seen header row
+        let END_DATE_COL = 25; // default fallback col index
 
-      ['4 col','6 col'].forEach(sn => {
-        const ws = wb.Sheets[sn];
-        if(!ws) return;
+        allRows.forEach(row => {
+          const c0 = String(row[0]||'').trim();
 
-        // Skip row 1 (=TODAY() formula), start from row 2
-        const allRows = XLSX.utils.sheet_to_json(ws, {defval:'', header:1, range:1});
-        if(allRows.length < 2) return;
-
-        const hdr      = allRows[0];   // Row 2 = column headers
-        const dataRows = allRows.slice(1); // Row 3 onwards = date headers + job rows
-
-        const machLabel = sn === '4 col' ? '4 Col' : '6 Col';
-
-        // Fuzzy column getter — matches header ignoring whitespace/newlines
-        function fget(row, ...keys){
-          for(const k of keys){
-            const kn = k.replace(/[\s\r\n]+/g,'').toLowerCase();
-            const hi = hdr.findIndex(h => String(h||'').replace(/[\s\r\n]+/g,'').toLowerCase() === kn);
-            if(hi >= 0 && row[hi] !== undefined && row[hi] !== '') return row[hi];
-          }
-          return '';
-        }
-
-        let currentPrintKey = ''; // tracks the date header row above current job rows
-        let skipSection = false;  // skip OUTSORCE/SCHEDULE REQ section
-
-        dataRows.forEach(row => {
-          const jcno = String(row[0]||'').trim();
-
-          // ── DATE HEADER ROW OR SECTION LABEL: no JCNO in col 0 ──
-          if(!jcno || jcno === 'JC NO'){
-            // Col 4 specifically check — OUTSORCE/SCHEDULE REQ section label येतो तिथे
-            const col4text = String(row[4]||'').toUpperCase().replace(/\s+/g,'');
-            const isOutsource = col4text.includes('OUTSORC') || col4text.includes('OUTSOURC');
-            const isSchedReq  = col4text.includes('SCHEDULEREQ') || col4text.includes('SCHEDREQ');
-
-            // also check in all cells
-            const rowText = row.map(c => typeof c === 'string' ? c.toUpperCase().replace(/\s+/g,'') : '').join(' ');
-            const isOutsource2 = rowText.includes('OUTSORC') || rowText.includes('OUTSOURC');
-            const isSchedReq2  = rowText.includes('SCHEDULEREQ') || rowText.includes('SCHEDREQ');
-
-            if(isOutsource || isSchedReq || isOutsource2 || isSchedReq2){
-              skipSection = true;
-              currentPrintKey = '';
-              return;
-            }
-
-            // Find date value — only first 6 columns (not SUM formula columns)
-            for(let ci = 0; ci < Math.min(6, row.length); ci++){
-              const v = row[ci];
-              if(!v || v === '') continue;
-              // String असेल तर फक्त DD/MM/YYYY format accept
-              if(typeof v === 'string'){
-                const m = v.trim().match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
-                if(m){
-                  const k = `${m[3]}-${m[2].padStart(2,'0')}-${m[1].padStart(2,'0')}`;
-                  if(!k.startsWith('1900')){ currentPrintKey = k; skipSection = false; break; }
-                }
-                continue;
-              }
-              // Date object किंवा Excel serial number
-              const k = toKey(v);
-              if(k){ currentPrintKey = k; skipSection = false; break; }
-            }
+          // ── HEADER ROW (Sr# / Doc ID row) ──
+          if(c0 === 'Sr#' || c0 === 'SR#'){
+            hdrIdx = {};
+            row.forEach((h,i) => {
+              const key = String(h||'').replace(/[\s\r\n]+/g,'').toLowerCase();
+              hdrIdx[key] = i;
+            });
+            // Find End Date column index
+            const edKey = Object.keys(hdrIdx).find(k => k === 'enddate' || k === 'end date' || k === 'enddt');
+            if(edKey !== undefined) END_DATE_COL = hdrIdx[edKey];
             return;
           }
 
-          // Skip — no date section, or skip section
-          if(!currentPrintKey || skipSection) return;
+          // ── MACHINE LABEL ROW (🖨️ CD74 4Col etc) ──
+          if(String(c0).includes('🖨') || (String(c0).includes('Col') && !c0.match(/^\d/))){
+            if(c0.includes('6 Col') || c0.includes('6Col') || c0.includes('6col')) currentMach = '6 Col';
+            else if(c0.includes('4 Col') || c0.includes('4Col') || c0.includes('4col')) currentMach = '4 Col';
+            else if(c0.includes('2 Col') || c0.includes('2Col') || c0.includes('2col')) currentMach = '2 Col';
+            return;
+          }
 
-          // OUTSOURCE आणि SCHEDULE REQ — सगळ्या spellings handle करतो
-          const jobStatus = String(fget(row,'Job_Status','Job Status','JobStatus')||'').trim().toUpperCase().replace(/\s+/g,'');
-          const jobNext   = String(fget(row,'NextProcess')||'').trim().toUpperCase().replace(/\s+/g,'');
-          const checkStr  = jobStatus + ' ' + jobNext;
-          // OUTSORCE/OUTSOURCE/OUT SOURCE/OUT SORCE सगळ्या variations
-          const isOutsource = checkStr.includes('OUTSOURC') || checkStr.includes('OUTSORCE') || checkStr.includes('OUTSORCE');
-          const isSchedReq  = checkStr.includes('SCHEDULEREQ') || checkStr.includes('SCHEDREQ');
-          if(isOutsource || isSchedReq) return;
+          // ── DATA ROW: col0 is a number (Sr#), col1 is JCNO ──
+          const srNum = parseFloat(c0);
+          if(isNaN(srNum) || srNum <= 0) return;
 
-          const cut = parseFloat(fget(row,'Tot. Cut    SH','Tot. Cut SH','Tot. Cut\n   SH','TotCutSH','sheet'))||0;
-          const qty = parseFloat(fget(row,'Job Qty','Job\nQty','JobQty','qty'))||0;
-          if(!cut && !qty) return;
+          const jcno = String(row[1]||'').trim();
+          if(!jcno || jcno.length < 5) return;
 
-          // Coat type detection
-          const coatDetail = String(fget(row,'CoatDetail')||'').replace(/[\r\n]+/g,' ').trim();
-          const lamDetail  = String(fget(row,'LamDetail')||'').replace(/[\r\n]+/g,' ').trim();
-          const foilDetail = String(fget(row,'FoilingDetail')||'').replace(/[\r\n]+/g,' ').trim();
+          // Get End Date from column 25 (or detected hdrIdx position)
+          const endDateRaw = row[END_DATE_COL];
+          const endDateKey = parseEndDate(endDateRaw);
+          if(!endDateKey) return;  // No end date → skip
+
+          // Other fields
+          const name    = String(row[3]||'').trim();
+          const cust    = String(row[4]||'').trim();
+          const qty     = parseFloat(row[5])||0;
+          const cut     = parseFloat(row[6])||0;
+          const dim     = String(row[7]||'Unknown').trim();
+          const itemType= String(row[8]||'').trim();
+          const status  = String(row[9]||'').trim();
+          const commit  = String(row[10]||'').trim();
+          const planMach= String(row[11]||'').trim();
+          const coatDetail = String(row[18]||'').replace(/[\r\n]+/g,' ').trim();
+
+          // Coat type label
           let coatType = '';
           if(coatDetail && coatDetail !== '--'){
             const cd = coatDetail.toUpperCase();
-            if(cd.includes('SPOT UV'))       coatType = 'SPOT UV';
-            else if(cd.includes('MATT UV')||cd.includes('MAT UV')) coatType = 'MATT UV';
+            if(cd.includes('SPOT UV'))      coatType = 'SPOT UV';
+            else if(cd.includes('MATT UV') || cd.includes('MAT UV')) coatType = 'MATT UV';
             else if(cd.includes('GLOSS UV')) coatType = 'GLOSS UV';
-            else if(cd.includes('DRIP'))     coatType = 'DRIP OFF';
-            else if(cd.includes('AQUA'))     coatType = 'AQUA';
-            else if(cd.includes('UV'))       coatType = 'UV';
-            else                             coatType = 'COAT';
+            else if(cd.includes('DRIP'))    coatType = 'DRIP OFF';
+            else if(cd.includes('AQUA'))    coatType = 'AQUA';
+            else if(cd.includes('UV'))      coatType = 'UV';
+            else                            coatType = 'COAT';
           }
-          if(lamDetail && lamDetail !== '--') coatType = coatType ? coatType+'+LAM' : 'LAM';
-          if(foilDetail)                      coatType = coatType ? coatType+'+FOIL' : 'FOIL';
 
-          const jobData = {
-            jcno,
-            name:      String(fget(row,'JobName','Job Name')||'').trim(),
-            cust:      String(fget(row,'Client Name','ClientName','CUSTOMER NAME')||'').trim(),
-            cut, qty,
-            dim:       String(fget(row,'CartonDim.','CartonDim','Carton Dimension')||'Unknown').trim().replace(/\s+/g,''),
-            itemType:  String(fget(row,'Item Type ','Item Type')||'').trim(),
-            planMach:  String(fget(row,'Plan Machine','PlanMachine')||'').trim(),
-            coatDetail, lamDetail, foilDetail,
-            coatMach:  String(fget(row,'CoatMachine')||'').trim(),
-            coatType,
-            overrideDate: '', overrideMach: '', priority: 0
-          };
-
+          const machLabel = currentMach || '4 Col';
           const key = nj(jcno);
 
           if(jcnoMap.has(key)){
-            // ── Same JCNO already seen — update latest printDateKey ──
             const ex = jcnoMap.get(key);
-            if(currentPrintKey > (ex.printDateKey||'')) ex.printDateKey = currentPrintKey;
-            ex.printDateKeys[machLabel] = currentPrintKey;
+            // Keep latest end date
+            if(endDateKey > (ex.printDateKey||'')) ex.printDateKey = endDateKey;
+            ex.printDateKeys[machLabel] = endDateKey;
             if(!ex.machine.includes(machLabel)) ex.machine += ' + ' + machLabel;
           } else {
-            // ── New JCNO ──
             jcnoMap.set(key, {
-              ...jobData,
+              jcno, name, cust, cut, qty,
+              dim: dim.replace(/\s+/g,''),
+              itemType, status, commit, planMach,
+              coatDetail, coatType,
+              lamDetail:'', foilDetail:'', coatMach:'',
+              overrideDate:'', overrideMach:'', priority:0,
               machine: machLabel,
-              printDateKey: currentPrintKey,
-              printDateKeys: { [machLabel]: currentPrintKey }
+              printDateKey: endDateKey,
+              printDateKeys: { [machLabel]: endDateKey }
             });
           }
         });
-      });
 
-      comingSoon = [...jcnoMap.values()].filter(j => j.printDateKey && j.printDateKey !== '');
+        comingSoon = [...jcnoMap.values()].filter(j => j.printDateKey && j.printDateKey !== '');
+
+      } else {
+        // ── Fallback: old "4 col" / "6 col" sheet logic ──
+        ['4 col','6 col'].forEach(sn => {
+          const ws2 = wb.Sheets[sn];
+          if(!ws2) return;
+          const allRows2 = XLSX.utils.sheet_to_json(ws2, {defval:'', header:1, range:1});
+          if(allRows2.length < 2) return;
+          const machLabel = sn === '4 col' ? '4 Col' : '6 Col';
+          // (old parser logic kept as fallback — uses section header date)
+          let currentPrintKey = '';
+          const hdr2 = allRows2[0];
+          function fget2(row, ...keys){ for(const k of keys){ const kn=k.replace(/[\s\r\n]+/g,'').toLowerCase(); const hi=hdr2.findIndex(h=>String(h||'').replace(/[\s\r\n]+/g,'').toLowerCase()===kn); if(hi>=0 && row[hi]!==undefined && row[hi]!=='') return row[hi]; } return ''; }
+          function toKey2(v){ if(!v||v===''||v===0) return ''; let d=null; if(v instanceof Date){d=v;} else if(typeof v==='number'&&v>40000){d=new Date(Math.round((v-25569)*86400*1000));} else { const s=String(v).trim(); const m=s.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/); if(m) d=new Date(+m[3],+m[2]-1,+m[1]); else d=new Date(s); } if(!d||isNaN(d)) return ''; const s=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); return s.startsWith('1900')?'':s; }
+          allRows2.slice(1).forEach(row => {
+            const jcno = String(row[0]||'').trim();
+            if(!jcno || jcno==='JC NO'){ for(let ci=0;ci<Math.min(6,row.length);ci++){ const k=toKey2(row[ci]); if(k){currentPrintKey=k;break;} } return; }
+            if(!currentPrintKey) return;
+            const endDateRaw2 = fget2(row,'End Date','EndDate');
+            const epk = parseEndDate(endDateRaw2) || currentPrintKey;
+            const cut2=parseFloat(fget2(row,'Tot. Cut SH','TotCutSH'))||0;
+            const qty2=parseFloat(fget2(row,'Job Qty','JobQty'))||0;
+            if(!cut2&&!qty2) return;
+            const key2 = nj(jcno);
+            if(!comingSoon.find(j=>nj(j.jcno)===key2)){
+              comingSoon.push({ jcno, name:String(fget2(row,'Job Name')||'').trim(), cust:String(fget2(row,'Client Name','CUSTOMER NAME')||'').trim(), cut:cut2, qty:qty2, dim:'', itemType:'', status:'', commit:'', planMach:'', coatDetail:'', coatType:'', lamDetail:'', foilDetail:'', coatMach:'', overrideDate:'', overrideMach:'', priority:0, machine:machLabel, printDateKey:epk, printDateKeys:{[machLabel]:epk} });
+            }
+          });
+        });
+      }
+
       comingSoon.sort((a,b) => (a.printDateKey||'').localeCompare(b.printDateKey||'') || (a.commit||'').localeCompare(b.commit||''));
       comingSoon.forEach((j,i) => { j.priority = i+1; j.sr = i+1; });
 
       const n = comingSoon.length;
       toast('✅ Printing schedule loaded — ' + n + ' jobs!');
-      document.getElementById('soonBadge').textContent = n;
-      document.getElementById('printBadge').textContent = n;
+      const _sb = document.getElementById('soonBadge'); if(_sb) _sb.textContent = n;
+      const _pb = document.getElementById('printBadge'); if(_pb) _pb.textContent = n;
 
       if(sched.length) buildSchedule();
 
@@ -1283,7 +1332,7 @@ function confirmAddToPunch(){
   const idx = comingSoon.indexOf(_pmJob);
   if(idx>-1) comingSoon.splice(idx,1);
   comingSoon.forEach((x,n)=>x.priority=n+1);
-  document.getElementById('soonBadge').textContent = comingSoon.length;
+  const _sb2 = document.getElementById('soonBadge'); if(_sb2) _sb2.textContent = comingSoon.length;
   closePunchModal();
   toast('Added: '+_pmJob.jcno+' ('+punchKey+' se)');
   buildSchedule();
@@ -1318,22 +1367,22 @@ function renderComingSoon(){
         <div style="flex:1;min-width:0;">
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
             <span style="font-weight:800;color:#f97316;font-size:13px;">${j.jcno}</span>
-            <span style="font-size:11px;background:${(j.machine||'').includes('+')?'#7c2d12':'#1e3a5f'};color:${(j.machine||'').includes('+')?'#fca5a5':'#60a5fa'};padding:2px 7px;border-radius:10px;">${(j.machine||'').includes('+')?'🖨️🖨️ ':''} ${j.machine||'—'}</span>
-            <span style="font-size:11px;background:#1a2736;color:#94a3b8;padding:2px 7px;border-radius:10px;">${j.next||j.status||'—'}</span>
-            ${j.coatType?`<span style="font-size:11px;background:#2d1b00;color:#fb923c;padding:2px 7px;border-radius:10px;">${j.coatType}</span>`:''}
-            ${isOverridden?`<span style="font-size:10px;background:#1e3a5f;color:#f97316;padding:2px 7px;border-radius:10px;">✏️ Overridden</span>`:''}
+            <span style="font-size:11px;background:${(j.machine||'').includes('+')?'#FEE2E2':'#DBEAFE'};color:${(j.machine||'').includes('+')?'#991B1B':'#1E40AF'};padding:2px 7px;border-radius:10px;">${(j.machine||'').includes('+')?'🖨️🖨️ ':''} ${j.machine||'—'}</span>
+            <span style="font-size:11px;background:#F1F5F9;color:#475569;padding:2px 7px;border-radius:10px;">${j.next||j.status||'—'}</span>
+            ${j.coatType?`<span style="font-size:11px;background:#FEF3C7;color:#92400E;padding:2px 7px;border-radius:10px;">${j.coatType}</span>`:''}
+            ${isOverridden?`<span style="font-size:10px;background:#FFF7ED;color:#C2410C;padding:2px 7px;border-radius:10px;">✏️ Overridden</span>`:''}
           </div>
           ${(j.machine||'').includes('+') && j.printDateKeys ? `<div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:3px;">
-            ${Object.entries(j.printDateKeys).map(([m,d])=>`<span style="font-size:10px;background:#1e3a5f;color:#93c5fd;padding:1px 7px;border-radius:10px;">🖨️ ${m}: <b>${d}</b></span>`).join('')}
-            <span style="font-size:10px;background:#7c2d12;color:#fca5a5;padding:1px 7px;border-radius:10px;">⏳ Last print: <b>${j.printDateKey}</b></span>
+            ${Object.entries(j.printDateKeys).map(([m,d])=>`<span style="font-size:10px;background:#EFF6FF;color:#1D4ED8;padding:1px 7px;border-radius:10px;">🖨️ ${m}: <b>${d}</b></span>`).join('')}
+            <span style="font-size:10px;background:#FEE2E2;color:#991B1B;padding:1px 7px;border-radius:10px;">⏳ Last print: <b>${j.printDateKey}</b></span>
           </div>` : ''}
-          <div style="font-size:12px;color:#cbd5e1;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${j.name}</div>
-          <div style="font-size:11px;color:#64748b;margin-top:2px;">${j.cust}</div>
+          <div style="font-size:12px;color:#334155;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${j.name}</div>
+          <div style="font-size:11px;color:#475569;margin-top:2px;">${j.cust}</div>
           <div style="display:flex;gap:14px;margin-top:5px;flex-wrap:wrap;">
-            <span style="font-size:11px;color:#94a3b8;">📦 <b style="color:#e2e8f0;">${j.qty?j.qty.toLocaleString():'—'}</b></span>
-            <span style="font-size:11px;color:#94a3b8;">✂️ <b style="color:#22c55e;">${j.cut?j.cut.toLocaleString():'—'}</b> sh</span>
-            ${j.dim&&j.dim!=='Unknown'?`<span style="font-size:11px;color:#94a3b8;">📐 <b style="color:#cbd5e1;">${j.dim}</b></span>`:''}
-            <span style="font-size:11px;color:#94a3b8;">🎯 <b style="color:#fbbf24;">${j.commit||'—'}</b></span>
+            <span style="font-size:11px;color:#475569;">📦 <b style="color:#1E293B;">${j.qty?j.qty.toLocaleString():'—'}</b></span>
+            <span style="font-size:11px;color:#475569;">✂️ <b style="color:#15803D;">${j.cut?j.cut.toLocaleString():'—'}</b> sh</span>
+            ${j.dim&&j.dim!=='Unknown'?`<span style="font-size:11px;color:#475569;">📐 <b style="color:#334155;">${j.dim}</b></span>`:''}
+            <span style="font-size:11px;color:#475569;">🎯 <b style="color:#D97706;">${j.commit||'—'}</b></span>
           </div>
 
           <!-- MANUAL PUNCH DATE + EXTRA DAYS + MACHINE OVERRIDE -->
@@ -1342,26 +1391,26 @@ function renderComingSoon(){
               <label style="font-size:9px;color:#f97316;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">✂️ Manual Punch Date</label>
               <div style="display:flex;align-items:center;gap:5px;">
                 <input type="date" value="${j.overrideDate||''}"
-                  style="padding:5px 8px;border:1.5px solid ${j.overrideDate?'#f97316':'#2a3f55'};border-radius:6px;font-size:12px;font-weight:600;background:#0d1b2a;color:#fff;outline:none;cursor:pointer;"
+                  style="padding:5px 8px;border:1.5px solid ${j.overrideDate?'#F97316':'#CBD5E1'};border-radius:6px;font-size:12px;font-weight:600;background:#fff;color:#1E293B;outline:none;cursor:pointer;"
                   onchange="setSoonOverride(${i},'date',this.value)">
                 ${j.overrideDate?`<button onclick="setSoonOverride(${i},'date','')" style="background:none;border:none;color:#ef4444;cursor:pointer;font-size:16px;padding:2px;" title="Reset to auto">↺</button>`:''}
               </div>
-              <div style="font-size:9px;color:#64748b;">Auto: ${addWorkDaysStatic(j.printDateKey,1)||'—'} (print+1 day)</div>
+              <div style="font-size:9px;color:#64748b;">Auto: ${addWorkDaysStatic(j.printDateKey,1)||'—'} (print end date + 1 day)</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:3px;">
-              <label style="font-size:9px;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">📅 Extra Days</label>
-              <div style="display:flex;align-items:center;gap:5px;background:#0d1b2a;border:1.5px solid #2a3f55;border-radius:6px;padding:4px 8px;">
-                <button onclick="csAdjDays(${i},-1)" style="background:#1e3a5f;border:none;color:#fff;width:24px;height:24px;border-radius:4px;cursor:pointer;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;">−</button>
+              <label style="font-size:9px;color:#64748B;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">📅 Extra Days</label>
+              <div style="display:flex;align-items:center;gap:5px;background:#F8FAFC;border:1.5px solid #CBD5E1;border-radius:6px;padding:4px 8px;">
+                <button onclick="csAdjDays(${i},-1)" style="background:#E2E8F0;border:none;color:#334155;width:24px;height:24px;border-radius:4px;cursor:pointer;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;">−</button>
                 <span id="cd-val-${i}" style="color:#fff;font-weight:700;font-size:14px;min-width:24px;text-align:center;">${j.extraDays||0}</span>
-                <button onclick="csAdjDays(${i},+1)" style="background:#1e3a5f;border:none;color:#fff;width:24px;height:24px;border-radius:4px;cursor:pointer;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;">+</button>
+                <button onclick="csAdjDays(${i},+1)" style="background:#E2E8F0;border:none;color:#334155;width:24px;height:24px;border-radius:4px;cursor:pointer;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;">+</button>
                 <span style="font-size:9px;color:#64748b;">days</span>
               </div>
-              <div style="font-size:9px;color:#64748b;">Print+1+extra = <b style="color:#22c55e;">${addWorkDaysStatic(j.printDateKey, 1+(j.extraDays||0))||'—'}</b></div>
+              <div style="font-size:9px;color:#64748b;">Print+1+extra = <b style="color:#15803D;">${addWorkDaysStatic(j.printDateKey, 1+(j.extraDays||0))||'—'}</b></div>
             </div>
             <div style="display:flex;flex-direction:column;gap:3px;">
               <label style="font-size:9px;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">🔧 Machine</label>
               <select onchange="setSoonOverride(${i},'mach',this.value)"
-                style="padding:5px 8px;border:1.5px solid ${j.overrideMach?'#f97316':'#2a3f55'};border-radius:6px;font-size:12px;font-weight:600;background:#0d1b2a;color:#fff;outline:none;cursor:pointer;">
+                style="padding:5px 8px;border:1.5px solid ${j.overrideMach?'#F97316':'#CBD5E1'};border-radius:6px;font-size:12px;font-weight:600;background:#fff;color:#1E293B;outline:none;cursor:pointer;">
                 <option value="auto" ${!j.overrideMach||j.overrideMach==='auto'?'selected':''}>Auto</option>
                 <option value="B1" ${j.overrideMach==='B1'?'selected':''}>B1</option>
                 <option value="B2" ${j.overrideMach==='B2'?'selected':''}>B2</option>
@@ -1382,7 +1431,7 @@ function renderComingSoon(){
     // Drag events
     card.addEventListener('dragstart', e => { dragSrc = i; card.style.opacity='0.4'; e.dataTransfer.effectAllowed='move'; });
     card.addEventListener('dragend',   () => { card.style.opacity='1'; });
-    card.addEventListener('dragover',  e => { e.preventDefault(); e.dataTransfer.dropEffect='move'; card.style.background='#1e3a5f'; });
+    card.addEventListener('dragover',  e => { e.preventDefault(); e.dataTransfer.dropEffect='move'; card.style.background='#EFF6FF'; });
     card.addEventListener('dragleave', () => { card.style.background=''; });
     card.addEventListener('drop',      e => {
       e.preventDefault(); card.style.background='';
@@ -1414,16 +1463,16 @@ function manualJcnoSearch(val){
   const infoEl = document.getElementById('manualJobInfo');
   if(!val || val.length < 3){ infoEl.textContent = ''; return; }
   const nj = v => String(v||'').trim().toUpperCase().replace(/[\s\/\-]/g,'');
-  // Search in track record
+  // Track record मध्ये शोधतो
   const found = clean.find(j => nj(j.jcno) === nj(val));
-  // Also search in comingSoon
+  // comingSoon मध्ये पण शोधतो
   const inCS = comingSoon.find(j => nj(j.jcno) === nj(val));
   if(found){
-    infoEl.innerHTML = `<span style="color:#22c55e;">✅ ${found.name} | ${found.cut.toLocaleString()} sheets | ${found.dim}</span>`;
+    infoEl.innerHTML = `<span style="color:#15803D;">✅ ${found.name} | ${found.cut.toLocaleString()} sheets | ${found.dim}</span>`;
   } else if(inCS){
     infoEl.innerHTML = `<span style="color:#f97316;">⚠️ Already in printing pipeline</span>`;
   } else {
-    infoEl.innerHTML = `<span style="color:#ef4444;">❌ Not found in track record</span>`;
+    infoEl.innerHTML = `<span style="color:#ef4444;">❌ Track record मध्ये नाही</span>`;
   }
 }
 
@@ -1439,9 +1488,9 @@ function manualAddJob(){
 
   // Track record मधून job शोधतो
   const found = clean.find(j => nj(j.jcno) === nj(jcnoVal));
-  if(!found){ toast('❌ JCNO not found in track record!'); return; }
+  if(!found){ toast('❌ JCNO track record मध्ये नाही!'); return; }
 
-  // Already in comingSoon?
+  // आधीच comingSoon मध्ये आहे का?
   const existing = comingSoon.findIndex(j => nj(j.jcno) === nj(jcnoVal));
   if(existing > -1){
     // Override date update कर
@@ -1449,7 +1498,7 @@ function manualAddJob(){
     comingSoon[existing].overrideMach = machVal === 'auto' ? '' : machVal;
     toast('✅ ' + found.jcno + ' — punch date updated!');
   } else {
-    // Add new entry to comingSoon
+    // नवीन entry comingSoon मध्ये add कर
     comingSoon.push({
       jcno:         found.jcno,
       name:         found.name,
@@ -1469,7 +1518,7 @@ function manualAddJob(){
       coatType:     '',
       priority:     comingSoon.length + 1
     });
-    toast('✅ ' + found.jcno + ' — added to punch schedule!');
+    toast('✅ ' + found.jcno + ' — punch ला add केला!');
   }
 
   // Input clear
@@ -1484,30 +1533,35 @@ function manualAddJob(){
 }
 
 function switchTab(t){
-  ['day','tbl','soon'].forEach(x=>{
+  ['day','tbl','soon','miss'].forEach(x=>{
     let el = document.getElementById(x+'View');
     if(el) el.classList.toggle('hidden', x!==t);
   });
   let pg3div = document.querySelector('#pg3 > div:nth-child(3)');
   if(pg3div){
     pg3div.querySelectorAll('.tabs')[0]?.querySelectorAll('.tab').forEach((el,i)=>{
-      el.classList.toggle('on', ['day','tbl','soon'][i]===t);
+      el.classList.toggle('on', ['day','tbl','soon','miss'][i]===t);
     });
   }
   if(t==='soon') renderComingSoon();
+  if(t==='miss'){
+    const el=document.getElementById('missDateInput');
+    if(el&&!el.value){ const n=new Date(); el.value=n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0'); }
+    renderMissReport();
+  }
 }
 
 // ══════════════════════════════════════════════════════
 // PROCESS FILE
 // ══════════════════════════════════════════════════════
 function processFile(){
-  if(!window._file){ toast('⚠️ Please upload a file first!'); return; }
+  if(!window._file){ toast('⚠️ Pehle file upload karo!'); return; }
 
   BASE = new Date(); BASE.setHours(0,0,0,0);
 
   if(window._isExcel){
     if(typeof XLSX === 'undefined'){
-      toast('❌ Excel library not loaded! Check internet or use CSV.');
+      toast('❌ Excel library load nahi hui! Internet check karo ya CSV use karo.');
       return;
     }
     readExcel(window._file);
@@ -1529,7 +1583,7 @@ function readCSV(f){
 }
 
 function readExcel(f){
-  toast('⏳ Loading file... please wait');
+  toast('⏳ File load hoat aahe... thoda wait karo');
   let reader = new FileReader();
   reader.onerror = ()=> toast('❌ File read failed!');
   reader.onload = e=>{
@@ -1549,7 +1603,7 @@ function readExcel(f){
       setTimeout(()=>{
         try{
           const ws = wb.Sheets[best];
-          if(!ws || !ws['!ref']){ toast('❌ Sheet is empty!'); return; }
+          if(!ws || !ws['!ref']){ toast('❌ Sheet empty aahe!'); return; }
 
           // ── KEY FIX: sirf pehle 120 columns gheto — baaki None/blank aahet ──
           const range = XLSX.utils.decode_range(ws['!ref']);
@@ -1660,21 +1714,21 @@ function showDiagnostic(info){
   if(existing) existing.remove();
   const div = document.createElement('div');
   div.id = 'diagPanel';
-  div.style.cssText = 'position:fixed;top:70px;right:16px;z-index:9999;background:#0d1b2a;border:2px solid #f97316;border-radius:10px;padding:16px;max-width:420px;max-height:80vh;overflow-y:auto;font-size:11px;color:#e2e8f0;box-shadow:0 8px 32px rgba(0,0,0,.5);';
+  div.style.cssText = 'position:fixed;top:70px;right:16px;z-index:9999;background:#0d1b2a;border:2px solid #f97316;border-radius:10px;padding:16px;max-width:420px;max-height:80vh;overflow-y:auto;font-size:11px;color:#1E293B;box-shadow:0 8px 32px rgba(0,0,0,.5);';
   div.innerHTML = `
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
       <b style="color:#f97316;font-size:13px;">🔍 Diagnostic Info</b>
       <button onclick="this.parentElement.parentElement.remove()" style="background:none;border:none;color:#64748b;font-size:18px;cursor:pointer;">✕</button>
     </div>
-    <div style="margin-bottom:6px;">📊 <b>Total Rows:</b> <span style="color:#22c55e;">${info.totalRows}</span></div>
+    <div style="margin-bottom:6px;">📊 <b>Total Rows:</b> <span style="color:#15803D;">${info.totalRows}</span></div>
     <div style="margin-bottom:6px;">🏷️ <b>Job_Status Column:</b> <span style="color:${info.statusColFound.includes('NOT FOUND')?'#ef4444':'#22c55e'};">${info.statusColFound}</span></div>
     <div style="margin-bottom:6px;">✂️ <b>Punching Column:</b> <span style="color:${info.punchColFound.includes('NOT FOUND')?'#ef4444':'#22c55e'};">${info.punchColFound}</span></div>
     <div style="margin-bottom:8px;"><b style="color:#f97316;">📋 Unique Statuses in file:</b><br>
-      ${info.uniqueStatuses.map(s=>`<span style="background:#1a2736;border:1px solid #2a3f55;border-radius:4px;padding:2px 6px;margin:2px;display:inline-block;">${s}</span>`).join('')}
+      ${info.uniqueStatuses.map(s=>`<span style="background:#F1F5F9;border:1px solid #CBD5E1;border-radius:4px;padding:2px 6px;margin:2px;display:inline-block;">${s}</span>`).join('')}
     </div>
     <div><b style="color:#f97316;">🗂️ All Columns (${info.allColumns.length}):</b><br>
       <div style="max-height:200px;overflow-y:auto;margin-top:4px;">
-        ${info.allColumns.map((c,i)=>`<div style="padding:1px 0;color:#94a3b8;"><span style="color:#475569;">${i+1}.</span> ${c}</div>`).join('')}
+        ${info.allColumns.map((c,i)=>`<div style="padding:1px 0;color:#64748B;"><span style="color:#475569;">${i+1}.</span> ${c}</div>`).join('')}
       </div>
     </div>`;
   document.body.appendChild(div);
@@ -1717,9 +1771,12 @@ function applyFilters(rows){
     // 2. फक्त INCL list मध्ये explicitly असेल तरच include
     if(INCL_SET.has(stU)) return true;
 
-    // 3. Blank / Job Not Started — include
-    if(!st || st === '' || stU === 'JOB NOT STARTED') return true;
+    // 3. Blank status — include (data issue)
+    if(!st || st === '') return true;
 
+    // Job Not Started = printing la janar job — punching schedule la NAKO
+    // Printing(R) = abhi printing chalto — punching schedule la NAKO
+    // Faqt INCL list madhe aslelyach jobs include hoto
     return false;
   });
 
@@ -1824,7 +1881,7 @@ function renderPg2(){
     `<tr style="height:6px;background:#0D1B2A;"><td colspan="16" style="border-top:2px solid #334155;padding:0;"></td></tr>
     <tr style="background:#0D1B2A;font-weight:800;">
       <td colspan="7" style="text-align:right;color:#475569;font-size:10px;letter-spacing:1px;padding:10px 14px;">📊 GRAND TOTAL</td>
-      <td style="color:#22c55e;font-family:'DM Mono',monospace;font-size:14px;padding:10px 8px;">${clean.reduce((a,r)=>a+r.qty,0).toLocaleString()}</td>
+      <td style="color:#15803D;font-family:'DM Mono',monospace;font-size:14px;padding:10px 8px;">${clean.reduce((a,r)=>a+r.qty,0).toLocaleString()}</td>
       <td style="color:#f97316;font-family:'DM Mono',monospace;font-size:14px;padding:10px 8px;">${clean.reduce((a,r)=>a+r.cut,0).toLocaleString()}</td>
       <td colspan="7" style="color:#475569;font-size:10px;padding:10px 8px;">${clean.length} jobs total</td>
     </tr>`;
@@ -1843,11 +1900,11 @@ function wmToInfo(wm){
 
   // BASE + dayIdx working days — skip Sundays only (original logic, holidays handled by snapToWorkingWM)
   let d = new Date(BASE); d.setHours(12,0,0,0);
-  while(d.getDay()===0) d.setDate(d.getDate()+1);
+  while(sundayOff && d.getDay()===0) d.setDate(d.getDate()+1);
   let count = 0;
   while(count < dayIdx){
     d.setDate(d.getDate()+1);
-    if(d.getDay()!==0) count++;
+    if(!isNonWorking(d)) count++;
   }
 
   const SEGS = [
@@ -1866,7 +1923,7 @@ function wmToInfo(wm){
   let calDate = new Date(d);
   if(SEGS[si].nextDay){
     calDate.setDate(calDate.getDate() + 1);
-    while(calDate.getDay()===0) calDate.setDate(calDate.getDate() + 1);
+    while(isNonWorking(calDate)) calDate.setDate(calDate.getDate() + 1);
   }
   const wallMin = SEGS[si].s + rem;
   const wm24 = wallMin % 1440;
@@ -1936,13 +1993,13 @@ function renderCalendar(){
     const isToday= key===todayKey;
     const isSel  = key===_calSelectedKey;
 
-    let bg = '#1a2736', color = '#e2e8f0', border = '1px solid #2a3f55';
-    if(isSun)   { bg='#1a1a2e'; color='#ef4444'; }
-    if(isHol)   { bg='#7c2d12'; color='#fdba74'; border='1px solid #f97316'; }
-    if(isToday) { border='2px solid #3b82f6'; }
-    if(isSel)   { bg='#0c4a6e'; color='#fff'; border='2px solid #38bdf8'; }
+    let bg = '#F8FAFC', color = '#334155', border = '1px solid #CBD5E1';
+    if(isSun)   { bg='#FEF2F2'; color='#DC2626'; }
+    if(isHol)   { bg='#FFF7ED'; color='#C2410C'; border='1px solid #F97316'; }
+    if(isToday) { border='2px solid #2563EB'; }
+    if(isSel)   { bg='#EFF6FF'; color='#1E40AF'; border='2px solid #3B82F6'; }
 
-    const holLabel = isHol ? `<div style="font-size:6px;color:#fb923c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;margin-top:1px;">${HOLIDAYS.get(key)}</div>` : '';
+    const holLabel = isHol ? `<div style="font-size:6px;color:#C2410C;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;margin-top:1px;">${HOLIDAYS.get(key)}</div>` : '';
 
     cells += `<div onclick="calSelectDay('${key}')" style="aspect-ratio:1;background:${bg};border:${border};border-radius:5px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2px;transition:all .15s;min-height:36px;"
       onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
@@ -1956,7 +2013,7 @@ function renderCalendar(){
 
 function calSelectDay(key){
   const d = new Date(key+'T12:00:00');
-  if(d.getDay()===0){ toast('⚠️ Sunday already non-working ahe!'); return; }
+  if(sundayOff && d.getDay()===0){ toast('⚠️ Sunday is set as off — Sunday toggle use kara to enable!'); return; }
 
   if(HOLIDAYS.has(key)){
     // Already holiday — ask to remove
@@ -1978,13 +2035,13 @@ function calSelectDay(key){
 }
 
 function calAddHoliday(){
-  if(!_calSelectedKey){ toast('⚠️ Please select a date first!'); return; }
+  if(!_calSelectedKey){ toast('⚠️ Pehle date select karo!'); return; }
   const label = (document.getElementById('calHolidayLabel').value||'').trim() || 'Holiday';
   HOLIDAYS.set(_calSelectedKey, label);
   renderHolidayList();
   toast('🚫 Holiday add kela: '+label+' ('+_calSelectedKey+')');
   _calSelectedKey = '';
-  document.getElementById('calSelectedInfo').textContent = '👆 Click a date above to mark as holiday';
+  document.getElementById('calSelectedInfo').textContent = '👆 Upar date click karo holiday mark karnyasathi';
   const btn = document.getElementById('calAddBtn');
   btn.style.opacity = '0.4'; btn.style.pointerEvents = 'none';
   renderCalendar();
@@ -1992,6 +2049,24 @@ function calAddHoliday(){
 }
 
 // ══════════════════════════════════════════════════════
+
+// ══════════════════════════════════════════════════════
+// SUNDAY TOGGLE
+// ══════════════════════════════════════════════════════
+let sundayOff = true; // Sunday off by default
+
+function toggleSunday(){
+  sundayOff = !sundayOff;
+  const btn = document.getElementById('sundayToggleBtn');
+  if(btn){
+    btn.textContent = sundayOff ? '🔴 Sunday: OFF' : '🟢 Sunday: ON';
+    btn.style.background   = sundayOff ? '#FEE2E2' : '#DCFCE7';
+    btn.style.borderColor  = sundayOff ? '#DC2626' : '#16A34A';
+    btn.style.color        = sundayOff ? '#991B1B' : '#166534';
+  }
+  if(sched.length) buildSchedule();
+  toast(sundayOff ? '🔴 Sunday: OFF (Rest Day)' : '🟢 Sunday: ON (Work Day)');
+}
 
 // ══════════════════════════════════════════════════════
 // HOLIDAY ENGINE
@@ -2003,7 +2078,7 @@ function isHoliday(dateKey){ return HOLIDAYS.has(dateKey); }
 
 function isNonWorking(d){
   // d = Date object
-  if(d.getDay() === 0) return true; // Sunday
+  if(sundayOff && d.getDay() === 0) return true; // Sunday (if toggle is ON)
   const key = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
   return HOLIDAYS.has(key);
 }
@@ -2011,8 +2086,8 @@ function isNonWorking(d){
 function addHoliday(){
   const dateVal  = document.getElementById('holidayDateIn').value;
   const labelVal = (document.getElementById('holidayLabelIn').value || '').trim();
-  if(!dateVal){ toast('⚠️ Please select a date first!'); return; }
-  if(HOLIDAYS.has(dateVal)){ toast('⚠️ This date is already added!'); return; }
+  if(!dateVal){ toast('⚠️ Pehle date select karo!'); return; }
+  if(HOLIDAYS.has(dateVal)){ toast('⚠️ Yeh date pehle se add hai!'); return; }
   HOLIDAYS.set(dateVal, labelVal || dateVal);
   document.getElementById('holidayDateIn').value = '';
   document.getElementById('holidayLabelIn').value = '';
@@ -2033,7 +2108,7 @@ function renderHolidayList(){
   const el = document.getElementById('holidayList');
   if(!el) return;
   if(!HOLIDAYS.size){
-    el.innerHTML = '<span style="font-size:11px;color:#475569;font-style:italic;">No holidays added yet...</span>';
+    el.innerHTML = '<span style="font-size:11px;color:#475569;font-style:italic;">Koi holiday add nahi kiya abhi...</span>';
     return;
   }
   const sorted = [...HOLIDAYS.entries()].sort((a,b)=>a[0].localeCompare(b[0]));
@@ -2077,20 +2152,20 @@ function dayKeyToWM(dateKey){
   const diffDays = Math.round((d - base) / (1000*60*60*24));
   if(diffDays < 0) return 0;
   if(diffDays > 730) return 0; // cap — invalid date, ignore
-  while(d.getDay()===0) d.setDate(d.getDate()+1);
-  while(base.getDay()===0) base.setDate(base.getDate()+1);
+  while(sundayOff && d.getDay()===0) d.setDate(d.getDate()+1);
+  while(sundayOff && base.getDay()===0) base.setDate(base.getDate()+1);
   if(d <= base) return 0;
   let wDays = 0, cur = new Date(base);
   while(toLocalKey(cur) < toLocalKey(d)){
     cur.setDate(cur.getDate()+1);
-    if(cur.getDay()!==0) wDays++;
+    if(!isNonWorking(cur)) wDays++;
   }
   return wDays * DAY_WORK;
 }
 
 // ── snapToWorkingWM ──
-// If job WM lands on a holiday, push to next working day.
-// Use Sunday-only dayIdx like wmToInfo — keep consistent.
+// Job cha WM holiday var land hala tar next working day la push karo.
+// wmToInfo sarkhach Sunday-only dayIdx use karo — consistent rahil.
 function snapToWorkingWM(wm){
   if(!HOLIDAYS.size) return wm;
 
@@ -2123,7 +2198,7 @@ function snapToWorkingWM(wm){
 }
 
 function buildSchedule(){
-  if(!clean.length && !comingSoon.length){ toast('⚠️ No data available!'); return; }
+  if(!clean.length && !comingSoon.length){ toast('⚠️ Data nahi hai!'); return; }
   sched = [];
 
   // Machine state
@@ -2138,14 +2213,14 @@ function buildSchedule(){
     const cut = (job.cut && job.cut > 0) ? job.cut : 0;
     if(!cut) return;
 
-    // Printing job — punch cannot happen before print+1 day
+    // Printing job — print+1 day आधी punch होणार नाही
     if(job.printDateKey){
       const punchReadyKey = job.overrideDate || addWorkDaysStatic(job.printDateKey, 1+(job.extraDays||0)) || baseKey;
       if(punchReadyKey > baseKey) minWM = Math.max(minWM, dayKeyToWM(punchReadyKey));
     }
 
-    // ── PRINTING(R) rule: if job status is PRINTING(R) (printing still running),
-    //    do not schedule today (baseKey) — push to next working day. ──
+    // ── PRINTING(R) rule: जर job चा status PRINTING(R) असेल (printing अजून running आहे),
+    //    तर तो job TODAY (baseKey) ला schedule करायचा नाही — next working day ला push करायचा. ──
     const _st = String(job.status||'').trim().toUpperCase();
     if(_st === 'PRINTING(R)'){
       const _nextWorkDay = addWorkDaysStatic(baseKey, 1);
@@ -2222,7 +2297,7 @@ function buildSchedule(){
     actualStatus: trackStatusMap.get(nj(j.jcno)) || j.status || ''
   }));
 
-  // For JCNOs in print file — minWM = next working day after print
+  // Print file madhe jo JCNOs aahet — tyacha minWM = next working day after print
   const printFileDateMap = new Map();
   uniqueCS.forEach(j => {
     const k = nj(j.jcno);
@@ -2232,74 +2307,39 @@ function buildSchedule(){
     }
   });
 
-  // ── STEP 1: Track record Punching(R) jobs PAHILE ──
+  // ══════════════════════════════════════════
+  // SIMPLE 3-PRIORITY SCHEDULE ORDER:
+  //   P1 — Status = Punching(R)           → machine var chalto, aadhi
+  //   P2 — NextProcess = Punching          → punch ready, status kaahi pan asel
+  //   P3 — Printing pipeline (comingSoon)  → end date + 1 working day nusaar
+  // ══════════════════════════════════════════
   const placedJCNOs = new Set();
-  const SCHED_STATUS_PRI = {
-    'PUNCHING(R)':1,'COATING(F)':2,'COATING(R)':3,
-    'LAMINATION(F)':4,'LAMINATION(R)':5,
-    'VDP(F)':6,'VDP(R)':7,
-    'PRINTING(F)':8,'PRINTING(R)':9,
-    'JOB NOT STARTED':10,
-    // Legacy fallback
-    'PH':1,'LAMINATION':4,'VDP':6,'SCREEN':7,'FOIL':8,
-    '2ND PASS':9,'FRONT BAL':9,'UV':8,'BACK SIDE':9
-  };
 
-  // NextProcess priority map — Next Process nusaar sorting
-  const NEXT_PROC_PRI = {
-    'PUNCHING':1,'PUNCHING(R)':1,
-    'COATING':2,'COATING(F)':2,'COATING(R)':2,
-    'LAMINATION':3,'LAMINATION(F)':3,'LAMINATION(R)':3,
-    'VDP':4,'VDP(F)':4,'VDP(R)':4,
-    'PRINTING':5,'PRINTING(F)':5,'PRINTING(R)':5,
-    'JOB NOT STARTED':6,'JOBNOTSTARTED':6,'ORDER COMPLETED':99
-  };
-
-  function getNextProcPri(j) {
-    const np = String(j.nextProcess||'').trim().toUpperCase().replace(/\s+/g,'');
-    return NEXT_PROC_PRI[np] !== undefined ? NEXT_PROC_PRI[np] : 50;
-  }
-
-  clean.filter(j => !j.fromPrint && getStatusPriority(j.status) === 0)
-    .sort((a,b) => {
-      const da = printFileDateMap.get(nj(a.docId||a.jcno)) ?? Infinity;
-      const db = printFileDateMap.get(nj(b.docId||b.jcno)) ?? Infinity;
-      if(da !== db) return da - db;
-      return (a.dim||'').localeCompare(b.dim||'');
-    })
+  // ── P1: Status = Punching(R) — saglyat pahile ──
+  clean.filter(j => !j.fromPrint && String(j.status||'').trim().toUpperCase() === 'PUNCHING(R)')
+    .sort((a,b) => (a.docDate||'').localeCompare(b.docDate||''))
     .forEach(j => {
       if(placedJCNOs.has(nj(j.docId||j.jcno))) return;
-      const minWM = printFileDateMap.get(nj(j.docId||j.jcno)) ?? 0;
-      placeJob(j, minWM);
+      placeJob(j, printFileDateMap.get(nj(j.docId||j.jcno)) ?? 0);
       placedJCNOs.add(nj(j.docId||j.jcno));
     });
 
-  // ── STEP 2: Track record baaki jobs — status priority nusaar sort ──
-  clean.filter(j => !j.fromPrint && getStatusPriority(j.status) !== 0)
-    .sort((a,b) => {
-      const da = printFileDateMap.get(nj(a.docId||a.jcno)) ?? Infinity;
-      const db = printFileDateMap.get(nj(b.docId||b.jcno)) ?? Infinity;
-      const aHas = da !== Infinity, bHas = db !== Infinity;
-      if(aHas !== bHas) return aHas ? -1 : 1;
-      if(aHas && bHas && da !== db) return da - db;
-      // Punching(R) status pahile
-      const isPunchA = String(a.status||'').trim().toUpperCase()==='PUNCHING(R)';
-      const isPunchB = String(b.status||'').trim().toUpperCase()==='PUNCHING(R)';
-      if(isPunchA && !isPunchB) return -1;
-      if(!isPunchA && isPunchB) return 1;
-      // Naantar NextProcess nusaar
-      const npa = getNextProcPri(a), npb = getNextProcPri(b);
-      if(npa !== npb) return npa - npb;
-      return (a.dim||'').localeCompare(b.dim||'');
+  // ── P2: NextProcess = Punching (status kaahi pan asel — Coating, Lam, etc.) ──
+  clean.filter(j => {
+      if(j.fromPrint) return false;
+      const stU = String(j.status||'').trim().toUpperCase();
+      if(stU === 'PUNCHING(R)') return false; // already placed in P1
+      const np = String(j.nextProcess||'').trim().toUpperCase().replace(/\s+/g,'');
+      return np === 'PUNCHING' || np === 'PUNCHING(R)';
     })
+    .sort((a,b) => (a.docDate||'').localeCompare(b.docDate||''))
     .forEach(j => {
       if(placedJCNOs.has(nj(j.docId||j.jcno))) return;
-      const minWM = printFileDateMap.get(nj(j.docId||j.jcno)) ?? 0;
-      placeJob(j, minWM);
+      placeJob(j, printFileDateMap.get(nj(j.docId||j.jcno)) ?? 0);
       placedJCNOs.add(nj(j.docId||j.jcno));
     });
 
-  // ── STEP 3: fromPrint jobs (manually added) ──
+  // ── fromPrint (manually added from printing screen) ──
   clean.filter(j => j.fromPrint)
     .sort((a,b) => (a.readyKey||'').localeCompare(b.readyKey||''))
     .forEach(j => {
@@ -2308,17 +2348,8 @@ function buildSchedule(){
       placedJCNOs.add(nj(j.jcno));
     });
 
-  // ── STEP 4: Printing pipeline — PH पहिले, बाकी print date sort ──
-  uniqueCS.filter(j => (j.actualStatus||'').toUpperCase() === 'PH')
-    .sort((a,b) => (a.dim||'').localeCompare(b.dim||''))
-    .forEach(j => {
-      if(placedJCNOs.has(nj(j.jcno))) return;
-      const minWM = printFileDateMap.get(nj(j.jcno)) ?? 0;
-      placeJob({...j, cut:j.cut||0, status:j.actualStatus, isAdvanced:true, overrideMach:j.overrideMach||''}, minWM);
-      placedJCNOs.add(nj(j.jcno));
-    });
-
-  uniqueCS.filter(j => (j.actualStatus||'').toUpperCase() !== 'PH')
+  // ── P3: Printing pipeline (comingSoon) — end date + 1 working day nusaar ──
+  uniqueCS
     .sort((a,b) => {
       const dateA = addWorkDaysStatic(a.printDateKey, 1+(a.extraDays||0)) || '';
       const dateB = addWorkDaysStatic(b.printDateKey, 1+(b.extraDays||0)) || '';
@@ -2399,7 +2430,7 @@ function renderDayCards(){
     // dayJobs: jobs that START on this day
     let dayJobs = sched.filter(j=>j.sKey===key);
     // ipJobs: jobs that started BEFORE this day and end ON OR AFTER this day
-    // On holidays, don't show ipJobs — machine is off
+    // Holiday la ipJobs show kart nahi — machine band ahe
     let ipJobs  = isHolidayDay ? [] : sched.filter(j=>j.sKey<key && j.eKey>=key);
     // Coming soon jobs expected on this day
     let csJobs  = comingSoon.filter(j=>{
@@ -2417,7 +2448,7 @@ function renderDayCards(){
           <h3>🚫 HOLIDAY — ${dLabel}</h3>
           <span style="font-size:12px;color:#fff;font-weight:700;">${HOLIDAYS.get(key)}</span>
         </div>
-        <div class="h-day-body">⏸️ Machine is off — no jobs start/show on this day. Jobs automatically continue from next working day.</div>
+        <div class="h-day-body">⏸️ Machine band ahe — koi job start/show hochi nahi. Jobs next working day la automatically continue hotat.</div>
       </div>`;
       return;
     }
@@ -2468,9 +2499,9 @@ function renderDayCards(){
         </div>
       </div>
       ${csHtml}
-      <div style="background:#0D1B2A;border-top:2px solid #1A2B40;padding:10px 18px;display:flex;gap:24px;align-items:center;">
+      <div style="background:#F8FAFC;border-top:2px solid #E2E8F0;padding:10px 18px;display:flex;gap:24px;align-items:center;">
         <span style="font-size:10px;font-weight:700;color:#64748b;letter-spacing:1px;">📊 DAY TOTAL</span>
-        <span style="font-family:'DM Mono',monospace;font-size:13px;color:#22c55e;font-weight:700;">Qty: ${[...dayJobs,...ipJobs].reduce((a,j)=>a+(+j.qty||0),0).toLocaleString()}</span>
+        <span style="font-family:'DM Mono',monospace;font-size:13px;color:#15803D;font-weight:700;">Qty: ${[...dayJobs,...ipJobs].reduce((a,j)=>a+(+j.qty||0),0).toLocaleString()}</span>
         <span style="font-family:'DM Mono',monospace;font-size:13px;color:#f97316;font-weight:700;">Cut Sheets: ${[...dayJobs,...ipJobs].reduce((a,j)=>a+(+j.cut||0),0).toLocaleString()}</span>
         <span style="font-size:10px;color:#475569;">Starting: ${dayJobs.reduce((a,j)=>a+(+j.qty||0),0).toLocaleString()} qty / ${dayJobs.reduce((a,j)=>a+(+j.cut||0),0).toLocaleString()} sheets</span>
       </div>
@@ -2490,8 +2521,8 @@ function csCard(j){
   if(isBothMach && j.printDateKeys){
     const dEntries = Object.entries(j.printDateKeys);
     bothDatesHtml = `<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;">
-      ${dEntries.map(([m,d])=>`<span style="font-size:10px;background:#1e3a5f;color:#93c5fd;padding:2px 8px;border-radius:10px;">🖨️ ${m}: <b>${d}</b></span>`).join('')}
-      <span style="font-size:10px;background:#7c2d12;color:#fca5a5;padding:2px 8px;border-radius:10px;">⏳ Last: <b>${j.printDateKey}</b></span>
+      ${dEntries.map(([m,d])=>`<span style="font-size:10px;background:#EFF6FF;color:#1D4ED8;padding:2px 8px;border-radius:10px;">🖨️ ${m}: <b>${d}</b></span>`).join('')}
+      <span style="font-size:10px;background:#FEE2E2;color:#991B1B;padding:2px 8px;border-radius:10px;">⏳ Last: <b>${j.printDateKey}</b></span>
     </div>`;
   }
 
@@ -2511,22 +2542,22 @@ function csCard(j){
     ${bothDatesHtml}
     <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;align-items:center;">
       <div class="jt-box" style="background:#2a1f00;border-color:#f97316;flex:1;min-width:120px;">
-        <div class="jt-lbl">🖨️ Print Date${isBothMach?' (Last)':''}</div>
+        <div class="jt-lbl">🖨️ Print End Date${isBothMach?' (Last)':''}</div>
         <div class="jt-time" style="color:#f97316;">${j.printDateKey||'—'}</div>
       </div>
-      <div class="jt-box" style="background:#0d1f0d;border-color:#22c55e;flex:1;min-width:120px;">
+      <div class="jt-box" style="background:#0d1f0d;border-color:#15803D;flex:1;min-width:120px;">
         <div class="jt-lbl">✂️ Punch Start</div>
-        <div class="jt-time" style="color:#22c55e;" id="punch-date-${idx}">${addWorkDaysStatic(j.printDateKey, 1+(j.extraDays||0))||'—'}</div>
+        <div class="jt-time" style="color:#15803D;" id="punch-date-${idx}">${addWorkDaysStatic(j.printDateKey, 1+(j.extraDays||0))||'—'}</div>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
         <div style="font-size:9px;color:#64748b;font-weight:700;">EXTRA DAYS</div>
         <div style="display:flex;align-items:center;gap:4px;">
-          <button onclick="csAdjDays(${idx},-1)" style="background:#1e3a5f;border:none;color:#fff;width:26px;height:26px;border-radius:5px;cursor:pointer;font-size:16px;font-weight:700;">−</button>
-          <span id="cd-val-${idx}" style="color:#fff;font-weight:800;font-size:15px;min-width:28px;text-align:center;background:#1e3a5f;border-radius:4px;padding:2px 4px;">${j.extraDays||0}</span>
+          <button onclick="csAdjDays(${idx},-1)" style="background:#E2E8F0;border:none;color:#334155;width:26px;height:26px;border-radius:5px;cursor:pointer;font-size:16px;font-weight:700;">−</button>
+          <span id="cd-val-${idx}" style="color:#1D4ED8;font-weight:800;font-size:15px;min-width:28px;text-align:center;background:#DBEAFE;border-radius:4px;padding:2px 4px;">${j.extraDays||0}</span>
           <button onclick="csAdjDays(${idx},+1)" style="background:#f97316;border:none;color:#fff;width:26px;height:26px;border-radius:5px;cursor:pointer;font-size:16px;font-weight:700;">+</button>
         </div>
       </div>
-      <span style="font-size:11px;background:#14532d;color:#86efac;padding:4px 10px;border-radius:8px;font-weight:700;align-self:center;">✅ Auto Planned</span>
+      <span style="font-size:11px;background:#DCFCE7;color:#166534;padding:4px 10px;border-radius:8px;font-weight:700;align-self:center;">✅ Auto Planned</span>
     </div>
   </div>`;
 }
@@ -2613,7 +2644,7 @@ function renderTable3(){
     `<tr style="height:6px;background:#0D1B2A;"><td colspan="20" style="border-top:2px solid #334155;padding:0;"></td></tr>
     <tr style="background:#0D1B2A;font-weight:800;">
       <td colspan="4" style="text-align:right;color:#475569;font-size:10px;letter-spacing:1px;padding:10px 14px;">📊 GRAND TOTAL</td>
-      <td style="color:#22c55e;font-family:'DM Mono',monospace;font-size:14px;padding:10px 8px;">${tq3.toLocaleString()}</td>
+      <td style="color:#15803D;font-family:'DM Mono',monospace;font-size:14px;padding:10px 8px;">${tq3.toLocaleString()}</td>
       <td style="color:#f97316;font-family:'DM Mono',monospace;font-size:14px;padding:10px 8px;">${tc3.toLocaleString()}</td>
       <td colspan="14" style="color:#475569;font-size:10px;padding:10px 8px;">${sched.length} jobs scheduled</td>
     </tr>`;
@@ -2622,6 +2653,31 @@ function renderTable3(){
 // ══════════════════════════════════════════════════════
 // URGENT JOB
 // ══════════════════════════════════════════════════════
+function addUrgentFromList(){
+  const name = (document.getElementById('ul_name').value||'').trim();
+  const jcno = (document.getElementById('ul_jcno').value||'').trim()||'URGENT';
+  const qty  = parseFloat(document.getElementById('ul_qty').value)||0;
+  const cut  = parseFloat(document.getElementById('ul_cut').value)||0;
+  const mach = document.getElementById('ul_mach').value;
+  if(!name||!qty){ toast('⚠️ Job Name aur Qty required!'); return; }
+
+  const uj = {
+    sr:0, jcno, docDate:'', cust:'',
+    name, qty, cut:cut||qty,
+    dim:'Unknown', itemType:'', cls:'',
+    status:'URGENT', commit:'', urgent:true,
+    forceMach: mach!=='auto'?mach:null
+  };
+  // Insert at front of clean — today's schedule madhe top la
+  clean.unshift(uj);
+  // Clear form
+  ['ul_name','ul_jcno','ul_qty','ul_cut'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('ul_mach').value='auto';
+  buildSchedule();
+  _urgRender(); // refresh list
+  toast('⚡ Urgent job added — aajchya schedule madhe top la!');
+}
+
 function openModal(){ document.getElementById('modal').classList.add('on'); }
 function closeModal(){ document.getElementById('modal').classList.remove('on'); }
 
@@ -2655,16 +2711,16 @@ function addUrgent(){
 // EXCEL DOWNLOAD
 // ══════════════════════════════════════════════════════
 function dlDay(key){
-  if(!sched.length){ toast('⚠️ No schedule available!'); return; }
+  if(!sched.length){ toast('⚠️ Schedule nahi hai!'); return; }
 
   let dateLabel = new Date(key+'T12:00:00').toLocaleDateString('en-IN',
     {weekday:'long',day:'2-digit',month:'short',year:'numeric'});
 
-  // Allow Sundays too (for manually added jobs)
+  // Sunday la bhi allow karo (manually added jobs asel tar)
   let startJobs = sched.filter(j=>(j.sKey||j.mrKey)===key);
   let ipJobs    = sched.filter(j=>(j.sKey||j.mrKey)<key && (j.eKey||j.sKey)>=key);
   let allDay    = [...startJobs,...ipJobs];
-  if(!allDay.length){ toast('⚠️ No jobs on this date!'); return; }
+  if(!allDay.length){ toast('⚠️ Is din koi job nahi!'); return; }
 
   let b1Start = startJobs.filter(j=>j.mach==='B1');
   let b2Start = startJobs.filter(j=>j.mach==='B2');
@@ -2672,7 +2728,7 @@ function dlDay(key){
   let b2IP    = ipJobs.filter(j=>j.mach==='B2');
 
   let sheets = [];
-  // Combined sheet (all combined)
+  // Combined sheet (sagla ek jaghi)
   sheets.push({ sheetName:'Full Day', dateLabel, b1Start, b2Start, b1IP, b2IP });
   // B1 separate sheet (only if B1 jobs ahet)
   if(b1Start.length || b1IP.length)
@@ -2686,185 +2742,262 @@ function dlDay(key){
 }
 
 // ══════════════════════════════════════════════════════
-// COMBINED EXCEL — Printing + Punching ek sheet mein
+// COMBINED EXCEL — 3 sheets:
+//   Sheet 1: Full Plan (Both machines — day-wise)
+//   Sheet 2: Unit 12 (B1) only
+//   Sheet 3: Unit 19 (B2) only
 // ══════════════════════════════════════════════════════
 async function dlCombinedExcel(){
-  if(!sched.length){ toast('⚠️ No schedule available!'); return; }
-  toast('⏳ Building full plan...');
+  if(!sched.length){ toast('⚠️ Koi schedule nahi hai!'); return; }
+  toast('⏳ Full plan ban raha hai — 3 sheets...');
 
-  // Collect all unique working days
+  // All unique working days
   let daySet = new Set();
   sched.forEach(j=>{
     let d   = new Date((j.sKey||j.mrKey)+'T12:00:00');
     let end = new Date((j.eKey||j.sKey)+'T12:00:00');
-    for(let i=0;i<=60;i++){
+    for(let i=0;i<=90;i++){
       if(d>end) break;
       if(d.getDay()!==0) daySet.add(toLocalKey(d));
       d.setDate(d.getDate()+1);
     }
   });
-
   let days = [...daySet].sort();
-  if(!days.length){ toast('⚠️ No valid days found!'); return; }
+  if(!days.length){ toast('⚠️ Koi valid day nahi!'); return; }
 
-  const NCols = 26;
-  const CW = [4,14,22,36,8,10,18,12,16,12,10,9,8,12,22,10,12,9,10,12,9,10,12,9,12,16];
+  // ── Column definitions (print-friendly widths) ──
+  // Sr | DocID | Customer | JobName | Qty | CutSh | Dim | DieNo |
+  // ItemType | Status | NextProcess | MRType | MRTime | MRDate | ProdStart | ProdDate | Complete | EndDate | Remarks
+  const NCols = 19;
+  const CW = [
+    4,    // Sr
+    13,   // Doc ID
+    24,   // Customer
+    38,   // Job Name
+    9,    // Qty
+    9,    // Cut Sh
+    15,   // Dimension
+    10,   // Die No
+    18,   // Item Type
+    14,   // Status
+    16,   // Next Process
+    16,   // MR Type
+    10,   // MR Time
+    13,   // MR Date
+    10,   // Prod Start
+    13,   // Prod Date
+    10,   // Complete
+    13,   // End Date
+    14    // Remarks
+  ];
+  const HDR = [
+    'Sr','Doc ID','Customer','Job Name','Qty','Cut Sh',
+    'Dimension','Die No','Item Type','Status','Next Process',
+    'MR Type','MR Start','MR Date',
+    'Prod Start','Prod Date',
+    'Complete','End Date','Remarks'
+  ];
 
-  const BHDR = ['Sr','Doc ID','Customer','Job Name','Qty','Cut Sh','Dimension','Die No.',
-    'Item Type','Status','SAP Code','Unit','Ups','Next Process','MR Type',
-    'MR Time','MR Date','MR Shift','Prod Start','Prod Date','Prod Shift',
-    'Complete','End Date','End Shift','Plan','Remarks'];
-
-  let rows = [];
-  let sr = 1;
-
-  // Title
-  let d0s = days[0], dNs = days[days.length-1];
-  let rangeStr = (new Date(d0s+'T12:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})+' – '+new Date(dNs+'T12:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})).toUpperCase();
-  rows.push(pRow(Array(NCols).fill(0).map((_,i)=>pCell(i===0?'AIA INDUSTRIES — PUNCHING SCHEDULE — '+rangeStr:'',1)),30));
-  rows.push(pRow(Array(NCols).fill(0).map((_,i)=>pCell(i===0?'Unit 12 (B1): '+sched.filter(j=>j.mach==='B1').length+' jobs  |  Unit 19 (B2): '+sched.filter(j=>j.mach==='B2').length+' jobs  |  Total Qty: '+sched.reduce((a,j)=>a+(j.qty||0),0).toLocaleString()+'  |  Total Cut: '+sched.reduce((a,j)=>a+(j.cut||0),0).toLocaleString():'',2)),14));
-  rows.push(emptyRow(NCols));
-
-  const _NP_PRI = {
-    'PUNCHING':1,'PUNCHING(R)':1,
-    'COATING':2,'COATING(F)':2,'COATING(R)':2,
-    'LAMINATION':3,'LAMINATION(F)':3,'LAMINATION(R)':3,
-    'VDP':4,'VDP(F)':4,'VDP(R)':4,
-    'PRINTING':5,'PRINTING(F)':5,'PRINTING(R)':5,
-    'JOB NOT STARTED':6,'JOBNOTSTARTED':6
-  };
-  function _npPri(j){
-    const np = String(j.nextProcess||'').trim().toUpperCase().replace(/\s+/g,'');
-    return _NP_PRI[np] !== undefined ? _NP_PRI[np] : 50;
+  // ── Helper: build one row of job data ──
+  function jobVals(j, sr, unitLabel){
+    return [
+      sr,
+      j.docId||j.jcno||'',
+      j.cust||'',
+      j.name||'',
+      j.qty||0,
+      j.cut||0,
+      j.dim||'',
+      getDie(j.dim)||'',
+      j.itemType||'',
+      j.status||'',
+      j.nextProcess||'',
+      j._xlMrLabel||j.mrLabel||'',
+      j.mrTime||'',
+      j.mrDate||'',
+      j.psTime||'',
+      j.psDate||'',
+      j.eTime||'',
+      j.eDate||'',
+      j._breakdown?'Shifted (BD)':j.isAdvanced?'7-Day Plan':unitLabel
+    ];
   }
-  function sortB(arr){
-    return [...arr].sort((a,b)=>{
-      const isPunchA = String(a.status||'').trim().toUpperCase()==='PUNCHING(R)';
-      const isPunchB = String(b.status||'').trim().toUpperCase()==='PUNCHING(R)';
-      if(isPunchA && !isPunchB) return -1;
-      if(!isPunchA && isPunchB) return 1;
-      const npa=_npPri(a), npb=_npPri(b);
-      if(npa!==npb) return npa-npb;
-      if((a.dim||'')!==(b.dim||'')) return (a.dim||'').localeCompare(b.dim||'');
-      return (a.sr||0)-(b.sr||0);
-    });
-  }
+
+  // ── Helper: sort jobs within a day (In Progress first, then by sr) ──
+  function daySort(arr){ return [...arr].sort((a,b)=>(a.sr||0)-(b.sr||0)); }
+
+  // Fix MR label per machine array
   function fixMR(arr){
     let ld=null;
-    arr.forEach(j=>{ j._xlMrLabel=j.dim===ld?'Same Dim ('+MR_SAME+' min)':'New Dim ('+MR_NEW+' min)'; ld=j.dim; });
+    arr.forEach(j=>{
+      j._xlMrLabel = j.dim===ld ? 'Same Dim ('+MR_SAME+' min)' : 'New Dim ('+MR_NEW+' min)';
+      ld = j.dim;
+    });
   }
 
-  let grandQty=0, grandCut=0;
+  // ── Helper: build one complete sheet (rows array) for given machine filter ──
+  // machFilter: null = both, 'B1' = only B1, 'B2' = only B2
+  function buildSheetRows(machFilter){
+    let rows = [];
+    let sr = 1;
+    let grandQty=0, grandCut=0;
 
-  days.forEach(key=>{
-    let dateLabel  = new Date(key+'T12:00:00').toLocaleDateString('en-IN',{weekday:'long',day:'2-digit',month:'short',year:'numeric'});
-    let dayOfWeek  = new Date(key+'T12:00:00').toLocaleDateString('en-IN',{weekday:'long'}).toUpperCase();
-    let dayDateStr = new Date(key+'T12:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'long',year:'numeric'}).toUpperCase();
+    const sheetTitle = machFilter===null
+      ? 'AIA INDUSTRIES — PUNCHING SCHEDULE — FULL PLAN (BOTH MACHINES)'
+      : machFilter==='B1'
+        ? 'AIA INDUSTRIES — PUNCHING SCHEDULE — UNIT 12 (B1)'
+        : 'AIA INDUSTRIES — PUNCHING SCHEDULE — UNIT 19 (B2)';
 
-    let bStart = sched.filter(j=>(j.sKey||j.mrKey)===key);
-    let bIP    = sched.filter(j=>(j.sKey||j.mrKey)<key && (j.eKey||j.sKey)>=key);
-    if(!bStart.length && !bIP.length) return;
+    let d0s=days[0], dNs=days[days.length-1];
+    let rangeStr = new Date(d0s+'T12:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})
+      +' to '+new Date(dNs+'T12:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
 
-    let allB = [...bStart,...bIP];
-    let bQty = allB.reduce((a,j)=>a+(j.qty||0),0);
-    let bCut = allB.reduce((a,j)=>a+(j.cut||0),0);
-    grandQty += bQty; grandCut += bCut;
+    const schedF = machFilter ? sched.filter(j=>j.mach===machFilter) : sched;
 
+    rows.push(pRow(Array(NCols).fill(0).map((_,i)=>pCell(i===0?sheetTitle.toUpperCase():'',1)),28));
+    rows.push(pRow(Array(NCols).fill(0).map((_,i)=>pCell(i===0
+      ?(machFilter===null
+        ? 'B1: '+sched.filter(j=>j.mach==='B1').length+' jobs  |  B2: '+sched.filter(j=>j.mach==='B2').length+' jobs'
+        : (machFilter==='B1'?'Unit 12 (B1)':'Unit 19 (B2)')+': '+schedF.length+' jobs')
+      +'  |  Period: '+rangeStr+'  |  Total Qty: '+schedF.reduce((a,j)=>a+(j.qty||0),0).toLocaleString()+'  |  Cut: '+schedF.reduce((a,j)=>a+(j.cut||0),0).toLocaleString()
+      :'',2)),13));
     rows.push(emptyRow(NCols));
-    rows.push(pRow(Array(NCols).fill(0).map((_,i)=>pCell(i===0?dayOfWeek+'  —  '+dayDateStr:'',30)),36));
-    rows.push(pRow(Array(NCols).fill(0).map((_,i)=>pCell(i===0?'Unit 12: '+allB.filter(j=>j.mach==='B1').length+' jobs  |  Unit 19: '+allB.filter(j=>j.mach==='B2').length+' jobs  |  Qty: '+bQty.toLocaleString()+'  |  Cut: '+bCut.toLocaleString():'',2)),14));
 
-    // Unit 12 (B1)
-    let b1ip=sortB(bIP.filter(j=>j.mach==='B1')), b1st=sortB(bStart.filter(j=>j.mach==='B1'));
-    fixMR([...b1ip,...b1st]);
-    if(b1ip.length||b1st.length){
-      rows.push(pRow(Array(NCols).fill(0).map((_,i)=>pCell(i===0?'    🔵 UNIT 12 (B1)':'',15)),18));
-      rows.push(pRow(BHDR.map(h=>pCell(h,3)),16));
-      b1ip.forEach(j=>{
-        let vals=[sr++,j.docId||j.jcno,j.cust||'',j.name||'',j.qty||0,j.cut||0,j.dim||'',getDie(j.dim),j.itemType||'',j.status||'',j.sapCode||'','Unit 12',j.ups||'',j.nextProcess||'',j._xlMrLabel||j.mrLabel||'',j.mrTime||'',j.mrDate||'',j.mrShift||'',j.psTime||'',j.psDate||'',j.psShift||'',j.eTime||'',j.eDate||'',j.eShift||'','In Progress',j._breakdown?'⚠️ Shifted':'IP'];
-        rows.push(pRow(vals.map((v,ci)=>pCell(v,[13,16,19].includes(ci)?19:7)),15));
-      });
-      b1st.forEach(j=>{
-        let pri=getStatusPriority(j.status), rs=pri===0?8:j.isAdvanced?6:5, ts=pri===0?20:j.isAdvanced?18:17;
-        let plan=j.isAdvanced?'7-Day Plan':pri===0?j.status:'Scheduled';
-        let vals=[sr++,j.docId||j.jcno,j.cust||'',j.name||'',j.qty||0,j.cut||0,j.dim||'',getDie(j.dim),j.itemType||'',j.status||'',j.sapCode||'','Unit 12',j.ups||'',j.nextProcess||'',j._xlMrLabel||j.mrLabel||'',j.mrTime||'',j.mrDate||'',j.mrShift||'',j.psTime||'',j.psDate||'',j.psShift||'',j.eTime||'',j.eDate||'',j.eShift||'',plan,j._breakdown?'⚠️ Shifted':j.sKey===j.eKey?'Single Day':'Multi-Day'];
-        rows.push(pRow(vals.map((v,ci)=>pCell(v,[13,16,19].includes(ci)?ts:rs)),15));
-      });
-      let t1=[...b1ip,...b1st];
-      rows.push(pRow(Array(NCols).fill(0).map((_,i)=>{
-        if(i===0) return pCell('UNIT 12 TOTAL',11);
-        if(i===4) return pCell(t1.reduce((a,j)=>a+(+j.qty||0),0),9);
-        if(i===5) return pCell(t1.reduce((a,j)=>a+(+j.cut||0),0),10);
-        if(i===NCols-1) return pCell(t1.length+' jobs',11);
-        return pCell('',11);
-      }),16));
-    }
+    days.forEach(key=>{
+      const bStart = schedF.filter(j=>(j.sKey||j.mrKey)===key);
+      const bIP    = schedF.filter(j=>(j.sKey||j.mrKey)<key && (j.eKey||j.sKey)>=key);
+      if(!bStart.length && !bIP.length) return;
 
-    // Unit 19 (B2)
-    let b2ip=sortB(bIP.filter(j=>j.mach==='B2')), b2st=sortB(bStart.filter(j=>j.mach==='B2'));
-    fixMR([...b2ip,...b2st]);
-    if(b2ip.length||b2st.length){
-      rows.push(pRow(Array(NCols).fill(0).map((_,i)=>pCell(i===0?'    🟢 UNIT 19 (B2)':'',16)),18));
-      rows.push(pRow(BHDR.map(h=>pCell(h,4)),16));
-      b2ip.forEach(j=>{
-        let vals=[sr++,j.docId||j.jcno,j.cust||'',j.name||'',j.qty||0,j.cut||0,j.dim||'',getDie(j.dim),j.itemType||'',j.status||'',j.sapCode||'','Unit 19',j.ups||'',j.nextProcess||'',j._xlMrLabel||j.mrLabel||'',j.mrTime||'',j.mrDate||'',j.mrShift||'',j.psTime||'',j.psDate||'',j.psShift||'',j.eTime||'',j.eDate||'',j.eShift||'','In Progress',j._breakdown?'⚠️ Shifted':'IP'];
-        rows.push(pRow(vals.map((v,ci)=>pCell(v,[13,16,19].includes(ci)?19:7)),15));
-      });
-      b2st.forEach(j=>{
-        let pri=getStatusPriority(j.status), rs=pri===0?8:j.isAdvanced?6:6, ts=pri===0?20:18;
-        let plan=j.isAdvanced?'7-Day Plan':pri===0?j.status:'Scheduled';
-        let vals=[sr++,j.docId||j.jcno,j.cust||'',j.name||'',j.qty||0,j.cut||0,j.dim||'',getDie(j.dim),j.itemType||'',j.status||'',j.sapCode||'','Unit 19',j.ups||'',j.nextProcess||'',j._xlMrLabel||j.mrLabel||'',j.mrTime||'',j.mrDate||'',j.mrShift||'',j.psTime||'',j.psDate||'',j.psShift||'',j.eTime||'',j.eDate||'',j.eShift||'',plan,j._breakdown?'⚠️ Shifted':j.sKey===j.eKey?'Single Day':'Multi-Day'];
-        rows.push(pRow(vals.map((v,ci)=>pCell(v,[13,16,19].includes(ci)?ts:rs)),15));
-      });
-      let t2=[...b2ip,...b2st];
-      rows.push(pRow(Array(NCols).fill(0).map((_,i)=>{
-        if(i===0) return pCell('UNIT 19 TOTAL',11);
-        if(i===4) return pCell(t2.reduce((a,j)=>a+(+j.qty||0),0),9);
-        if(i===5) return pCell(t2.reduce((a,j)=>a+(+j.cut||0),0),10);
-        if(i===NCols-1) return pCell(t2.length+' jobs',11);
-        return pCell('',11);
-      }),16));
-    }
+      const allB = [...bStart,...bIP];
+      const bQty = allB.reduce((a,j)=>a+(j.qty||0),0);
+      const bCut = allB.reduce((a,j)=>a+(j.cut||0),0);
+      grandQty += bQty; grandCut += bCut;
 
-    // DAY TOTAL — label + Qty + Cut clearly in separate cells (no merge)
-    let dtCells = Array(NCols).fill(0).map((_,i)=>{
-      if(i===0) return pCell('DAY TOTAL — '+dateLabel, 12);
-      if(i===4) return pCell(bQty, 13);
-      if(i===5) return pCell(bCut, 14);
-      if(i===NCols-1) return pCell(allB.length+' jobs', 12);
-      return pCell('', 12);
+      const dayOfWeek  = new Date(key+'T12:00:00').toLocaleDateString('en-IN',{weekday:'long'}).toUpperCase();
+      const dayDateStr = new Date(key+'T12:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'long',year:'numeric'}).toUpperCase();
+
+      rows.push(emptyRow(NCols));
+      rows.push(pRow(Array(NCols).fill(0).map((_,i)=>pCell(i===0?'📅  '+dayOfWeek+'   —   '+dayDateStr:'',30)),22));
+      rows.push(pRow(Array(NCols).fill(0).map((_,i)=>pCell(i===0
+        ?'Qty: '+bQty.toLocaleString()+'   |   Cut: '+bCut.toLocaleString()
+        +(machFilter===null
+          ? '   |   B1: '+allB.filter(j=>j.mach==='B1').length+' jobs   |   B2: '+allB.filter(j=>j.mach==='B2').length+' jobs'
+          : '   |   Jobs: '+allB.length)
+        :'',2)),12));
+
+      // ── For full plan: show B1 then B2 sections; for machine sheet: flat list ──
+      if(machFilter===null){
+        // B1 section
+        const b1All = daySort([...bIP.filter(j=>j.mach==='B1'),...bStart.filter(j=>j.mach==='B1')]);
+        fixMR(b1All);
+        if(b1All.length){
+          rows.push(pRow(Array(NCols).fill(0).map((_,i)=>pCell(i===0?'  UNIT 12  (B1)':'',15)),16));
+          rows.push(pRow(HDR.map(h=>pCell(h,3)),15));
+          b1All.forEach(j=>{
+            const isIP = (j.sKey||j.mrKey)<key;
+            const stU = String(j.status||'').trim().toUpperCase();
+            const style = isIP?19:stU==='PUNCHING(R)'?8:j.isAdvanced?6:5;
+            rows.push(pRow(jobVals(j,sr++,'Unit 12').map((v,ci)=>pCell(v,style)),15));
+          });
+          const t1Qty=b1All.reduce((a,j)=>a+(+j.qty||0),0), t1Cut=b1All.reduce((a,j)=>a+(+j.cut||0),0);
+          rows.push(pRow(Array(NCols).fill(0).map((_,i)=>i===0?pCell('B1 SUBTOTAL',11):i===4?pCell(t1Qty,9):i===5?pCell(t1Cut,10):pCell('',11)),13));
+        }
+        // B2 section
+        const b2All = daySort([...bIP.filter(j=>j.mach==='B2'),...bStart.filter(j=>j.mach==='B2')]);
+        fixMR(b2All);
+        if(b2All.length){
+          rows.push(pRow(Array(NCols).fill(0).map((_,i)=>pCell(i===0?'  UNIT 19  (B2)':'',16)),16));
+          rows.push(pRow(HDR.map(h=>pCell(h,4)),15));
+          b2All.forEach(j=>{
+            const isIP = (j.sKey||j.mrKey)<key;
+            const stU = String(j.status||'').trim().toUpperCase();
+            const style = isIP?19:stU==='PUNCHING(R)'?8:j.isAdvanced?6:6;
+            rows.push(pRow(jobVals(j,sr++,'Unit 19').map((v,ci)=>pCell(v,style)),15));
+          });
+          const t2Qty=b2All.reduce((a,j)=>a+(+j.qty||0),0), t2Cut=b2All.reduce((a,j)=>a+(+j.cut||0),0);
+          rows.push(pRow(Array(NCols).fill(0).map((_,i)=>i===0?pCell('B2 SUBTOTAL',11):i===4?pCell(t2Qty,9):i===5?pCell(t2Cut,10):pCell('',11)),13));
+        }
+      } else {
+        // Single machine sheet — flat list
+        const allSorted = daySort([...bIP,...bStart]);
+        fixMR(allSorted);
+        if(allSorted.length){
+          rows.push(pRow(HDR.map(h=>pCell(h, machFilter==='B1'?3:4)),15));
+          allSorted.forEach(j=>{
+            const isIP = (j.sKey||j.mrKey)<key;
+            const stU = String(j.status||'').trim().toUpperCase();
+            const style = isIP?19:stU==='PUNCHING(R)'?8:j.isAdvanced?6:5;
+            rows.push(pRow(jobVals(j,sr++, machFilter==='B1'?'Unit 12':'Unit 19').map(v=>pCell(v,style)),15));
+          });
+        }
+      }
+
+      // Day total row
+      rows.push(pRow(Array(NCols).fill(0).map((_,i)=>
+        i===0?pCell('DAY TOTAL',12):i===4?pCell(bQty,13):i===5?pCell(bCut,14):pCell('',12)
+      ),14));
     });
-    rows.push(pRow(dtCells, 18));
+
+    // Grand Total
     rows.push(emptyRow(NCols));
-  });
+    rows.push(pRow(Array(NCols).fill(0).map((_,i)=>
+      i===0?pCell('GRAND TOTAL',12):i===4?pCell(grandQty,13):i===5?pCell(grandCut,14):pCell('',12)
+    ),18));
 
-  // Grand Total
-  rows.push(pRow(Array(NCols).fill(0).map((_,i)=>i===0?pCell('GRAND TOTAL — ALL DAYS',12):i===4?pCell(grandQty,13):i===5?pCell(grandCut,14):i===NCols-1?pCell(sched.length+' jobs',12):pCell('',12)),20));
+    return rows;
+  }
 
-  try {
-    const wbXL = XLSX.utils.book_new();
-    const aoa  = rows.map(r => r ? r.cells.map(c=>c.v===''||c.v==null?'':c.v) : []);
-    const ws   = XLSX.utils.aoa_to_sheet(aoa);
+  // ── Helper: rows → worksheet ──
+  function rowsToWs(rows, mergeStyles){
+    const aoa = rows.map(r=>r?r.cells.map(c=>c.v===''||c.v==null?'':c.v):[]);
+    const ws  = XLSX.utils.aoa_to_sheet(aoa);
     ws['!cols'] = CW.map(w=>({wch:w}));
-    ws['!rows'] = rows.map(r=>r?{hpt:r.ht||15}:{hpt:6});
+    ws['!rows'] = rows.map(r=>r?{hpt:r.ht||14}:{hpt:4});
+    ws['!pageSetup'] = {orientation:'landscape',fitToPage:1,fitToWidth:1,fitToHeight:0,paperSize:9};
+    ws['!margins']   = {left:0.4,right:0.4,top:0.5,bottom:0.5,header:0.3,footer:0.3};
     try{ applyXlStyles(ws,rows); }catch(se){ console.warn('Style:',se.message); }
     let merges=[];
     rows.forEach((row,ri)=>{
       if(!row||!row.cells||!row.cells.length) return;
-      let s0=row.cells[0]&&row.cells[0].s;
-      if([1,2,30,15,16].includes(s0)) merges.push({s:{r:ri,c:0},e:{r:ri,c:NCols-1}}); // only title/section headers merged; totals not merged
+      const s0 = row.cells[0]&&row.cells[0].s;
+      if([1,2,30,15,16].includes(s0)) merges.push({s:{r:ri,c:0},e:{r:ri,c:NCols-1}});
     });
-    ws['!merges']=merges;
-    const fHdr=rows.findIndex(r=>r&&r.cells&&r.cells[0]&&(r.cells[0].s===3||r.cells[0].s===4));
-    if(fHdr>=0) ws['!autofilter']={ref:`A${fHdr+1}:X${fHdr+1}`};
-    XLSX.utils.book_append_sheet(wbXL, ws, 'Punching Plan');
-    xlsxDl(wbXL, 'AIA_Full_Plan_'+new Date().toLocaleDateString('en-IN').replace(/\//g,'_')+'.xlsx');
-    toast('⬇️ Full Plan Excel ready!');
+    ws['!merges'] = merges;
+    // Auto-filter on first header row
+    const fHdr = rows.findIndex(r=>r&&r.cells&&r.cells[0]&&(r.cells[0].s===3||r.cells[0].s===4));
+    if(fHdr>=0) ws['!autofilter']={ref:`A${fHdr+1}:S${fHdr+1}`};
+    return ws;
+  }
+
+  try {
+    const wbXL = XLSX.utils.book_new();
+    const dateStr = new Date().toLocaleDateString('en-IN').replace(/\//g,'_');
+
+    // Sheet 1 — Full Plan (Both)
+    const rowsBoth = buildSheetRows(null);
+    XLSX.utils.book_append_sheet(wbXL, rowsToWs(rowsBoth), 'Full Plan');
+
+    // Sheet 2 — Unit 12 (B1)
+    const b1Jobs = sched.filter(j=>j.mach==='B1');
+    if(b1Jobs.length){
+      const rowsB1 = buildSheetRows('B1');
+      XLSX.utils.book_append_sheet(wbXL, rowsToWs(rowsB1), 'Unit 12 (B1)');
+    }
+
+    // Sheet 3 — Unit 19 (B2)
+    const b2Jobs = sched.filter(j=>j.mach==='B2');
+    if(b2Jobs.length){
+      const rowsB2 = buildSheetRows('B2');
+      XLSX.utils.book_append_sheet(wbXL, rowsToWs(rowsB2), 'Unit 19 (B2)');
+    }
+
+    xlsxDl(wbXL, 'AIA_Full_Plan_'+dateStr+'.xlsx');
+    toast('⬇️ Full Plan Excel ready — 3 sheets!');
   } catch(e){ toast('❌ '+e.message); console.error(e); }
 }
 
 async function dlAllDays(){
-  if(!sched.length){ toast('⚠️ No schedule available!'); return; }
+  if(!sched.length){ toast('⚠️ Schedule nahi hai!'); return; }
 
   // Collect all unique working days
   let daySet = new Set();
@@ -2880,13 +3013,13 @@ async function dlAllDays(){
 
   let days = [...daySet].sort();
   console.log('dlAllDays — total days:', days.length, days.join(','));
-  toast('⏳ Building single sheet plan...');
+  toast('⏳ Single sheet plan ban raha hai...');
 
   const NCols = 26;
-  const CW = [4, 14, 22, 36, 8, 10, 18, 12,
-              16, 12, 10, 9,  8, 12, 22,
-              10, 14, 9,  10, 14, 9,
-              10, 14, 9,  12, 16];
+  const CW = [4, 13, 26, 42, 9, 9, 16, 11,
+              18, 14, 14, 9, 5, 16, 14,
+              10, 13, 10, 11, 13, 10,
+              11, 13, 10, 14, 18];
   const HDR = ['Sr','Doc ID','Customer','Job Name','Qty','Cut Sh','Dimension','Die No.',
     'Item Type','Status','SAP Code','Unit','Ups','Next Process','MR Type',
     'MR Time','MR Date','MR Shift','Prod Start','Prod Date','Prod Shift',
@@ -2974,13 +3107,13 @@ async function dlAllDays(){
       rows.push(pRow(HDR.map(h=>pCell(h,3)),24));
       b1ip.forEach(j=>{
         let vals=[sr++,j.docId||j.jcno,j.cust||'',j.name||'',j.qty||0,j.cut||0,j.dim||'',getDie(j.dim),j.itemType||'',j.status||'',j.sapCode||'','Unit 12',j.ups||'',j.nextProcess||'',j.mrLabel||'',j.mrTime||'',j.mrDate||'',j.mrShift||'',j.psTime||'',j.psDate||'',j.psShift||'',j.eTime||'',j.eDate||'',j.eShift||'','In Progress',j._breakdown?'⚠️ Breakdown Shifted':'IP'];
-        rows.push(pRow(vals.map((v,ci)=>pCell(v,[13,16,19].includes(ci)?19:7)),15));
+        rows.push(pRow(vals.map((v,ci)=>pCell(v,[13,16,19].includes(ci)?19:7)),36));
       });
       b1st.forEach(j=>{
         let pri=getStatusPriority(j.status),rs=pri===0?8:j.isAdvanced?6:5,ts=pri===0?20:j.isAdvanced?18:17;
         let plan=j.isAdvanced?'7-Day Plan':pri===0?j.status:'Scheduled';
         let vals=[sr++,j.docId||j.jcno,j.cust||'',j.name||'',j.qty||0,j.cut||0,j.dim||'',getDie(j.dim),j.itemType||'',j.status||'',j.sapCode||'','Unit 12',j.ups||'',j.nextProcess||'',j._xlMrLabel||j.mrLabel||'',j.mrTime||'',j.mrDate||'',j.mrShift||'',j.psTime||'',j.psDate||'',j.psShift||'',j.eTime||'',j.eDate||'',j.eShift||'',plan,j._breakdown?'⚠️ Shifted':j.sKey===j.eKey?'Single Day':'Multi-Day'];
-        rows.push(pRow(vals.map((v,ci)=>pCell(v,[13,16,19].includes(ci)?ts:rs)),15));
+        rows.push(pRow(vals.map((v,ci)=>pCell(v,[13,16,19].includes(ci)?ts:rs)),36));
       });
       let t1=[...b1ip,...b1st];
       rows.push(pRow(Array(NCols).fill(0).map((_,i)=>i===3?pCell('UNIT 12 TOTAL',11):i===4?pCell(t1.reduce((a,j)=>a+(j.qty||0),0),9):i===5?pCell(t1.reduce((a,j)=>a+(j.cut||0),0),10):i===NCols-1?pCell(t1.length+' jobs',11):pCell('',11)),16));
@@ -2995,13 +3128,13 @@ async function dlAllDays(){
       rows.push(pRow(HDR.map(h=>pCell(h,4)),24));
       b2ip.forEach(j=>{
         let vals=[sr++,j.docId||j.jcno,j.cust||'',j.name||'',j.qty||0,j.cut||0,j.dim||'',getDie(j.dim),j.itemType||'',j.status||'',j.sapCode||'','Unit 19',j.ups||'',j.nextProcess||'',j.mrLabel||'',j.mrTime||'',j.mrDate||'',j.mrShift||'',j.psTime||'',j.psDate||'',j.psShift||'',j.eTime||'',j.eDate||'',j.eShift||'','In Progress',j._breakdown?'⚠️ Breakdown Shifted':'IP'];
-        rows.push(pRow(vals.map((v,ci)=>pCell(v,[13,16,19].includes(ci)?19:7)),15));
+        rows.push(pRow(vals.map((v,ci)=>pCell(v,[13,16,19].includes(ci)?19:7)),36));
       });
       b2st.forEach(j=>{
         let pri=getStatusPriority(j.status),rs=pri===0?8:j.isAdvanced?6:6,ts=pri===0?20:18;
         let plan=j.isAdvanced?'7-Day Plan':pri===0?j.status:'Scheduled';
         let vals=[sr++,j.docId||j.jcno,j.cust||'',j.name||'',j.qty||0,j.cut||0,j.dim||'',getDie(j.dim),j.itemType||'',j.status||'',j.sapCode||'','Unit 19',j.ups||'',j.nextProcess||'',j._xlMrLabel||j.mrLabel||'',j.mrTime||'',j.mrDate||'',j.mrShift||'',j.psTime||'',j.psDate||'',j.psShift||'',j.eTime||'',j.eDate||'',j.eShift||'',plan,j._breakdown?'⚠️ Shifted':j.sKey===j.eKey?'Single Day':'Multi-Day'];
-        rows.push(pRow(vals.map((v,ci)=>pCell(v,[13,16,19].includes(ci)?ts:rs)),15));
+        rows.push(pRow(vals.map((v,ci)=>pCell(v,[13,16,19].includes(ci)?ts:rs)),36));
       });
       let t2=[...b2ip,...b2st];
       rows.push(pRow(Array(NCols).fill(0).map((_,i)=>i===3?pCell('UNIT 19 TOTAL',11):i===4?pCell(t2.reduce((a,j)=>a+(j.qty||0),0),9):i===5?pCell(t2.reduce((a,j)=>a+(j.cut||0),0),10):i===NCols-1?pCell(t2.length+' jobs',11):pCell('',11)),16));
@@ -3055,7 +3188,7 @@ async function dlAllDays(){
 }
 
 function dlClean(){
-  if(!clean.length){ toast('⚠️ No data available!'); return; }
+  if(!clean.length){ toast('⚠️ Koi data nahi!'); return; }
   let h = ['Sr No','Doc ID','Doc Date','SAP Code','PONO','Client Code','Customer Name','Job Name','Job Qty',
     'Total Cut Sheet','Carton Dimension','Item Type','Item Class','Job Status','Ups','Next Process'];
   let rows = clean.map(r=>[r.sr,r.docId||r.jcno,r.docDate,r.sapCode||'',r.pono||'',
@@ -3102,7 +3235,7 @@ function buildPrintSchedule(){
     let dim = job.dim || 'Unknown';
     let cut = Math.max(job.cut || job.qty || 1, 1);
 
-    let mr = PRINT_MR_NEW;  // Printing — always new MR (same dim not applicable)
+    let mr = PRINT_MR_NEW;  // Printing — always new MR (same dim nahi hota)
     let mrLabel = `MR (${PRINT_MR_NEW}m)`;
     let proc = cut / PRINT_SPEED;
 
@@ -3151,8 +3284,8 @@ function renderPrintView(){
   renderPrintDays('6col');
   renderPrintTable();
 
-  document.getElementById('printBadge').textContent = printSched.length;
-  document.getElementById('printDlBtn').style.display = printSched.length ? '' : 'none';
+  const _pb2 = document.getElementById('printBadge'); if(_pb2) _pb2.textContent = printSched.length;
+  const _pdl = document.getElementById('printDlBtn'); if(_pdl) _pdl.style.display = printSched.length ? '' : 'none';
 }
 
 function renderPrintDays(mode){
@@ -3165,7 +3298,7 @@ function renderPrintDays(mode){
   let containerId = mode==='4col' ? 'print4cards' : mode==='6col' ? 'print6cards' : 'printDayCards';
 
   if(!jobs.length){
-    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:40px;color:#64748b;"><div style="font-size:36px;margin-bottom:12px;">🖨️</div><div>Printing schedule file not uploaded. Upload Printing Pipeline file in Step 1.</div></div>`;
+    document.getElementById(containerId).innerHTML = `<div style="text-align:center;padding:40px;color:#64748b;"><div style="font-size:36px;margin-bottom:12px;">🖨️</div><div>Printing schedule file upload nahi hua. Step 1 mein Printing Pipeline file upload karo.</div></div>`;
     return;
   }
 
@@ -3235,7 +3368,7 @@ function pCard(j, inProgress){
       <span>📐 ${j.dim||'—'}</span>
       ${j.itemType?`<span>🏷️ ${j.itemType}</span>`:''}
       <span>⏱️ ${procHrs} hrs</span>
-      <span style="background:#1e293b;color:#94a3b8;padding:1px 7px;border-radius:10px;font-size:9px;">⚙️ ${statusPill}</span>
+      <span style="background:#F1F5F9;color:#475569;padding:1px 7px;border-radius:10px;font-size:9px;">⚙️ ${statusPill}</span>
       ${multiDay?'<span style="color:var(--accent);font-weight:700;">🔁 Multi-day</span>':''}
     </div>
     <div class="jtimes">
@@ -3314,7 +3447,7 @@ function dlPrintDay(key){
 }
 
 function dlPrintingExcel(){
-  if(!printSched.length){ toast('⚠️ No printing schedule available!'); return; }
+  if(!printSched.length){ toast('⚠️ Printing schedule nahi hai!'); return; }
   let daySet = new Set();
   printSched.forEach(j=>{
     let d = new Date(j.sKey+'T12:00:00'), end = new Date(j.eKey+'T12:00:00');
@@ -3664,25 +3797,106 @@ const _SM = {
   // ── Day subheader (style 31)
   31: {bg:'1E293B', fc:'94A3B8', bold:false, sz:11},  // day subtitle
 };
+// ── Build worksheet preserving cell types (text vs number) ──
+function wsFromRows(rows){
+  const aoa = rows.map(r => r ? r.cells.map(c => c.v===''||c.v==null ? '' : c.v) : []);
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
+  // Fix numeric cells — aoa_to_sheet auto-detects numbers already, good
+  return ws;
+}
+
+
 function applyXlStyles(ws, rows){
+  // Border helpers
+  const bThin   = {style:'thin',   color:{rgb:'FFB0BEC5'}};  // light grey thin
+  const bMed    = {style:'medium', color:{rgb:'FF546E7A'}};  // medium grey
+  const bThick  = {style:'thick',  color:{rgb:'FF1D4ED8'}};  // blue thick (headers)
+  const bThickG = {style:'thick',  color:{rgb:'FF15803D'}};  // green thick
+  const bDark   = {style:'medium', color:{rgb:'FF0F172A'}};  // dark for day headers
+  const bNone   = {style:'none'};
+
+  function border(t,r,b,l){ return {top:t,right:r,bottom:b,left:l}; }
+
   rows.forEach((row, ri) => {
     if(!row) return;
     const ncols = row.cells.length;
     for(let ci=0; ci<ncols; ci++){
       const cell = row.cells[ci];
-      const s = cell.s||0; if(!s) continue;   // FIX: continue not return
-      const st = _SM[s]; if(!st) continue;
+      const s = cell.s||0;
+      const st = _SM[s];
       const addr = XLSX.utils.encode_cell({r:ri, c:ci});
       if(!ws[addr]) ws[addr] = {t:'s', v:''};
-      ws[addr].s = {
-        fill: {patternType:'solid', fgColor:{rgb:'FF'+st.bg}},
-        font: {bold:st.bold, sz:st.sz, color:{rgb:'FF'+st.fc}, name:'Calibri'},
-        alignment: {
-          vertical:'center',
-          horizontal: (s===30||s===1||s===21) ? 'left' : undefined,
-          wrapText:!!(s===3||s===4||s===22||s===23)
-        }
+
+      // Alignment
+      const isHeader  = [1,3,4,21,22,23,30].includes(s);
+      const isSection = [15,16,24,25,31].includes(s);
+      const isTotal   = [9,10,11,12,13,14].includes(s);
+      const isData    = [5,6,7,8,26,27,28,29].includes(s);
+      const isTime    = [17,18,19,20].includes(s);
+      const isSubtitle= [2,31].includes(s);
+
+      // Col index for numeric right-align (Qty=4, CutSh=5, Ups=12)
+      const numericCols = [4,5,12];
+      const isNumericCol = numericCols.includes(ci);
+      const alignment = {
+        vertical: 'center',
+        horizontal: (isHeader||isSection||isTotal||s===12) ? 'center'
+                  : (isData && isNumericCol) ? 'right'
+                  : isData ? 'left'
+                  : undefined,
+        wrapText: (isData || isHeader) && !isNumericCol
       };
+
+      // Choose border style per row type
+      let brd;
+      if(s===30){
+        // Day date big header — thick dark bottom
+        brd = border(bDark, bNone, bDark, bNone);
+      } else if(s===1||s===21){
+        // Main title — thick bottom
+        brd = border(bNone, bNone, bThick, bNone);
+      } else if(s===3){
+        // B1 col header — thick left+bottom, thin right
+        brd = border(bThick, bThin, bThick, ci===0?bThick:bThin);
+      } else if(s===4){
+        // B2 col header
+        brd = border(bThickG, bThin, bThickG, ci===0?bThickG:bThin);
+      } else if(s===22||s===23){
+        // Print col headers
+        brd = border(bMed, bThin, bMed, ci===0?bMed:bThin);
+      } else if(s===15||s===16||s===24||s===25){
+        // Machine section headers
+        brd = border(bMed, bNone, bMed, ci===0?bMed:bNone);
+      } else if(s===31||s===2){
+        // Subtitle rows
+        brd = border(bNone, bNone, bThin, bNone);
+      } else if(isTotal||s===12||s===13||s===14){
+        // Total rows — medium top+bottom
+        brd = border(bMed, bThin, bMed, ci===0?bMed:bThin);
+      } else if(isData||isTime){
+        // Data rows — thin all around
+        brd = border(bThin, bThin, bThin, ci===0?bMed:bThin);
+      } else {
+        brd = border(bNone, bNone, bThin, bNone);
+      }
+
+      // Number format for numeric cells
+      let numFmt = undefined;
+      if([9,10,13,14].includes(s)) numFmt = '#,##0';   // thousands separator for totals
+      if([5,6,7,8,26,27,28,29].includes(s) && typeof cell.v === 'number') numFmt = '#,##0';
+
+      ws[addr].s = {
+        fill: st ? {patternType:'solid', fgColor:{rgb:'FF'+st.bg}} : {patternType:'none'},
+        font: st ? {bold:st.bold, sz:st.sz, color:{rgb:'FF'+st.fc}, name:'Calibri'} : {name:'Calibri', sz:10},
+        alignment,
+        border: brd,
+        numFmt: numFmt
+      };
+      // Ensure numeric cells are typed correctly
+      if(typeof cell.v === 'number' && ws[addr].t === 's'){
+        ws[addr].t = 'n';
+        ws[addr].v = cell.v;
+      }
     }
   });
 }
@@ -3922,8 +4136,8 @@ function previewFullDayBreakdown(){
   if(!dt){ document.getElementById('bdFullPreview').innerHTML = 'Date select kara'; return; }
   const jobs = sched.filter(j => j.sKey === dt || j.mrKey === dt);
   document.getElementById('bdFullPreview').innerHTML = jobs.length
-    ? `<b style="color:#f97316;">${jobs.length} jobs</b> scheduled on this date — all will shift to next day.<br><span style="color:#64748b;">${jobs.slice(0,3).map(j=>j.docId||j.jcno).join(', ')}${jobs.length>3?' + '+(jobs.length-3)+' more':''}</span>`
-    : `<span style="color:#64748b;">Ya date la no jobs.</span>`;
+    ? `<b style="color:#f97316;">${jobs.length} jobs</b> ya date la scheduled aahet — te sagle next day la shift hotil.<br><span style="color:#64748b;">${jobs.slice(0,3).map(j=>j.docId||j.jcno).join(', ')}${jobs.length>3?' + '+(jobs.length-3)+' more':''}</span>`
+    : `<span style="color:#64748b;">Ya date la koi job nahi.</span>`;
 }
 document.addEventListener('change', function(e){ if(e.target.id==='bdFullDate') previewFullDayBreakdown(); });
 
@@ -3974,22 +4188,22 @@ function renderJobBdList(){
   const all = sched.filter(j => !dt || j.sKey === dt || j.mrKey === dt);
   const el  = document.getElementById('jobBdList');
   if(!all.length){
-    el.innerHTML = `<div style="color:#64748b;font-size:12px;padding:12px;">No jobs scheduled on this date.</div>`;
+    el.innerHTML = `<div style="color:#64748b;font-size:12px;padding:12px;">Ya date la koi job schedule nahi.</div>`;
     document.getElementById('jobBdSelectedCount').textContent = '0 jobs selected';
     return;
   }
   el.innerHTML = all.map((j,i) => `
-    <label style="display:flex;align-items:center;gap:10px;background:#1a2736;border:1px solid #2a3f55;border-radius:7px;padding:9px 12px;cursor:pointer;">
+    <label style="display:flex;align-items:center;gap:10px;background:#F8FAFC;border:1px solid #CBD5E1;border-radius:7px;padding:9px 12px;cursor:pointer;">
       <input type="checkbox" data-jid="${j.docId||j.jcno}" onchange="updateJobBdCount()"
         style="width:16px;height:16px;accent-color:#3b82f6;flex-shrink:0;">
       <div style="flex:1;min-width:0;">
         <div style="display:flex;gap:8px;align-items:center;">
           <b style="color:#60a5fa;font-size:12px;">${j.docId||j.jcno}</b>
-          <span style="font-size:10px;background:${j.mach==='B1'?'#1e3a5f':'#14532d'};color:${j.mach==='B1'?'#93c5fd':'#86efac'};padding:1px 7px;border-radius:8px;">
+          <span style="font-size:10px;background:${j.mach==='B1'?'#DBEAFE':'#DCFCE7'};color:${j.mach==='B1'?'#1E40AF':'#166534'};padding:1px 7px;border-radius:8px;">
             ${j.mach==='B1'?'Unit 12':'Unit 19'}</span>
           <span class="pill ${pcNew(j.status)}" style="font-size:9px;">${j.status||'—'}</span>
         </div>
-        <div style="font-size:11px;color:#cbd5e1;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${j.name}</div>
+        <div style="font-size:11px;color:#334155;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${j.name}</div>
         <div style="font-size:10px;color:#64748b;">${j.cust} | ✂️ ${(j.cut||0).toLocaleString()} | 📐 ${j.dim||'—'} | 🗓️ ${j.mrDate||'—'}</div>
       </div>
     </label>`).join('');
@@ -4003,7 +4217,7 @@ function updateJobBdCount(){
 
 function applyJobBreakdown(){
   const checks = [...document.querySelectorAll('#jobBdList input[type=checkbox]:checked')];
-  if(!checks.length){ toast('⚠️ No jobs selected!'); return; }
+  if(!checks.length){ toast('⚠️ Koi job select nahi!'); return; }
 
   checks.forEach(cb => {
     const jid = cb.dataset.jid;
@@ -4033,7 +4247,7 @@ function applyJobBreakdown(){
 }
 
 function resetBreakdown(){
-  if(!Object.keys(bdFullDays).length && !bdJobSet.size){ toast('No breakdown set.'); return; }
+  if(!Object.keys(bdFullDays).length && !bdJobSet.size){ toast('Koi breakdown set nahi.'); return; }
   bdFullDays = {}; bdJobSet.clear();
   updateBreakdownStatus();
   buildSchedule(); // full rebuild
@@ -4045,8 +4259,8 @@ function updateBreakdownStatus(){
   const jobs = bdJobSet.size;
   const el   = document.getElementById('breakdownStatus');
   if(!days.length && !jobs){
-    el.innerHTML = 'No breakdown set. Schedule is normal.';
-    el.style.color = '#94a3b8';
+    el.innerHTML = 'Koi breakdown set nahi. Schedule normal aahe.';
+    el.style.color = '#64748B';
   } else {
     let parts = [];
     if(days.length) parts.push(`<span style="color:#f97316;">📅 ${days.length} full day(s): ${days.map(d=>d+' ('+bdFullDays[d]+')').join(', ')}</span>`);
@@ -4068,8 +4282,8 @@ async function dlB2DayWise(){
 
 async function dlMachineDayWise(mach, unitLabel){
   const machJobs = sched.filter(j => j.mach === mach);
-  if(!machJobs.length){ toast(`⚠️ ${unitLabel} (${mach}) la no jobs!`); return; }
-  toast(`⏳ Building ${unitLabel} day-wise plan...`);
+  if(!machJobs.length){ toast(`⚠️ ${unitLabel} (${mach}) la koi job nahi!`); return; }
+  toast(`⏳ ${unitLabel} day-wise plan ban raha hai...`);
 
   // Collect all days for this machine
   let daySet = new Set();
@@ -4189,319 +4403,13 @@ async function dlMachineDayWise(mach, unitLabel){
     rows.forEach((row,ri)=>{
       if(!row||!row.cells||!row.cells.length) return;
       const s0 = row.cells[0]&&row.cells[0].s;
-      if([1,2,30,15,16].includes(s0)) merges.push({s:{r:ri,c:0},e:{r:ri,c:NCols-1}}); // day total (11) + grand total (12) NOT merged
+      if([1,2,30,31,15,16].includes(s0)) merges.push({s:{r:ri,c:0},e:{r:ri,c:NCols-1}});
     });
     ws['!merges'] = merges;
     XLSX.utils.book_append_sheet(wbXL, ws, `${unitLabel} Plan`);
     xlsxDl(wbXL, `AIA_${unitLabel.replace(' ','_')}_${mach}_Plan_${new Date().toLocaleDateString('en-IN').replace(/\//g,'_')}.xlsx`);
     toast(`⬇️ ${unitLabel} Day-wise Plan ready!`);
   }catch(e){ toast('❌ '+e.message); console.error(e); }
-}
-
-// ══════════════════════════════════════════════════════
-// 7-DAY PRINT — Black & White, Landscape, Fit-to-page
-// ══════════════════════════════════════════════════════
-function dl7DayPrint(){
-  if(!sched.length){ toast('⚠️ No schedule available!'); return; }
-
-  // Collect next 7 working days from BASE
-  const baseKey = toLocalKey(BASE);
-  let workDays = [];
-  let d = new Date(BASE); d.setHours(12,0,0,0);
-  while(workDays.length < 7){
-    const k = toLocalKey(d);
-    if(!isNonWorking(d)) workDays.push(k);
-    d.setDate(d.getDate()+1);
-  }
-
-  // Filter only days that have jobs
-  let days = workDays.filter(key => {
-    const start = sched.filter(j=>(j.sKey||j.mrKey)===key);
-    const ip    = sched.filter(j=>(j.sKey||j.mrKey)<key && (j.eKey||j.sKey)>=key);
-    return start.length || ip.length;
-  });
-
-  if(!days.length){ toast('⚠️ No jobs in next 7 days!'); return; }
-
-  // Build HTML for print — B&W, landscape, structured table
-  const dateRange = (() => {
-    const d0 = new Date(days[0]+'T12:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
-    const dN = new Date(days[days.length-1]+'T12:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
-    return d0 + ' — ' + dN;
-  })();
-
-  const totalJobs = sched.filter(j => days.includes(j.sKey||j.mrKey) || days.some(k=>(j.sKey||j.mrKey)<k&&(j.eKey||j.sKey)>=k));
-  const totalQty  = [...new Set(totalJobs.map(j=>j.jcno||j.docId))].reduce((a,jcno)=>{
-    const j = totalJobs.find(x=>(x.jcno||x.docId)===jcno); return a+(j?+j.qty||0:0);
-  },0);
-  const totalCut  = [...new Set(totalJobs.map(j=>j.jcno||j.docId))].reduce((a,jcno)=>{
-    const j = totalJobs.find(x=>(x.jcno||x.docId)===jcno); return a+(j?+j.cut||0:0);
-  },0);
-
-  // Sort helper — same as existing
-  const _NP = {'PUNCHING':1,'PUNCHING(R)':1,'COATING':2,'COATING(F)':2,'COATING(R)':2,'LAMINATION':3,'LAMINATION(F)':3,'LAMINATION(R)':3,'VDP':4,'VDP(F)':4,'VDP(R)':4,'PRINTING':5,'PRINTING(F)':5,'PRINTING(R)':5,'JOB NOT STARTED':6,'JOBNOTSTARTED':6};
-  function _pri(j){ const k=String(j.nextProcess||'').trim().toUpperCase().replace(/\s+/g,''); return _NP[k]!==undefined?_NP[k]:50; }
-  function sortJ(arr){
-    return [...arr].sort((a,b)=>{
-      const pA=String(a.status||'').trim().toUpperCase()==='PUNCHING(R)';
-      const pB=String(b.status||'').trim().toUpperCase()==='PUNCHING(R)';
-      if(pA&&!pB) return -1; if(!pA&&pB) return 1;
-      const npa=_pri(a),npb=_pri(b);
-      if(npa!==npb) return npa-npb;
-      if((a.dim||'')!==(b.dim||'')) return (a.dim||'').localeCompare(b.dim||'');
-      return (a.sr||0)-(b.sr||0);
-    });
-  }
-
-  // Fix MR label based on actual print sequence
-  function fixMR(arr){
-    let lastDim=null;
-    arr.forEach(j=>{ j._pMrLabel = j.dim===lastDim?'Same Dim ('+MR_SAME+' min)':'New Dim ('+MR_NEW+' min)'; lastDim=j.dim; });
-  }
-
-  // Build table rows HTML for one machine section
-  function machRows(jobs, inProgress){
-    return jobs.map((j,i) => {
-      const ip = inProgress;
-      const isPH = String(j.status||'').trim().toUpperCase()==='PUNCHING(R)';
-      const rowCls = ip ? 'row-ip' : isPH ? 'row-ph' : (i%2===0?'row-even':'row-odd');
-      const mrLabel = j._pMrLabel || j.mrLabel || '';
-      const note = ip ? 'In Progress' : (j._breakdown?'⚠️ Shifted':'');
-      return `<tr class="${rowCls}">
-        <td>${j.sr||''}</td>
-        <td class="bold">${j.docId||j.jcno||''}</td>
-        <td>${j.cust||''}</td>
-        <td class="jobname">${j.name||''}</td>
-        <td class="num">${(+j.qty||0).toLocaleString()}</td>
-        <td class="num">${(+j.cut||0).toLocaleString()}</td>
-        <td class="mono">${j.dim||''}</td>
-        <td class="mono">${getDie(j.dim)||'—'}</td>
-        <td>${j.itemType||''}</td>
-        <td>${j.status||''}</td>
-        <td class="mono">${mrLabel}</td>
-        <td class="time bold">${j.mrTime||''}</td>
-        <td>${j.mrDate||''}</td>
-        <td class="shift">${j.mrShift||''}</td>
-        <td class="time bold">${j.psTime||''}</td>
-        <td>${j.psDate||''}</td>
-        <td class="shift">${j.psShift||''}</td>
-        <td class="time bold">${j.eTime||''}</td>
-        <td>${j.eDate||''}</td>
-        <td class="shift">${j.eShift||''}</td>
-        <td class="note">${note}</td>
-      </tr>`;
-    }).join('');
-  }
-
-  // Build day sections
-  let dayHtml = '';
-  days.forEach((key, di) => {
-    const dateObj   = new Date(key+'T12:00:00');
-    const dateLabel = dateObj.toLocaleDateString('en-IN',{weekday:'long',day:'2-digit',month:'long',year:'numeric'}).toUpperCase();
-    const startJobs = sched.filter(j=>(j.sKey||j.mrKey)===key);
-    const ipJobs    = sched.filter(j=>(j.sKey||j.mrKey)<key && (j.eKey||j.sKey)>=key);
-    if(!startJobs.length && !ipJobs.length) return;
-
-    const allDay = [...startJobs,...ipJobs];
-    const dayQty = allDay.reduce((a,j)=>a+(+j.qty||0),0);
-    const dayCut = allDay.reduce((a,j)=>a+(+j.cut||0),0);
-
-    const b1ip  = sortJ(ipJobs.filter(j=>j.mach==='B1'));
-    const b1st  = sortJ(startJobs.filter(j=>j.mach==='B1'));
-    const b2ip  = sortJ(ipJobs.filter(j=>j.mach==='B2'));
-    const b2st  = sortJ(startJobs.filter(j=>j.mach==='B2'));
-    fixMR([...b1ip,...b1st]);
-    fixMR([...b2ip,...b2st]);
-
-    const hasB1 = b1ip.length||b1st.length;
-    const hasB2 = b2ip.length||b2st.length;
-
-    const HDR = `<thead><tr>
-      <th>Sr</th><th>Doc ID</th><th>Customer</th><th>Job Name</th>
-      <th>Qty</th><th>Cut Sh</th><th>Dimension</th><th>Die No.</th>
-      <th>Item Type</th><th>Status</th><th>MR Type</th>
-      <th>MR Time</th><th>MR Date</th><th>Shift</th>
-      <th>Prod Start</th><th>Prod Date</th><th>Shift</th>
-      <th>Complete</th><th>End Date</th><th>Shift</th>
-      <th>Note</th>
-    </tr></thead>`;
-
-    dayHtml += `
-    <div class="day-section${di>0?' page-break':''}">
-      <div class="day-header">
-        <span class="day-title">DAY ${di+1} — ${dateLabel}</span>
-        <span class="day-meta">Jobs: ${allDay.length} &nbsp;|&nbsp; Qty: ${dayQty.toLocaleString()} &nbsp;|&nbsp; Cut: ${dayCut.toLocaleString()}</span>
-      </div>`;
-
-    if(hasB1){
-      const b1all = [...b1ip,...b1st];
-      const b1qty = b1all.reduce((a,j)=>a+(+j.qty||0),0);
-      const b1cut = b1all.reduce((a,j)=>a+(+j.cut||0),0);
-      dayHtml += `
-      <div class="mach-header mach-b1">UNIT 12 (B1) &nbsp;—&nbsp; ${b1all.length} Jobs &nbsp;|&nbsp; Qty: ${b1qty.toLocaleString()} &nbsp;|&nbsp; Cut: ${b1cut.toLocaleString()}</div>
-      <table><colgroup>
-        <col style="width:3%"><col style="width:9%"><col style="width:10%"><col style="width:14%">
-        <col style="width:5%"><col style="width:5%"><col style="width:9%"><col style="width:7%">
-        <col style="width:7%"><col style="width:7%"><col style="width:8%">
-        <col style="width:5%"><col style="width:6%"><col style="width:4%">
-        <col style="width:5%"><col style="width:6%"><col style="width:4%">
-        <col style="width:5%"><col style="width:6%"><col style="width:4%">
-        <col style="width:5%">
-      </colgroup>${HDR}<tbody>
-        ${b1ip.length?'<tr class="section-ip"><td colspan="21">▶ IN PROGRESS</td></tr>'+machRows(b1ip,true):''}
-        ${b1st.length?'<tr class="section-start"><td colspan="21">▶ STARTING TODAY</td></tr>'+machRows(b1st,false):''}
-        <tr class="total-row"><td colspan="4" class="bold">UNIT 12 TOTAL</td>
-          <td class="num bold">${b1qty.toLocaleString()}</td>
-          <td class="num bold">${b1cut.toLocaleString()}</td>
-          <td colspan="15" class="bold">${b1all.length} jobs</td>
-        </tr>
-      </tbody></table>`;
-    }
-
-    if(hasB2){
-      const b2all = [...b2ip,...b2st];
-      const b2qty = b2all.reduce((a,j)=>a+(+j.qty||0),0);
-      const b2cut = b2all.reduce((a,j)=>a+(+j.cut||0),0);
-      dayHtml += `
-      <div class="mach-header mach-b2">UNIT 19 (B2) &nbsp;—&nbsp; ${b2all.length} Jobs &nbsp;|&nbsp; Qty: ${b2qty.toLocaleString()} &nbsp;|&nbsp; Cut: ${b2cut.toLocaleString()}</div>
-      <table><colgroup>
-        <col style="width:3%"><col style="width:9%"><col style="width:10%"><col style="width:14%">
-        <col style="width:5%"><col style="width:5%"><col style="width:9%"><col style="width:7%">
-        <col style="width:7%"><col style="width:7%"><col style="width:8%">
-        <col style="width:5%"><col style="width:6%"><col style="width:4%">
-        <col style="width:5%"><col style="width:6%"><col style="width:4%">
-        <col style="width:5%"><col style="width:6%"><col style="width:4%">
-        <col style="width:5%">
-      </colgroup>${HDR}<tbody>
-        ${b2ip.length?'<tr class="section-ip"><td colspan="21">▶ IN PROGRESS</td></tr>'+machRows(b2ip,true):''}
-        ${b2st.length?'<tr class="section-start"><td colspan="21">▶ STARTING TODAY</td></tr>'+machRows(b2st,false):''}
-        <tr class="total-row"><td colspan="4" class="bold">UNIT 19 TOTAL</td>
-          <td class="num bold">${b2qty.toLocaleString()}</td>
-          <td class="num bold">${b2cut.toLocaleString()}</td>
-          <td colspan="15" class="bold">${b2all.length} jobs</td>
-        </tr>
-      </tbody></table>`;
-    }
-
-    dayHtml += `</div>`; // day-section
-  });
-
-  // Full print HTML
-  const printHtml = `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>AIA Punching Plan — 7 Day Print — ${dateRange}</title>
-<style>
-  @page { size: A3 landscape; margin: 8mm 6mm 8mm 6mm; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: Arial, sans-serif; font-size: 7.5pt; color: #000; background: #fff; }
-
-  /* COVER HEADER */
-  .cover-header { border: 2px solid #000; padding: 6px 10px; margin-bottom: 6px; display:flex; justify-content:space-between; align-items:center; }
-  .cover-title { font-size: 13pt; font-weight: bold; letter-spacing: 1px; }
-  .cover-meta { font-size: 8pt; text-align: right; line-height: 1.6; }
-  .cover-range { font-size: 9pt; font-weight: bold; }
-
-  /* DAY SECTION */
-  .day-section { margin-bottom: 10px; }
-  .page-break { page-break-before: always; }
-  .day-header { background: #000; color: #fff; padding: 4px 8px; display:flex; justify-content:space-between; align-items:center; margin-bottom: 3px; }
-  .day-title { font-size: 9pt; font-weight: bold; letter-spacing: 0.5px; }
-  .day-meta { font-size: 7.5pt; }
-
-  /* MACHINE HEADER */
-  .mach-header { font-size: 8pt; font-weight: bold; padding: 3px 8px; margin-bottom: 2px; border-left: 4px solid #000; background: #eee; letter-spacing: 0.5px; }
-  .mach-b1 { border-left-color: #333; }
-  .mach-b2 { border-left-color: #666; }
-
-  /* TABLE */
-  table { width: 100%; border-collapse: collapse; margin-bottom: 4px; }
-  th { background: #222; color: #fff; font-size: 6.5pt; font-weight: bold; padding: 3px 2px; text-align: center; border: 0.5px solid #555; white-space: nowrap; }
-  td { font-size: 6.5pt; padding: 2px 2px; border: 0.5px solid #ccc; vertical-align: middle; }
-
-  /* ROW STYLES */
-  .row-even { background: #fff; }
-  .row-odd  { background: #f5f5f5; }
-  .row-ip   { background: #e8e8e8; font-style: italic; }
-  .row-ph   { background: #ddd; font-weight: bold; border-left: 3px solid #000; }
-
-  /* SECTION LABELS */
-  .section-ip    td, .section-start td { background: #bbb; font-size: 6pt; font-weight: bold; padding: 2px 4px; letter-spacing: 0.5px; color: #000; }
-  .section-start td { background: #d5d5d5; }
-
-  /* TOTAL ROW */
-  .total-row td { background: #333; color: #fff; font-size: 7pt; font-weight: bold; padding: 3px 2px; border: 0.5px solid #555; }
-
-  /* CELL TYPES */
-  .bold { font-weight: bold; }
-  .mono { font-family: 'Courier New', monospace; font-size: 6pt; }
-  .num  { text-align: right; font-family: 'Courier New', monospace; }
-  .time { text-align: center; font-family: 'Courier New', monospace; font-weight: bold; }
-  .shift { text-align: center; font-size: 6pt; }
-  .jobname { max-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .note { font-size: 6pt; color: #555; text-align: center; }
-
-  /* FOOTER */
-  .print-footer { margin-top: 6px; border-top: 1px solid #000; padding-top: 4px; font-size: 6.5pt; display:flex; justify-content:space-between; }
-
-  @media print {
-    .no-print { display: none; }
-    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  }
-
-  /* PRINT BUTTON — only visible on screen */
-  .print-btn-bar { background: #1e293b; padding: 10px 16px; display:flex; gap:10px; align-items:center; position:sticky; top:0; z-index:99; }
-  .print-btn { background: #f97316; color: #fff; border: none; padding: 8px 20px; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer; }
-  .close-btn { background: transparent; color: #94a3b8; border: 1px solid #475569; padding: 8px 16px; border-radius: 6px; font-size: 13px; cursor: pointer; }
-  .print-info { color: #94a3b8; font-size: 11px; }
-</style>
-</head>
-<body>
-
-<div class="print-btn-bar no-print">
-  <button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
-  <button class="close-btn" onclick="window.close()">✕ Close</button>
-  <span class="print-info">Landscape | A3 | All columns fit on one page — Press Ctrl+P to print</span>
-</div>
-
-<div class="cover-header">
-  <div>
-    <div class="cover-title">AIA INDUSTRIES — PUNCHING SCHEDULE</div>
-    <div class="cover-range">${dateRange}</div>
-  </div>
-  <div class="cover-meta">
-    <div>Generated: ${new Date().toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})}</div>
-    <div>7 Working Days Plan &nbsp;|&nbsp; B1 + B2 Combined</div>
-    <div>Shift 1: 07:00–19:00 &nbsp;|&nbsp; Shift 2: 19:30–07:00</div>
-  </div>
-</div>
-
-${dayHtml}
-
-<div class="print-footer no-print">
-  <span>AIA Industries — Punching Schedule — ${dateRange}</span>
-  <span>Generated: ${new Date().toLocaleDateString('en-IN')}</span>
-</div>
-
-</body>
-</html>`;
-
-  // Download as HTML file — open in browser and Ctrl+P to print
-  const blob = new Blob([printHtml], {type: 'text/html;charset=utf-8'});
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  a.href     = url;
-  a.download = 'AIA_7Day_Print_' + days[0].replace(/-/g,'_') + '.html';
-  a.style.display = 'none';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  setTimeout(()=>URL.revokeObjectURL(url), 5000);
-
-  // Also show green bar like Excel downloads
-  _showDlLink(url, 'AIA_7Day_Print_' + days[0].replace(/-/g,'_') + '.html');
-  toast('🖨️ 7-Day Print file downloaded! Open it and press Ctrl+P to print.');
 }
 
 // ── xlsxDl: open in new tab (claudeusercontent download bypass) ──
@@ -4562,6 +4470,161 @@ function _showDlLink(url, filename){
   setTimeout(function(){ if(bar.parentNode) bar.remove(); }, 30000);
 }
 
+// ══════════════════════════════════════════════════════
+// MISS REPORT
+// ══════════════════════════════════════════════════════
+const MISS_REASONS = ['Select Reason','Machine Breakdown','Power Cut','Material Short','Operator Absent','Quality Issue','Job Hold','Customer Hold','Other'];
+let missRemarks = {}; // jcno → {missed, reason, note}
+
+function renderMissReport(){
+  const dateVal = document.getElementById('missDateInput').value;
+  const body = document.getElementById('missBody');
+  const cntEl = document.getElementById('missCnt');
+  if(!sched.length){ body.innerHTML='<div class="info">⚠️ Pahile schedule generate kara!</div>'; return; }
+  if(!dateVal){ body.innerHTML='<div class="info">⬆️ Vartun date select kara.</div>'; return; }
+
+  const dayJobs = sched.filter(j => j.sKey===dateVal || j.mrKey===dateVal);
+  if(cntEl) cntEl.textContent = dayJobs.length;
+  if(!dayJobs.length){
+    body.innerHTML='<div style="text-align:center;padding:30px;color:#64748b;">Ya date la koi jobs scheduled nahi.</div>';
+    return;
+  }
+
+  let html = `<div class="tbl-wrap"><table>
+    <thead><tr>
+      <th>JCNO / Doc ID</th><th>Job Name</th><th>Customer</th>
+      <th>Machine</th><th>Planned Complete</th>
+      <th style="text-align:center;">❌ Missed?</th>
+      <th>Reason</th><th>Additional Note</th>
+    </tr></thead><tbody>`;
+
+  dayJobs.forEach((j,i)=>{
+    const jid = j.docId||j.jcno||'';
+    const rm = missRemarks[jid]||{missed:false,reason:'',note:''};
+    const rowbg = rm.missed ? '#FEE2E2' : (j.urgent ? '#FFF7ED' : (i%2===0?'#F8FAFC':'#fff'));
+    const machBg = j.mach==='B1'?'#DBEAFE':'#DCFCE7';
+    const machFc = j.mach==='B1'?'#1E40AF':'#166534';
+    const jidEnc = encodeURIComponent(jid);
+    html += `<tr style="background:${rowbg};border-bottom:1px solid #EEF2F7;">
+      <td style="font-weight:700;font-family:'DM Mono',monospace;">${jid}</td>
+      <td style="max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${j.name||''}</td>
+      <td style="max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${j.cust||''}</td>
+      <td><span style="background:${machBg};color:${machFc};font-size:9px;font-weight:700;padding:2px 8px;border-radius:12px;">${j.mach==='B1'?'Unit 12 (B1)':'Unit 19 (B2)'}</span>${j.urgent?'<br><span style="font-size:8px;color:#DC2626;font-weight:700;">⚡ Urgent</span>':''}</td>
+      <td style="font-family:'DM Mono',monospace;font-size:11px;color:#166534;">${j.eTime||'—'}<br><span style="color:#64748b;font-size:9px;">${j.eDate||''}</span></td>
+      <td style="text-align:center;">
+        <input type="checkbox" ${rm.missed?'checked':''} data-jid="${jidEnc}" onchange="missToggle(this)" style="width:16px;height:16px;cursor:pointer;accent-color:#DC2626;">
+      </td>
+      <td>
+        <select data-jid="${jidEnc}" onchange="missSetReason(this)" ${rm.missed?'':'disabled'}
+          style="width:100%;padding:5px 7px;border:1.5px solid ${rm.missed?'#F97316':'#ddd'};border-radius:5px;font-size:10px;background:${rm.missed?'#fff':'#f5f5f5'};color:#333;font-family:inherit;">
+          ${MISS_REASONS.map(r=>`<option value="${r}" ${rm.reason===r?'selected':''}>${r}</option>`).join('')}
+        </select>
+      </td>
+      <td>
+        <input type="text" placeholder="Add note..." value="${rm.note||''}" data-jid="${jidEnc}" onchange="missSetNote(this)" ${rm.missed?'':'disabled'}
+          style="width:100%;padding:5px 7px;border:1.5px solid ${rm.missed?'#F97316':'#ddd'};border-radius:5px;font-size:10px;background:${rm.missed?'#fff':'#f5f5f5'};font-family:inherit;">
+      </td>
+    </tr>`;
+  });
+
+  html += '</tbody></table></div>';
+  body.innerHTML = html;
+}
+
+function missToggle(cb){
+  const jid = decodeURIComponent(cb.dataset.jid);
+  if(!missRemarks[jid]) missRemarks[jid]={missed:false,reason:'',note:''};
+  missRemarks[jid].missed = cb.checked;
+  renderMissReport();
+}
+
+function missSetReason(sel){
+  const jid = decodeURIComponent(sel.dataset.jid);
+  if(!missRemarks[jid]) missRemarks[jid]={missed:false,reason:'',note:''};
+  missRemarks[jid].reason = sel.value;
+}
+
+function missSetNote(inp){
+  const jid = decodeURIComponent(inp.dataset.jid);
+  if(!missRemarks[jid]) missRemarks[jid]={missed:false,reason:'',note:''};
+  missRemarks[jid].note = inp.value;
+}
+
+function exportMissExcel(){
+  if(!sched.length){ toast('⚠️ Schedule nahi ahe!'); return; }
+  const dateVal = document.getElementById('missDateInput').value;
+  if(!dateVal){ toast('⚠️ Date select kara!'); return; }
+
+  const wbXL = XLSX.utils.book_new();
+  const dayJobs = sched.filter(j=>j.sKey===dateVal||j.mrKey===dateVal);
+  const dateObj = new Date(dateVal+'T12:00:00');
+  const dateLabel = dateObj.toLocaleDateString('en-IN',{weekday:'long',day:'2-digit',month:'long',year:'numeric'}).toUpperCase();
+
+  const HDR = ['Sr','JCNO','Job Name','Customer','Machine','Planned Complete','Planned Date','Missed?','Reason','Note'];
+  const CW  = [4, 14, 36, 24, 14, 12, 16, 9, 22, 28];
+
+  const BDR = {top:{style:'thin',color:{rgb:'FFCBD5E1'}},right:{style:'thin',color:{rgb:'FFCBD5E1'}},bottom:{style:'thin',color:{rgb:'FFCBD5E1'}},left:{style:'thin',color:{rgb:'FFCBD5E1'}}};
+  const BDR_RED = {...BDR, left:{style:'medium',color:{rgb:'FFDC2626'}}};
+
+  const mkCell = (v,s) => ({v:v??'', t:typeof v==='number'?'n':'s', s});
+  const titleS = {font:{bold:true,sz:13,color:{rgb:'FFFFFFFF'},name:'Calibri'},fill:{patternType:'solid',fgColor:{rgb:'FF0D1B2A'}},alignment:{horizontal:'center',vertical:'center'},border:BDR};
+  const subS   = {font:{sz:10,color:{rgb:'FF475569'},name:'Calibri'},fill:{patternType:'solid',fgColor:{rgb:'FFF1F5F9'}},alignment:{horizontal:'center',vertical:'center'},border:BDR};
+  const hdrS   = {font:{bold:true,sz:10,color:{rgb:'FFFFFFFF'},name:'Calibri'},fill:{patternType:'solid',fgColor:{rgb:'FF1A2B40'}},alignment:{horizontal:'center',vertical:'center',wrapText:true},border:BDR};
+  const rowS   = {font:{sz:10,name:'Calibri'},fill:{patternType:'solid',fgColor:{rgb:'FFF8FAFC'}},alignment:{vertical:'center'},border:BDR};
+  const altS   = {font:{sz:10,name:'Calibri'},fill:{patternType:'solid',fgColor:{rgb:'FFFFFFFF'}},alignment:{vertical:'center'},border:BDR};
+  const missS  = {font:{bold:true,sz:10,color:{rgb:'FF991B1B'},name:'Calibri'},fill:{patternType:'solid',fgColor:{rgb:'FFFEE2E2'}},alignment:{vertical:'center'},border:BDR_RED};
+  const timeS  = {font:{bold:true,sz:10,color:{rgb:'FF166534'},name:'Calibri'},fill:{patternType:'solid',fgColor:{rgb:'FFF0FDF4'}},alignment:{horizontal:'center',vertical:'center'},border:BDR};
+
+  const NC = HDR.length;
+  const aoa = [], styles = [];
+
+  function pushRow(cells, ht){
+    aoa.push(cells.map(c=>c.v===''||c.v==null?'':c.v));
+    styles.push({cells, ht});
+  }
+
+  // Title row
+  pushRow(Array(NC).fill(0).map((_,i)=>mkCell(i===0?`AIA INDUSTRIES — PUNCHING MISS REPORT — ${dateLabel}`:'',titleS)),28);
+  pushRow(Array(NC).fill(0).map((_,i)=>mkCell(i===0?`${dayJobs.length} jobs | Missed: ${dayJobs.filter(j=>missRemarks[j.docId||j.jcno]?.missed).length} | Date: ${dateVal}`:'',subS)),14);
+  aoa.push([]); styles.push({cells:[],ht:6});
+  pushRow(HDR.map(h=>mkCell(h,hdrS)),18);
+
+  dayJobs.forEach((j,i)=>{
+    const jid=j.docId||j.jcno||'';
+    const rm=missRemarks[jid]||{missed:false,reason:'',note:''};
+    const base = rm.missed ? missS : (i%2===0?rowS:altS);
+    const cells=[
+      mkCell(i+1,base),mkCell(jid,base),mkCell(j.name||'',base),mkCell(j.cust||'',base),
+      mkCell(j.mach==='B1'?'Unit 12 (B1)':'Unit 19 (B2)',base),
+      mkCell(j.eTime||'',timeS),mkCell(j.eDate||'',base),
+      mkCell(rm.missed?'YES':'',rm.missed?missS:base),
+      mkCell(rm.reason||'',base),mkCell(rm.note||'',base)
+    ];
+    pushRow(cells,15);
+  });
+
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
+  ws['!cols'] = CW.map(w=>({wch:w}));
+  ws['!rows'] = styles.map(r=>({hpt:r.ht||15}));
+  ws['!merges']= [{s:{r:0,c:0},e:{r:0,c:NC-1}},{s:{r:1,c:0},e:{r:1,c:NC-1}}];
+
+  // Apply styles
+  styles.forEach((row,ri)=>{
+    if(!row.cells) return;
+    row.cells.forEach((cell,ci)=>{
+      const addr = XLSX.utils.encode_cell({r:ri,c:ci});
+      if(!ws[addr]) ws[addr]={t:'s',v:''};
+      ws[addr].s = cell.s;
+      if(typeof cell.v==='number'){ ws[addr].t='n'; ws[addr].v=cell.v; }
+    });
+  });
+
+  ws['!pageSetup']={orientation:'landscape',fitToPage:1,fitToWidth:1,fitToHeight:0,paperSize:9};
+  XLSX.utils.book_append_sheet(wbXL, ws, 'Miss Report');
+  xlsxDl(wbXL, `AIA_Miss_Report_${dateVal}.xlsx`);
+  toast('📥 Miss Report Excel ready!');
+}
+
 var _toastT;
 function toast(msg){
   let el = document.getElementById('toast');
@@ -4571,6 +4634,450 @@ function toast(msg){
 }
 
 
+</script>
+
+<!-- ═══════════════════════════════════════════════
+     URGENCY LIST MODAL
+═══════════════════════════════════════════════ -->
+<div class="modal-ov" id="urgencyModal">
+  <div class="modal" style="width:860px;max-width:97vw;max-height:92vh;display:flex;flex-direction:column;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <h3 style="color:#991B1B;">🔴 Urgency List — Machine-wise</h3>
+      <button onclick="closeUrgencyModal()" style="background:none;border:none;font-size:22px;cursor:pointer;color:#64748B;">✕</button>
+    </div>
+
+    <!-- ⚡ ADD NEW URGENT JOB INLINE FORM -->
+    <div style="background:#FFF7ED;border:1.5px solid #F97316;border-radius:10px;padding:14px 16px;margin-bottom:12px;">
+      <div style="font-size:12px;font-weight:700;color:#C2410C;margin-bottom:10px;">⚡ नवीन Urgent Job Add करा — आजच्या दिवसात Schedule होईल</div>
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 1fr;gap:8px;align-items:end;flex-wrap:wrap;">
+        <div style="display:flex;flex-direction:column;gap:3px;">
+          <label style="font-size:9px;color:#92400E;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">Job Name *</label>
+          <input id="ul_name" placeholder="Job name" style="padding:6px 9px;border:1.5px solid #FED7AA;border-radius:5px;font-size:12px;font-family:inherit;outline:none;background:#fff;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px;">
+          <label style="font-size:9px;color:#92400E;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">JCNO</label>
+          <input id="ul_jcno" placeholder="25JA/9999" style="padding:6px 9px;border:1.5px solid #FED7AA;border-radius:5px;font-size:12px;font-family:inherit;outline:none;background:#fff;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px;">
+          <label style="font-size:9px;color:#92400E;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">Job Qty *</label>
+          <input id="ul_qty" type="number" placeholder="10000" style="padding:6px 9px;border:1.5px solid #FED7AA;border-radius:5px;font-size:12px;font-family:inherit;outline:none;background:#fff;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px;">
+          <label style="font-size:9px;color:#92400E;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">Cut Sheet</label>
+          <input id="ul_cut" type="number" placeholder="5000" style="padding:6px 9px;border:1.5px solid #FED7AA;border-radius:5px;font-size:12px;font-family:inherit;outline:none;background:#fff;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px;">
+          <label style="font-size:9px;color:#92400E;font-weight:700;text-transform:uppercase;letter-spacing:.5px;">Machine</label>
+          <select id="ul_mach" style="padding:6px 9px;border:1.5px solid #FED7AA;border-radius:5px;font-size:12px;font-family:inherit;outline:none;background:#fff;">
+            <option value="auto">Auto</option><option value="B1">B1</option><option value="B2">B2</option>
+          </select>
+        </div>
+        <button onclick="addUrgentFromList()" style="padding:7px 14px;background:#DC2626;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;">⚡ Add</button>
+      </div>
+    </div>
+
+    <!-- Machine filter tabs -->
+    <div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;">
+      <div class="tab on" id="urgTab_all"  onclick="urgSwitchMach('all')" style="background:#991B1B;color:#fff;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:700;cursor:pointer;">All Machines</div>
+      <div class="tab"    id="urgTab_B1"   onclick="urgSwitchMach('B1')"  style="background:#EFF6FF;color:#1E40AF;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:700;cursor:pointer;">🔵 Unit 12 (B1)</div>
+      <div class="tab"    id="urgTab_B2"   onclick="urgSwitchMach('B2')"  style="background:#F0FDF4;color:#166534;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:700;cursor:pointer;">🟢 Unit 19 (B2)</div>
+    </div>
+
+    <div style="font-size:11px;color:#64748B;margin-bottom:8px;">
+      ✅ Select kara te jobs jo urgent ahet — selected jobs Excel madhe <b style="color:#991B1B;">varti (top)</b> yetil, baki sagle jobs <b>overflow</b> mhanje khali yetil.
+    </div>
+
+    <!-- Job list — scrollable -->
+    <div style="flex:1;overflow-y:auto;border:1px solid #E2E8F0;border-radius:8px;min-height:200px;max-height:40vh;" id="urgJobList"></div>
+
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <span id="urgSelCount" style="font-size:12px;font-weight:700;color:#991B1B;"></span>
+      <div style="flex:1;"></div>
+      <button class="btn btn-sm" style="background:#64748B;color:#fff;" onclick="urgSelectAll()">☑️ Select All</button>
+      <button class="btn btn-sm" style="background:#94A3B8;color:#fff;" onclick="urgClearAll()">✕ Clear</button>
+      <button class="btn btn-sm" style="background:#991B1B;color:#fff;" onclick="dlUrgencyExcel()">⬇️ Urgency Excel Download</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════
+// URGENCY LIST
+// ══════════════════════════════════════════════════════
+
+let _urgMach = 'all';
+let _urgSelected = new Set(); // stores job sr+jcno composite keys
+
+function _urgKey(j){ return (j.mach||'')+'|'+(j.sr||'')+'|'+(j.jcno||j.docId||j.name||''); }
+
+function openUrgencyModal(){
+  if(!sched || !sched.length){ toast('⚠️ Pahile schedule generate kara!'); return; }
+  _urgMach = 'all';
+  _urgSelected.clear();
+  _urgRender();
+  document.getElementById('urgencyModal').classList.add('on');
+}
+
+function closeUrgencyModal(){
+  document.getElementById('urgencyModal').classList.remove('on');
+}
+
+function urgSwitchMach(m){
+  _urgMach = m;
+  ['all','B1','B2'].forEach(k=>{
+    const el = document.getElementById('urgTab_'+k);
+    if(!el) return;
+    if(k===m){
+      el.style.background = k==='all'?'#991B1B': k==='B1'?'#1D4ED8':'#15803D';
+      el.style.color = '#fff';
+    } else {
+      el.style.background = k==='B1'?'#EFF6FF': k==='B2'?'#F0FDF4':'#F1F5F9';
+      el.style.color = k==='B1'?'#1E40AF': k==='B2'?'#166534':'#475569';
+    }
+  });
+  _urgRender();
+}
+
+function _urgRender(){
+  const list = document.getElementById('urgJobList');
+  const jobs = _urgMach==='all' ? sched : sched.filter(j=>j.mach===_urgMach);
+
+  // Group by machine
+  const machGroups = {};
+  jobs.forEach(j=>{
+    const m = j.mach||'?';
+    if(!machGroups[m]) machGroups[m]=[];
+    machGroups[m].push(j);
+  });
+
+  let html = '';
+  const machOrder = ['B1','B2'];
+  const showMachs = _urgMach==='all' ? machOrder : [_urgMach];
+
+  showMachs.forEach(m=>{
+    const grp = machGroups[m]||[];
+    if(!grp.length) return;
+    const label = m==='B1'?'🔵 Unit 12 (B1)':'🟢 Unit 19 (B2)';
+    const hdrColor = m==='B1'?'#1D4ED8':'#15803D';
+    const rowBg    = m==='B1'?'#EFF6FF':'#F0FDF4';
+    const selBg    = '#FEF2F2';
+    const selBorder= '#DC2626';
+
+    html += `<div style="background:${hdrColor};color:#fff;padding:8px 14px;font-size:11px;font-weight:700;letter-spacing:0.5px;position:sticky;top:0;z-index:2;">${label} — ${grp.length} jobs</div>`;
+    html += `<table style="width:100%;border-collapse:collapse;font-size:11px;">`;
+    html += `<thead><tr style="background:${hdrColor}22;">
+      <th style="padding:6px 10px;text-align:center;width:36px;color:#374151;font-weight:700;">✓</th>
+      <th style="padding:6px 10px;text-align:left;color:#374151;font-weight:700;">Job Name</th>
+      <th style="padding:6px 10px;text-align:left;color:#374151;font-weight:700;">JCNO / Doc ID</th>
+      <th style="padding:6px 10px;text-align:left;color:#374151;font-weight:700;">Customer</th>
+      <th style="padding:6px 10px;text-align:right;color:#374151;font-weight:700;">Qty</th>
+      <th style="padding:6px 10px;text-align:left;color:#374151;font-weight:700;">Dimension</th>
+      <th style="padding:6px 10px;text-align:left;color:#374151;font-weight:700;">Status</th>
+      <th style="padding:6px 10px;text-align:left;color:#374151;font-weight:700;">MR Date</th>
+      <th style="padding:6px 10px;text-align:left;color:#374151;font-weight:700;">End Date</th>
+    </tr></thead><tbody>`;
+
+    grp.forEach((j,idx)=>{
+      const key = _urgKey(j);
+      const sel = _urgSelected.has(key);
+      const bg  = sel ? selBg : (idx%2===0?'#fff':'#FAFAFA');
+      const bdr = sel ? `border-left:3px solid ${selBorder};` : '';
+      html += `<tr style="background:${bg};${bdr}border-bottom:1px solid #F1F5F9;cursor:pointer;" onclick="_urgToggle('${key.replace(/'/g,"\\'")}',this)">
+        <td style="text-align:center;padding:7px 10px;">
+          <input type="checkbox" ${sel?'checked':''} style="width:15px;height:15px;accent-color:#DC2626;cursor:pointer;" onclick="event.stopPropagation();_urgToggle('${key.replace(/'/g,"\\'")}',this.closest('tr'))">
+        </td>
+        <td style="padding:7px 10px;font-weight:${sel?'700':'500'};color:${sel?'#991B1B':'#1E293B'};">${j.name||''}</td>
+        <td style="padding:7px 10px;font-family:'DM Mono',monospace;color:#475569;">${j.jcno||j.docId||''}</td>
+        <td style="padding:7px 10px;color:#64748B;">${j.cust||''}</td>
+        <td style="padding:7px 10px;text-align:right;font-weight:600;color:#1D4ED8;">${(j.qty||0).toLocaleString()}</td>
+        <td style="padding:7px 10px;color:#475569;">${j.dim||''}</td>
+        <td style="padding:7px 10px;">${j.status||''}</td>
+        <td style="padding:7px 10px;color:#64748B;">${j.mrDate||''}</td>
+        <td style="padding:7px 10px;color:#64748B;">${j.eDate||''}</td>
+      </tr>`;
+    });
+    html += `</tbody></table>`;
+  });
+
+  list.innerHTML = html || '<div style="padding:30px;text-align:center;color:#94A3B8;">Koi jobs nahi ahet.</div>';
+  _urgUpdateCount();
+}
+
+function _urgToggle(key, row){
+  if(_urgSelected.has(key)){
+    _urgSelected.delete(key);
+    row.style.background = '';
+    row.style.borderLeft  = '';
+    const cb = row.querySelector('input[type=checkbox]');
+    if(cb) cb.checked = false;
+    const td1 = row.querySelector('td:nth-child(2)');
+    if(td1){ td1.style.fontWeight='500'; td1.style.color='#1E293B'; }
+  } else {
+    _urgSelected.add(key);
+    row.style.background = '#FEF2F2';
+    row.style.borderLeft  = '3px solid #DC2626';
+    const cb = row.querySelector('input[type=checkbox]');
+    if(cb) cb.checked = true;
+    const td1 = row.querySelector('td:nth-child(2)');
+    if(td1){ td1.style.fontWeight='700'; td1.style.color='#991B1B'; }
+  }
+  _urgUpdateCount();
+}
+
+function _urgUpdateCount(){
+  const el = document.getElementById('urgSelCount');
+  if(el) el.textContent = _urgSelected.size ? `${_urgSelected.size} jobs selected (urgent varti yetil)` : '';
+}
+
+function urgSelectAll(){
+  const jobs = _urgMach==='all' ? sched : sched.filter(j=>j.mach===_urgMach);
+  jobs.forEach(j=>_urgSelected.add(_urgKey(j)));
+  _urgRender();
+}
+
+function urgClearAll(){
+  _urgSelected.clear();
+  _urgRender();
+}
+
+// ══════════════════════════════════════════════════════
+// URGENCY EXCEL DOWNLOAD
+// Selected jobs → top (urgent section), remaining → overflow below
+// Machine-wise sheets: B1 + B2 + Combined
+// ══════════════════════════════════════════════════════
+function dlUrgencyExcel(){
+  if(!sched || !sched.length){ toast('⚠️ Koi schedule nahi!'); return; }
+
+  const NCols = 14;
+  const CW = [4, 14, 30, 16, 9, 9, 20, 14, 12, 14, 9, 14, 9, 22];
+  const HDR = ['Sr','JCNO / Doc ID','Job Name','Customer','Qty','Cut Sh','Dimension','MR Type','MR Date','End Date','Machine','Status','Commit','Remarks'];
+
+  // Extra style codes for urgency sheet
+  // reuse existing _SM styles + define new ones inline
+  const USM = {
+    // Title
+    101: {bg:'7F1D1D', fc:'FFFFFF', bold:true,  sz:14},
+    // Subtitle
+    102: {bg:'FEF2F2', fc:'991B1B', bold:false, sz:10},
+    // URGENT section header
+    103: {bg:'DC2626', fc:'FFFFFF', bold:true,  sz:12},
+    // Column header for urgent
+    104: {bg:'B91C1C', fc:'FFFFFF', bold:true,  sz:11},
+    // Urgent job row
+    105: {bg:'FFF5F5', fc:'7F1D1D', bold:true,  sz:11},
+    // Urgent time cell
+    106: {bg:'FEF2F2', fc:'991B1B', bold:true,  sz:11},
+    // OVERFLOW section header
+    107: {bg:'334155', fc:'E2E8F0', bold:true,  sz:12},
+    // Col header for overflow B1
+    108: {bg:'1D4ED8', fc:'FFFFFF', bold:true,  sz:11},
+    // Col header for overflow B2
+    109: {bg:'15803D', fc:'FFFFFF', bold:true,  sz:11},
+    // Overflow B1 row
+    110: {bg:'EFF6FF', fc:'1E293B', bold:false, sz:11},
+    // Overflow B2 row
+    111: {bg:'F0FDF4', fc:'1E293B', bold:false, sz:11},
+    // Total urgent
+    112: {bg:'7F1D1D', fc:'FED7AA', bold:true,  sz:11},
+    // Total overflow
+    113: {bg:'1E293B', fc:'E2E8F0', bold:true,  sz:11},
+    // Empty row
+    0:   {bg:'FFFFFF', fc:'000000', bold:false, sz:10},
+  };
+
+  function uCell(v, s){ return {v, s}; }
+  function uRow(cells, ht){ return {cells, ht}; }
+  function uEmptyRow(){ return uRow(Array(NCols).fill(0).map(()=>uCell('',0)), 6); }
+
+  function buildUrgSheet(machFilter, sheetTitle){
+    const allJobs = machFilter ? sched.filter(j=>j.mach===machFilter) : sched;
+    const urgJobs  = allJobs.filter(j=>_urgSelected.has(_urgKey(j)));
+    const overJobs = allJobs.filter(j=>!_urgSelected.has(_urgKey(j)));
+
+    let rows = [];
+    let sr = 1;
+
+    // Title
+    rows.push(uRow(Array(NCols).fill(0).map((_,i)=>uCell(i===0?`AIA INDUSTRIES — URGENCY LIST — ${sheetTitle.toUpperCase()}`:'', 101)), 30));
+    rows.push(uRow(Array(NCols).fill(0).map((_,i)=>uCell(i===0?`Generated: ${new Date().toLocaleDateString('en-IN',{weekday:'long',day:'2-digit',month:'long',year:'numeric'})}  |  Urgent: ${urgJobs.length} jobs  |  Overflow: ${overJobs.length} jobs`:'', 102)), 14));
+    rows.push(uEmptyRow());
+
+    // ── URGENT SECTION ──
+    rows.push(uRow(Array(NCols).fill(0).map((_,i)=>uCell(i===0?`⚡ URGENT JOBS — ${urgJobs.length} selected`:'', 103)), 20));
+    if(urgJobs.length){
+      rows.push(uRow(HDR.map(h=>uCell(h, 104)), 28));
+      urgJobs.forEach(j=>{
+        const vals = [sr++, j.jcno||j.docId||'', j.name||'', j.cust||'', j.qty||0, j.cut||0, j.dim||'', j.mrLabel||j.mrType||'', j.mrDate||'', j.eDate||'', j.mach||'', j.status||'', j.commit||'', j.urgent?'⚡ URGENT':'Urgent Selected'];
+        rows.push(uRow(vals.map((v,ci)=>uCell(v, [8,9].includes(ci)?106:105)), 15));
+      });
+      // Urgent total
+      rows.push(uRow(Array(NCols).fill(0).map((_,i)=>{
+        if(i===0) return uCell('URGENT TOTAL', 112);
+        if(i===4) return uCell(urgJobs.reduce((a,j)=>a+(+j.qty||0),0), 112);
+        if(i===5) return uCell(urgJobs.reduce((a,j)=>a+(+j.cut||0),0), 112);
+        if(i===NCols-1) return uCell(urgJobs.length+' jobs', 112);
+        return uCell('', 112);
+      }), 16));
+    } else {
+      rows.push(uRow([uCell('  — Koi urgent job select nahi kela —', 102), ...Array(NCols-1).fill(0).map(()=>uCell('',102))], 14));
+    }
+
+    rows.push(uEmptyRow());
+    rows.push(uEmptyRow());
+
+    // ── OVERFLOW SECTION ──
+    rows.push(uRow(Array(NCols).fill(0).map((_,i)=>uCell(i===0?`📋 OVERFLOW JOBS — ${overJobs.length} remaining`:'', 107)), 20));
+    if(overJobs.length){
+      // If combined (all machines), group by machine
+      const machesInOver = [...new Set(overJobs.map(j=>j.mach))].sort();
+      machesInOver.forEach(m=>{
+        const grp = overJobs.filter(j=>j.mach===m);
+        const isB1 = m==='B1';
+        const hdrS = isB1 ? 108 : 109;
+        const rowS = isB1 ? 110 : 111;
+        if(machFilter === null){
+          // Combined — show machine sub-header
+          rows.push(uRow(Array(NCols).fill(0).map((_,i)=>uCell(i===0?(isB1?'🔵 Unit 12 (B1)':'🟢 Unit 19 (B2)'):'', hdrS)), 18));
+        }
+        rows.push(uRow(HDR.map(h=>uCell(h, hdrS)), 28));
+        grp.forEach(j=>{
+          const vals = [sr++, j.jcno||j.docId||'', j.name||'', j.cust||'', j.qty||0, j.cut||0, j.dim||'', j.mrLabel||j.mrType||'', j.mrDate||'', j.eDate||'', j.mach||'', j.status||'', j.commit||'', j.sKey===j.eKey?'Single Day':'Multi-Day'];
+          rows.push(uRow(vals.map(v=>uCell(v, rowS)), 15));
+        });
+        rows.push(uRow(Array(NCols).fill(0).map((_,i)=>{
+          if(i===0) return uCell((isB1?'Unit 12':'Unit 19')+' OVERFLOW TOTAL', 113);
+          if(i===4) return uCell(grp.reduce((a,j)=>a+(+j.qty||0),0), 113);
+          if(i===5) return uCell(grp.reduce((a,j)=>a+(+j.cut||0),0), 113);
+          if(i===NCols-1) return uCell(grp.length+' jobs', 113);
+          return uCell('', 113);
+        }), 16));
+        rows.push(uEmptyRow());
+      });
+    } else {
+      rows.push(uRow([uCell('  — Sagle jobs urgent ahet, koi overflow nahi —', 102), ...Array(NCols-1).fill(0).map(()=>uCell('',102))], 14));
+    }
+
+    return rows;
+  }
+
+  function applyUrgStyles(ws, rows){
+    const bThin  = {style:'thin',   color:{rgb:'FFE2E8F0'}};
+    const bMed   = {style:'medium', color:{rgb:'FF94A3B8'}};
+    const bRed   = {style:'medium', color:{rgb:'FFDC2626'}};
+    const bDark  = {style:'medium', color:{rgb:'FF0F172A'}};
+    const bNone  = {style:'none'};
+    function border(t,r,b,l){ return {top:t,right:r,bottom:b,left:l}; }
+
+    rows.forEach((row, ri)=>{
+      if(!row) return;
+      const nc = row.cells.length;
+      for(let ci=0; ci<nc; ci++){
+        const cell = row.cells[ci];
+        const s = cell.s||0;
+        const st = USM[s]||USM[0];
+        const addr = XLSX.utils.encode_cell({r:ri, c:ci});
+        if(!ws[addr]) ws[addr] = {t:'s', v:''};
+
+        const isTitle   = [101].includes(s);
+        const isHeader  = [104,108,109].includes(s);
+        const isSection = [103,107].includes(s);
+        const isUrgRow  = [105,106].includes(s);
+        const isOverRow = [110,111].includes(s);
+        const isTotal   = [112,113].includes(s);
+        const numericCols = [4,5];
+        const isNum = numericCols.includes(ci);
+
+        let brd;
+        if(isTitle) brd = border(bNone,bNone,bRed,bNone);
+        else if(isSection) brd = border(bMed,bNone,bMed,bNone);
+        else if(isHeader) brd = border(bMed,bThin,bMed,ci===0?bMed:bThin);
+        else if(isUrgRow) brd = border(bThin,bThin,bThin,ci===0?bRed:bThin);
+        else if(isOverRow) brd = border(bThin,bThin,bThin,ci===0?bMed:bThin);
+        else if(isTotal) brd = border(bMed,bThin,bMed,ci===0?bMed:bThin);
+        else brd = border(bNone,bNone,bThin,bNone);
+
+        let numFmt = undefined;
+        if(isNum && typeof cell.v === 'number') numFmt = '#,##0';
+
+        ws[addr].s = {
+          fill: {patternType:'solid', fgColor:{rgb:'FF'+st.bg}},
+          font: {bold:st.bold, sz:st.sz, color:{rgb:'FF'+st.fc}, name:'Calibri'},
+          alignment: {
+            vertical:'center',
+            horizontal: (isTitle||isSection||isHeader||isTotal)?'center': isNum?'right':'left',
+            wrapText: !isNum
+          },
+          border: brd,
+          numFmt
+        };
+        if(typeof cell.v === 'number' && ws[addr].t==='s'){
+          ws[addr].t = 'n';
+          ws[addr].v = cell.v;
+        }
+      }
+    });
+  }
+
+  try {
+    const wbXL = XLSX.utils.book_new();
+    const dateStr = new Date().toLocaleDateString('en-IN').replace(/\//g,'_');
+
+    // Sheet 1: Combined (all machines)
+    const rowsCombined = buildUrgSheet(null, 'All Machines — Urgency + Overflow');
+    const aoaC = rowsCombined.map(r=>r?r.cells.map(c=>c.v===''||c.v==null?'':c.v):[]);
+    const wsC  = XLSX.utils.aoa_to_sheet(aoaC);
+    wsC['!cols'] = CW.map(w=>({wch:w}));
+    wsC['!rows'] = rowsCombined.map(r=>r?{hpt:r.ht||15}:{hpt:6});
+    wsC['!pageSetup'] = {orientation:'landscape', fitToPage:1, fitToWidth:1, fitToHeight:0, paperSize:9};
+    wsC['!margins'] = {left:0.4, right:0.4, top:0.5, bottom:0.5, header:0.3, footer:0.3};
+    // Merges for title/section rows
+    let mergesC = [];
+    rowsCombined.forEach((row,ri)=>{
+      if(!row||!row.cells||!row.cells.length) return;
+      const s0 = row.cells[0]&&row.cells[0].s;
+      if([101,102,103,107,108,109].includes(s0)) mergesC.push({s:{r:ri,c:0},e:{r:ri,c:NCols-1}});
+    });
+    wsC['!merges'] = mergesC;
+    try{ applyUrgStyles(wsC, rowsCombined); }catch(se){ console.warn('Urg style err:', se.message); }
+    XLSX.utils.book_append_sheet(wbXL, wsC, 'All Machines');
+
+    // Sheet 2: B1 only
+    const b1Jobs = sched.filter(j=>j.mach==='B1');
+    if(b1Jobs.length){
+      const rowsB1 = buildUrgSheet('B1', 'Unit 12 (B1)');
+      const aoaB1  = rowsB1.map(r=>r?r.cells.map(c=>c.v===''||c.v==null?'':c.v):[]);
+      const wsB1   = XLSX.utils.aoa_to_sheet(aoaB1);
+      wsB1['!cols'] = CW.map(w=>({wch:w}));
+      wsB1['!rows'] = rowsB1.map(r=>r?{hpt:r.ht||15}:{hpt:6});
+      wsB1['!pageSetup'] = {orientation:'landscape', fitToPage:1, fitToWidth:1, fitToHeight:0, paperSize:9};
+      let mergesB1 = [];
+      rowsB1.forEach((row,ri)=>{ if(!row||!row.cells.length) return; const s0=row.cells[0]&&row.cells[0].s; if([101,102,103,107,108,109].includes(s0)) mergesB1.push({s:{r:ri,c:0},e:{r:ri,c:NCols-1}}); });
+      wsB1['!merges'] = mergesB1;
+      try{ applyUrgStyles(wsB1, rowsB1); }catch(se){}
+      XLSX.utils.book_append_sheet(wbXL, wsB1, 'Unit 12 (B1)');
+    }
+
+    // Sheet 3: B2 only
+    const b2Jobs = sched.filter(j=>j.mach==='B2');
+    if(b2Jobs.length){
+      const rowsB2 = buildUrgSheet('B2', 'Unit 19 (B2)');
+      const aoaB2  = rowsB2.map(r=>r?r.cells.map(c=>c.v===''||c.v==null?'':c.v):[]);
+      const wsB2   = XLSX.utils.aoa_to_sheet(aoaB2);
+      wsB2['!cols'] = CW.map(w=>({wch:w}));
+      wsB2['!rows'] = rowsB2.map(r=>r?{hpt:r.ht||15}:{hpt:6});
+      wsB2['!pageSetup'] = {orientation:'landscape', fitToPage:1, fitToWidth:1, fitToHeight:0, paperSize:9};
+      let mergesB2 = [];
+      rowsB2.forEach((row,ri)=>{ if(!row||!row.cells.length) return; const s0=row.cells[0]&&row.cells[0].s; if([101,102,103,107,108,109].includes(s0)) mergesB2.push({s:{r:ri,c:0},e:{r:ri,c:NCols-1}}); });
+      wsB2['!merges'] = mergesB2;
+      try{ applyUrgStyles(wsB2, rowsB2); }catch(se){}
+      XLSX.utils.book_append_sheet(wbXL, wsB2, 'Unit 19 (B2)');
+    }
+
+    xlsxDl(wbXL, `AIA_Urgency_List_${dateStr}.xlsx`);
+    toast('⬇️ Urgency List Excel ready!');
+    closeUrgencyModal();
+  } catch(e){ toast('❌ '+e.message); console.error(e); }
+}
 </script>
 
 <script>
